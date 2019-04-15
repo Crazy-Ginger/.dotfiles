@@ -1,0 +1,1 @@
+to sync these files use the "stow" command plus the name of the directory being synced
