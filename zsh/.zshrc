@@ -14,3 +14,5 @@ alias vim="nvim "
 export PATH=$PATH:$HOME/.cargo/bin
 
 PATH=$PATH:~/bin
+
+eval $(thefuck --alias)
