@@ -1,4 +1,5 @@
-export ZSH="/home/matt/.oh-my-zsh"
+ZSH_DISABLE_COMPFIX=true
+export ZSH="/home/matty/.oh-my-zsh"
 ZSH_THEME="gallois"
 
 plugins=(
@@ -8,6 +9,8 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 alias vim="nvim "
 
