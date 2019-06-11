@@ -22,7 +22,6 @@ call plug#begin()
     Plug 'ncm2/ncm2-vim'                "vimscript
     Plug 'ObserverOfTime/ncm2-jc2'      "Java
     Plug 'gaalcaras/ncm-R'              "R
-
 call plug#end()
 
 "enable ncm2 for all buffers
@@ -67,6 +66,19 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 au BufWinLeave ?* mkview 1
 au BufWinEnter ?* silent loadview 1
 
+"automatic folding enabler for used languages
+"sets the foldmethod to syntax over other alternatives
+set foldmethod=syntax
+set foldlevelstart=1
+set foldnestmax=6
+
+let javaScript_fold=1       "javascript
+let vimsyn_folding='af'     "vim script
+let ruby_fold=1             "Ruby
+let r_syntax_folding=1      "R
+let perl_fold=1             "perl
+let xml_syntax_folding=1    "xml
+
 
 
 "#####################
@@ -80,15 +92,3 @@ set termguicolors
 "colours
 :set background=dark
 
-"automatic folding enabler for used languages
-"sets the foldmethod to syntax over other alternatives
-set foldmethod=syntax
-set foldlevelstart=1
-set foldnestmax=6
-
-let javaScript_fold=1       "javascript
-let vimsyn_folding='af'     "vim script
-let ruby_fold=1             "Ruby
-let r_syntax_folding=1      "R
-let perl_fold=1             "perl
-let xml_syntax_folding=1    "xml
