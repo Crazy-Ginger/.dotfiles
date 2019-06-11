@@ -42,3 +42,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "automates the saving and loading of folds in vim
 au BufWinLeave ?* mkview 1
 au BufWinEnter ?* silent loadview 1
+
+"allows true colours to be used in the terminal
+set termguicolors
