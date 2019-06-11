@@ -12,7 +12,7 @@ source $ZSH/oh-my-zsh.sh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
-alias vim="nvim "
+alias vim="nvim"
 
 export PATH=$PATH:$HOME/.cargo/bin
 
