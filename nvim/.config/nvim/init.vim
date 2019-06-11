@@ -33,7 +33,7 @@ inoremap <c-c> <ESC>
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
 " line.
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -43,5 +43,10 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 au BufWinLeave ?* mkview 1
 au BufWinEnter ?* silent loadview 1
 
+"#########colour and themes (looky shit)
 "allows true colours to be used in the terminal
 set termguicolors
+
+"set the background to be dark so that nvim nows for certain and uses light
+"colours
+:set background=dark
