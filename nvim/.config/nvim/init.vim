@@ -70,7 +70,7 @@ au BufWinEnter ?* silent loadview 1
 
 
 "#####################
-"##colour and themes##
+"##Colour and Themes##
 "#####################
 
 "allows true colours to be used in the terminal
