@@ -6,7 +6,10 @@
 call plug#begin()
     Plug 'w0rp/ale'
 	Plug 'roxma/nvim-yarp'
-	
+    Plug 'sheerun/vim-polyglot'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'vim-airline/vim-airline'
+
     "autocomplete
     Plug 'ncm2/ncm2'
 	Plug 'ncm2/ncm2-bufword'
@@ -55,7 +58,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "##Custom shit##
 "###############
 
-"Edward told me to put this here so F5 executes python commands
+"Laura told me to put this here so F5 executes python commands
 autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr> 
 
 "setting the size of tab spaces to not be stupid long

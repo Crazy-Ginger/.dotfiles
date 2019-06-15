@@ -3,7 +3,8 @@ export ZSH="/home/matt/.oh-my-zsh"
 ZSH_THEME="gallois"
 
 plugins=(
-	git
+git
+    git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
