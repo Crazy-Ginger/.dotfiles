@@ -5,10 +5,10 @@
 "vim-plug to manage plugins for nvim
 call plug#begin()
     Plug 'w0rp/ale'
-	Plug 'roxma/nvim-yarp'
+	Plug 'roxma/nvim-yarp'              "a remote plugin framework
     Plug 'sheerun/vim-polyglot'
     Plug 'scrooloose/nerdcommenter'
-    Plug 'vim-airline/vim-airline'
+"    Plug 'vim-airline/vim-airline'     "removed as it broke
 
     "autocomplete
     Plug 'ncm2/ncm2'
@@ -52,6 +52,9 @@ inoremap <c-c> <ESC>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+"for pyclang (c++ completor)
+"path to directory where libclang.so can be found
+let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 
 
 "###############
