@@ -20,7 +20,7 @@ call plug#begin()
     Plug 'ncm2/ncm2-tern'               "javascript
     Plug 'ncm2/ncm2-jedi'               "python
     Plug 'ncm2/ncm2-racer'              "rust
-    Plug 'ncm2/ncm2-pyclang'            "c++
+    "Plug 'ncm2/ncm2-pyclang'            "c++
     Plug 'lervag/vimtex'                "LaTex
     Plug 'ncm2/ncm2-vim'                "vimscript
     Plug 'ObserverOfTime/ncm2-jc2'      "Java
