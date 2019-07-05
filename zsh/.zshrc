@@ -13,6 +13,7 @@ source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 alias vim="nvim"
+alias startx="startxfce4"
 
 export PATH=$PATH:$HOME/.cargo/bin
 
