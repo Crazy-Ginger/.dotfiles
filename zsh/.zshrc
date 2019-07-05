@@ -1,9 +1,8 @@
 ZSH_DISABLE_COMPFIX=true
-export ZSH="/home/matt/.oh-my-zsh"
+export ZSH="/home/becca/.oh-my-zsh"
 ZSH_THEME="gallois"
 
 plugins=(
-git
     git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
