@@ -69,8 +69,8 @@ set linebreak
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 "automates the saving and loading of folds in vim
-au BufWinLeave ?* mkview 1
-au BufWinEnter ?* silent loadview 1
+"au BufWinLeave ?* mkview 1
+"au BufWinEnter ?* silent loadview 1
 
 "automatic folding enabler for used languages
 "sets the foldmethod to syntax over other alternatives
