@@ -1,5 +1,5 @@
 ZSH_DISABLE_COMPFIX=true
-export ZSH="/home/becca/.oh-my-zsh"
+export ZSH="/home/matt/.oh-my-zsh"
 ZSH_THEME="gallois"
 
 plugins=(
