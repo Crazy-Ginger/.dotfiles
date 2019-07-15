@@ -4,7 +4,7 @@ ZSH_THEME="gallois"
 
 plugins=(
     git
-	zsh-autosuggestions
+    zsh-autosuggestions
 	zsh-syntax-highlighting
 )
 
@@ -20,3 +20,9 @@ export PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:~/bin
 
 eval $(thefuck --alias)
+
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select
+setopt COMPLETE_ALIASES
+zstyle ':completion::complete:*' gain-privileges 1
