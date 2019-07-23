@@ -60,7 +60,7 @@ let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 "###############
 "##Custom shit##
 "###############
-
+"{
 "Laura told me to put this here so F5 executes python commands
 autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr> 
 
@@ -85,6 +85,10 @@ let r_syntax_folding=1      "R
 let perl_fold=1             "perl
 let xml_syntax_folding=1    "xml
 
+
+"allows accidental holding shift whilst writing commands to still run commands
+command Q q
+command W w
 
 
 "#####################
