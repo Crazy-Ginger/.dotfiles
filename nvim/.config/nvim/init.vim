@@ -76,7 +76,8 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "sets the foldmethod to syntax over other alternatives
 set foldmethod=syntax
 set foldlevelstart=1
-set foldnestmax=6
+set foldnestmax=10
+
 
 let javaScript_fold=1       "javascript
 let vimsyn_folding='af'     "vim script
