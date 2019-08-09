@@ -74,11 +74,12 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 "automatic folding enabler for used languages
 "sets the foldmethod to syntax over other alternatives
-"au FileType * setlocal foldmethod=syntax
-"au FileType py setlocal foldmethod=indent
+au FileType cpp set foldmethod=syntax
+au FileType python set foldmethod=indent
 set foldlevelstart=1
 set foldnestmax=10
-
+"reformats all folds
+au BufRead * normal <CTRL-l>
 "closes all folds
 au BufRead * normal zM
 
