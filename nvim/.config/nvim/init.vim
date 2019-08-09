@@ -74,7 +74,8 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 "automatic folding enabler for used languages
 "sets the foldmethod to syntax over other alternatives
-set foldmethod=syntax
+"au FileType * setlocal foldmethod=syntax
+"au FileType py setlocal foldmethod=indent
 set foldlevelstart=1
 set foldnestmax=10
 
