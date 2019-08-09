@@ -78,6 +78,8 @@ set foldmethod=syntax
 set foldlevelstart=1
 set foldnestmax=10
 
+"closes all folds
+au BufRead * normal zM
 
 let javaScript_fold=1       "javascript
 let vimsyn_folding='af'     "vim script
