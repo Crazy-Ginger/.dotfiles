@@ -75,7 +75,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "automatic folding enabler for used languages
 "sets the foldmethod to syntax over other alternatives
 au FileType cpp,c,hpp,h,javascript set foldmethod=syntax
-au FileType python,html set foldmethod=indent
+au FileType python,html,xml set foldmethod=indent
 "au FileType html set foldmethod=indent
 set foldlevelstart=1
 set foldnestmax=10
