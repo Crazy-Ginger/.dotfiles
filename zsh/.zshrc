@@ -1,3 +1,8 @@
+#auto starts zsh in tmux after checking to ensure no nested tmux
+if [ "$TMUX" = "" ]; then
+    tmux new-session;
+fi
+
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="gallois"
@@ -15,8 +20,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 alias vim="nvim"
 alias startx="startxfce4"
 
-export PATH=$PATH:$HOME/.cargo/bin
 
+export PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:~/bin
 
 eval $(thefuck --alias)
@@ -26,4 +31,4 @@ compinit
 zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1
-tmux
+
