@@ -1,7 +1,11 @@
 #auto starts zsh in tmux after checking to ensure no nested tmux
 tmux new-session;
 if [ "$TMUX" = "" ]; then
+<<<<<<< HEAD
     exit
+=======
+	exit
+>>>>>>> 1decaab08cf6a34de6ed68da04c096004717a947
 fi
 
 ZSH_DISABLE_COMPFIX=true
