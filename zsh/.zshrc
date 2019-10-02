@@ -1,8 +1,5 @@
 #auto starts zsh in tmux after checking to ensure no nested tmux
-tmux new-session;
-if [ "$TMUX" = "" ]; then
-	exit
-fi
+[[ $TERM != "screen" ]] && exec tmux
 
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
@@ -11,7 +8,8 @@ ZSH_THEME="gallois"
 plugins=(
     git
     zsh-autosuggestions
-	zsh-syntax-highlighting
+    zsh-syntax-highlighting
+    tmux
 )
 
 source $ZSH/oh-my-zsh.sh
