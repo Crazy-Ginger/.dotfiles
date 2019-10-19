@@ -143,3 +143,42 @@ ls
 cd ~
 tmux
 startx
+ls -a
+cd ..
+ls -a
+rm -rf .bash*
+ls -a
+mkdir .config
+cd .config/
+ls
+mkdir .nvim
+stow
+sudo apt install stow
+stow bash
+stow zsh
+stow tmux
+ssh beccawardle@wardlebackup.webhop.me -p 35843
+su
+sudo apt install stow
+sudo apt update
+sudo apt upgrade
+git clone https://github.com/Crazy-Ginger/.dotfiles.git
+cd .dotfiles/
+ls
+tmux
+sudo apt install zsh
+ls
+ls -a
+mkdir Documents
+mkdir Documents/Source
+cd Documents/Source/
+git clone https://github.com/Crazy-Ginger/Python.git
+cd ~
+mkdir bin
+ls
+cp Documents/Source/Python/timeLapseCalc.py bin timeLapseCalc
+cp Documents/Source/Python/timeLapseCalc.py bin/timeLapseCalc
+ls bin/
+vim bin/timeLapseCalc 
+timeLapseCalc 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
