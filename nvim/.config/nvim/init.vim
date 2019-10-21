@@ -15,6 +15,7 @@ call plug#begin()
 	Plug 'ncm2/ncm2-bufword'
 	Plug 'ncm2/ncm2-path'
     Plug 'ncm2/ncm2-tmux'
+    Plug 'Shougo/neco-vim'
     Plug 'yuki-ycino/ncm2-dictionary'   "dictionary completion
     Plug 'ncm2/ncm2-cssomni'            "css
     Plug 'ncm2/ncm2-tern'               "javascript
@@ -27,7 +28,7 @@ call plug#begin()
     Plug 'gaalcaras/ncm-R'              "R
 call plug#end()
 
-"enable ncm2 for all buffers
+" enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
 
 "IMPORTANT: :help Ncm2PopupOpen for more information
@@ -52,36 +53,39 @@ inoremap <c-c> <ESC>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-"for pyclang (c++ completor)
-"path to directory where libclang.so can be found
+" for pyclang (c++ completor)
+" path to directory where libclang.so can be found
 let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 
 
 "###############
 "##Custom shit##
 "###############
-"{
-"Laura told me to put this here so F5 executes python commands
+
+" Laura told me to put this here so F5 executes python commands (I don't know
+" if this works still)
 autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr> 
 
-"setting the size of tab spaces to not be stupid long
+" setting the size of tab spaces to not be stupid long
 set linebreak
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
-"automates the saving and loading of folds in vim
-"au BufWinLeave ?* mkview 1
-"au BufWinEnter ?* silent loadview 1
+" automates the saving and loading of folds in vim (this generated loads of
+" local files that stored the folds so this method was dropped for the method
+" below)
+" au BufWinLeave ?* mkview 1
+" au BufWinEnter ?* silent loadview 1
 
-"automatic folding enabler for used languages
-"sets the foldmethod to syntax over other alternatives
+" automatic folding enabler for used languages
+" sets the foldmethod to syntax over other alternatives
 au FileType cpp,c,hpp,h,javascript set foldmethod=syntax
-au FileType python,html,xml set foldmethod=indent
-"au FileType html set foldmethod=indent
+au FileType python,html,xml,cmake set foldmethod=indent
+" au FileType html set foldmethod=indent
 set foldlevelstart=1
 set foldnestmax=10
-"reformats all folds
+" reformats all folds
 au BufRead * normal <CTRL-l>
-"closes all folds
+" closes all folds
 au BufRead * normal zM
 
 let javaScript_fold=1       "javascript
@@ -92,21 +96,21 @@ let perl_fold=1             "perl
 let xml_syntax_folding=1    "xml
 
 
-"allows accidental holding shift whilst writing commands to still run commands
+" allows accidental holding shift whilst writing commands to still run commands
 command Q q
 command W w
 
-"setting default clipboard to the "+ register instead of "*
+" setting default clipboard to the "+ register instead of "*
 set clipboard=unnamedplus
 
 "#####################
 "##Colour and Themes##
 "#####################
 
-"allows true colours to be used in the terminal
+" allows true colours to be used in the terminal
 set termguicolors
 
-"set the background to be dark so that nvim nows for certain and uses light
-"colours
-:set background=dark
+" set the background to be dark so that nvim nows for certain and uses light
+" colours
+set background=dark
 
