@@ -100,8 +100,6 @@ let xml_syntax_folding=1    "xml
 command Q q
 command W w
 
-" setting default clipboard to the "+ register instead of "*
-set clipboard=unnamedplus
 
 "#####################
 "##Colour and Themes##
