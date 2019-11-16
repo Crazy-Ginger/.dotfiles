@@ -97,7 +97,7 @@ let perl_fold=1             "perl
 let xml_syntax_folding=1    "xml
 
 " allows spell check for text files
-au FileType txt set spell
+au FileType text set spell
 
 " allows accidental holding shift whilst writing commands to still run commands
 command Q q
