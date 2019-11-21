@@ -10,6 +10,7 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     tmux
+    shrink-path
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -31,3 +32,8 @@ zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1
 
+#should shrink the file path displayed by zsh so it takes up less space whilst still being unique to each directory
+setopt prompt_subst
+#PS1='[$(shrink_path -f)]$ '
+#temp = "$(shrink_path -T)"
+PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
