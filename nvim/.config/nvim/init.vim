@@ -9,6 +9,7 @@ call plug#begin()
     Plug 'sheerun/vim-polyglot'
     Plug 'scrooloose/nerdcommenter'
 "    Plug 'vim-airline/vim-airline'     "removed as it broke
+    "Plug 'numirias/semshi'              "a python highlighter and static tester (possibly didn't set up correctly)
 
     "autocomplete
     Plug 'ncm2/ncm2'
@@ -21,7 +22,8 @@ call plug#begin()
     Plug 'ncm2/ncm2-tern'               "javascript
     Plug 'ncm2/ncm2-jedi'               "python
     Plug 'ncm2/ncm2-racer'              "rust
-    "Plug 'ncm2/ncm2-pyclang'            "c++
+    "Plug 'ncm2/ncm2-pyclang'            "c++, uses clang which requires
+    "building
     Plug 'lervag/vimtex'                "LaTex
     Plug 'ncm2/ncm2-vim'                "vimscript
     Plug 'ObserverOfTime/ncm2-jc2'      "Java
@@ -31,7 +33,7 @@ call plug#end()
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
 
-"IMPORTANT: :help Ncm2PopupOpen for more information
+" IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 
 "NOTE: you need to install completion sources to get completions. Check
@@ -103,6 +105,9 @@ au FileType text set spell spelllang=en_gb spell spellfile="$~/.vim/spell/en.utf
 command Q q
 command W w
 
+" alway set syntax on to enable code highlighting (didn't seem to make a
+" difference but don't want to take chances)
+syntax on
 
 "#####################
 "##Colour and Themes##
