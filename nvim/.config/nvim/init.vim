@@ -17,17 +17,18 @@ call plug#begin()
 	Plug 'ncm2/ncm2-path'
     Plug 'ncm2/ncm2-tmux'
     Plug 'Shougo/neco-vim'
-    Plug 'yuki-ycino/ncm2-dictionary'   "dictionary completion
-    Plug 'ncm2/ncm2-cssomni'            "css
-    Plug 'ncm2/ncm2-tern'               "javascript
-    Plug 'ncm2/ncm2-jedi'               "python
-    Plug 'ncm2/ncm2-racer'              "rust
-    "Plug 'ncm2/ncm2-pyclang'            "c++, uses clang which requires
+    Plug 'yuki-ycino/ncm2-dictionary'       "dictionary completion
+    Plug 'ncm2/ncm2-cssomni'                "css
+    Plug 'ncm2/ncm2-tern'                   "javascript
+    Plug 'ncm2/ncm2-jedi'                   "python
+    Plug 'ncm2/ncm2-racer'                  "rust
+    "Plug 'ncm2/ncm2-pyclang'               "c++, uses clang which requires
     "building
-    Plug 'lervag/vimtex'                "LaTex
+    Plug 'lervag/vimtex'                    "LaTex
     Plug 'ncm2/ncm2-vim'                "vimscript
     Plug 'ObserverOfTime/ncm2-jc2'      "Java
     Plug 'gaalcaras/ncm-R'              "R
+    Plug 'artur-shaik/vim-javacomplete2'    "java & jsp
 call plug#end()
 
 " enable ncm2 for all buffers
