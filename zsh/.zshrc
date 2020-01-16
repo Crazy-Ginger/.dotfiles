@@ -37,6 +37,11 @@ zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1
 
-#should shrink the file path displayed by zsh so it takes up less space whilst still being unique to each directory
+# sets the directory path to be minimal by reducing to minimal chars by selecting the as many as it needs for the path to be unique
 setopt prompt_subst
 PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+
+# appends the hostname to the terminal line if in SSH
+if [[-n $SSH_CONNECTION]]; then
+    PS1 = "${HOSTNAME}${PS1}"
+fi
