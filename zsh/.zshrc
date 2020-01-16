@@ -11,6 +11,7 @@ plugins=(
     zsh-syntax-highlighting
     tmux
     shrink-path
+
     # testing some new plugins
     colored-man-pages
     vscode
