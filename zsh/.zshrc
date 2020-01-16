@@ -42,8 +42,7 @@ setopt prompt_subst
 
 # appends the hostname to the terminal line if in SSH
 if [[ -n $SSH_CONNECTION ]]; then
-    PS1 = '${HOSTNAME} %{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+    PS1 = "$(hostname -a) %{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b"
 else
     PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
 fi
-
