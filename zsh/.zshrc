@@ -11,6 +11,7 @@ plugins=(
     zsh-syntax-highlighting
     tmux
     shrink-path
+
     # testing some new plugins
     colored-man-pages
     vscode
@@ -36,6 +37,12 @@ zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1
 
-#should shrink the file path displayed by zsh so it takes up less space whilst still being unique to each directory
+# sets the directory path to be minimal by reducing to minimal chars by selecting the as many as it needs for the path to be unique
 setopt prompt_subst
+
+# appends the hostname to the terminal line if in SSH
 PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+#if [[ -n $SSH_CONNECTION ]]; then
+    #PS1 = "$(hostname) $PS1"
+    #S1='DebServer %{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+#fi
