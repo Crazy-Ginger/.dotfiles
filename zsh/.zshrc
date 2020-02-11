@@ -24,7 +24,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 alias vim="nvim"
 alias startx="startxfce4"
-
+alias chrome="/usr/bin/google-chrome-stable  %U"
+#--force-device-scale-factor=20
 
 export PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:~/bin
