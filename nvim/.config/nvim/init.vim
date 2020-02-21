@@ -10,6 +10,7 @@ call plug#begin()
     Plug 'scrooloose/nerdcommenter'
 "    Plug 'vim-airline/vim-airline'     "removed as it broke
     "Plug 'numirias/semshi'              "a python highlighter and static tester (possibly didn't set up correctly)
+    "Plug 'lambdalisue/suda.vim'         "allows for saving file when not opened with sudo, doesn't work
 
     "autocomplete
     Plug 'ncm2/ncm2'
@@ -110,12 +111,19 @@ command W w
 " difference but don't want to take chances)
 syntax on
 
+" should enable sudo saving even when file isn't opened as sudo
+" doesn't work as neovim won't take sudo password
+"command Sw w !sudo tee > /dev/null %
+" Plugin to do that same also doesn't work
+"command Sw w suda://%
+
 "#####################
 "##Colour and Themes##
 "#####################
 
 " allows true colours to be used in the terminal
-set termguicolors
+" broke xrvt terminal
+"set termguicolors
 
 " set the background to be dark so that nvim nows for certain and uses light
 " colours

@@ -113,3 +113,4 @@ if ! shopt -oq posix; then
 fi
 
 PATH=$PATH:~/bin
+PATH=$PATH:~/.local/bin

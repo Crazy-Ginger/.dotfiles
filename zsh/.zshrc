@@ -1,5 +1,5 @@
 #auto starts zsh in tmux after checking to ensure no nested tmux
-[[ $TERM != "screen" ]] && exec tmux
+#[[ $TERM != "screen" ]] && exec tmux
 
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
@@ -23,12 +23,13 @@ source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 alias vim="nvim"
-alias startx="startxfce4"
+# alias startx="startxfce4"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 #--force-device-scale-factor=20
 
 export PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:~/bin
+PATH=$PATH:~/.local/bin
 
 eval $(thefuck --alias)
 
