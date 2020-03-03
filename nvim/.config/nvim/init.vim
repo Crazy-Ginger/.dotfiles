@@ -8,6 +8,7 @@ call plug#begin()
 	Plug 'roxma/nvim-yarp'              "a remote plugin framework
     Plug 'sheerun/vim-polyglot'
     Plug 'scrooloose/nerdcommenter'
+    Plug 'tpope/vim-surround'           "vim-surround to allow for quick quoting/parenthesising
 "    Plug 'vim-airline/vim-airline'     "removed as it broke
     "Plug 'numirias/semshi'              "a python highlighter and static tester (possibly didn't set up correctly)
     "Plug 'lambdalisue/suda.vim'         "allows for saving file when not opened with sudo, doesn't work
