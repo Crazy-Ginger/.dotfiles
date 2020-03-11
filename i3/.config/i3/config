@@ -29,9 +29,12 @@ bindsym XF86AudioLowerVolume exec "amixer -q sset Master 2%- unmute"
 bindsym XF86AudioMute exec "amixer -q sset Master toggle"
 
 
-# Uses software controls to increase and decrease the screen brightness
-bindsym XF86MonBrightnessUp exec "incBrit"
-bindsym XF86MonBrightnessDown exec "decBrit"
+# Uses xbacklight to increase and decrease the screen brightness
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
+bindsym Shift + XF86MonBrightnessUp exec "xbacklight -inc 5"
+bindsym Shift + XF86MonBrightnessDown exec "xbacklight -dec 5"
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
