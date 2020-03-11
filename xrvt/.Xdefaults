@@ -41,5 +41,5 @@ URxvt*depth:        32
 URxvt.font: xft:Monaco:pixelsize=16:antialias=true
 URxvt.boldFont: xft:FantasqueSansMono-Bold:pixelsize=16:antialias=true
 URxvt.italicFont: xft:FantasqueSansMono-Italic:pixelsize=16:antialias=true
-URxvt.letterSpace: 0
+URxvt.letterSpace: 2
 URxvt.lineSpace: 0
