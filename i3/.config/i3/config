@@ -32,9 +32,10 @@ bindsym XF86AudioMute exec "amixer -q sset Master toggle"
 # Uses xbacklight to increase and decrease the screen brightness
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
-bindsym Shift + XF86MonBrightnessUp exec "xbacklight -inc 5"
-bindsym Shift + XF86MonBrightnessDown exec "xbacklight -dec 5"
-
+bindsym Shift+XF86MonBrightnessUp exec "xbacklight -inc 5"
+bindsym Shift+XF86MonBrightnessDown exec "xbacklight -dec 5"
+bindsym Mod1+XF86MonBrightnessUp exec "xbacklight -inc 1"
+bindsym Mod1+XF86MonBrightnessDown exec "xbacklight -dec 1"
 
 # Use Mouse+$mod to drag floating windows to their wanted position (doesn't work?)
 floating_modifier $mod
@@ -142,8 +143,8 @@ bindsym $mod+0 workspace number $ws10
 # cycle through workspaces with windows-tab and arrow keys
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Tab workspace next
-bindsym $mod+Control+Left workspace next
-bindsym $mod+Control+Right workspace prev
+bindsym $mod+Control+Left workspace prev
+bindsym $mod+Control+Right workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
