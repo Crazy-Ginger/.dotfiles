@@ -49,3 +49,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
     PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
 fi
+
+# Import colourscheme from 'wal' asynchronously
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh

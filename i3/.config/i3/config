@@ -24,18 +24,18 @@ font pango:monospace 12
 
 # Use pactl to adjust volume in PulseAudio
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 2%+ unmute"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master 2%- unmute"
-bindsym XF86AudioMute exec "amixer -q sset Master toggle"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master 2%+ unmute"
+bindsym XF86AudioLowerVolume exec--no-startup-id "amixer -q sset Master 2%- unmute"
+bindsym XF86AudioMute exec --no-startup-id "amixer -q sset Master toggle"
 
 
 # Uses xbacklight to increase and decrease the screen brightness
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
-bindsym Shift+XF86MonBrightnessUp exec "xbacklight -inc 5"
-bindsym Shift+XF86MonBrightnessDown exec "xbacklight -dec 5"
-bindsym Mod1+XF86MonBrightnessUp exec "xbacklight -inc 1"
-bindsym Mod1+XF86MonBrightnessDown exec "xbacklight -dec 1"
+bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10"
+bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 5"
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 5"
+bindsym Mod1+XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 1"
+bindsym Mod1+XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 1"
 
 # Use Mouse+$mod to drag floating windows to their wanted position (doesn't work?)
 floating_modifier $mod
@@ -111,7 +111,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 
 ## Workspace stuff
@@ -158,28 +158,6 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-
-## i3 Sessions stuff
-
-### doesn't work
-# start lock hanler with 2min timeout
-exec_always --no-startup-id xset s 120
-exec_always --no-startup-id xss-lock $HOME/bin/screen-locker
-#xec_always --no-startup-id echo $XDG_SESSION_ID > /tmp/locksessionid
-
-# lock screen
-bindsym Control + Mod1 + Delete exec screen-locker
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# restart i3 inp<Down>lace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-
 ## Resizing Windows
 # resize window (you can also use the mouse for that)
 mode "resize" 
@@ -216,3 +194,51 @@ bar
     font pagno:DejaVu Sans Mono 20
     status_command i3status
 }
+
+###########
+##Session##
+###########
+# start lock hanler with 2min timeout
+exec_always --no-startup-id xset s 120
+exec_always --no-startup-id xss-lock $HOME/bin/screen-locker
+#xec_always --no-startup-id echo $XDG_SESSION_ID > /tmp/locksessionid
+
+# lock screen
+bindsym Control+Mod1+Delete exec --no-startup-id $HOME/bin/screen-locker
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inp<Down>lace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+
+##############
+##Appearance##
+##############
+# Chooses a random wallpaper and changes the theme colours
+bindsym $mod+b exec --no-startup-id $HOME/bin/rand-wal
+
+# Gaps
+gaps outer 7
+gaps inner 7
+
+# Borders(?)
+default_border none
+hide_edge_borders smart
+for_window [class="^.*"] border pixel 3
+
+# Colours(?)
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+
+#class                  border  backgrd text indicator child_border
+client.focused          $fg     $bg     $fg  $bg       $fg
+client.focused_inactive $fg     $bg     $fg  $bg       $fg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $bg
