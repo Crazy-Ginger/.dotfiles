@@ -12,6 +12,7 @@ call plug#begin()
 "    Plug 'vim-airline/vim-airline'     "removed as it broke
     "Plug 'numirias/semshi'              "a python highlighter and static tester (possibly didn't set up correctly)
     "Plug 'lambdalisue/suda.vim'         "allows for saving file when not opened with sudo, doesn't work
+    Plug 'ryanoasis/vim-devicons'       "allows for nerd fonts (icon fonts)
 
     "autocomplete
     Plug 'ncm2/ncm2'
