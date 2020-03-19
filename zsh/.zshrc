@@ -51,5 +51,7 @@ else
 fi
 
 # Import colourscheme from 'wal' asynchronously
-(cat ~/.cache/wal/sequences &)
-source ~/.cache/wal/colors-tty.sh
+if hostname | grep -q "BeccaArchLap"; then
+    (cat ~/.cache/wal/sequences &)
+    source ~/.cache/wal/colors-tty.sh
+fi
