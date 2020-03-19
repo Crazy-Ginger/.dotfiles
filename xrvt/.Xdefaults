@@ -41,11 +41,11 @@ URxvt*depth:        32
 *.color15:      #eeeeee
 
 
-URxvt.font: xft:Monaco:pixelsize=16:antialias=true
-URxvt.boldFont: xft:FantasqueSansMono-Bold:pixelsize=16:antialias=true
-URxvt.italicFont: xft:FantasqueSansMono-Italic:pixelsize=16:antialias=true
-URxvt.letterSpace: 2
-URxvt.lineSpace: 0
+URxvt.font: xft:Hack:pixelsize=16:antialias=true
+URxvt.boldFont: xft:Hack-Bold:pixelsize=16:antialias=true
+URxvt.italicFont: xft:Hack-Italic:pixelsize=16:antialias=true
+URxvt.letterSpace: -3
+URxvt.lineSpace: 1
 
 URxvt.transparent: true
 URxvt.shading: 20
