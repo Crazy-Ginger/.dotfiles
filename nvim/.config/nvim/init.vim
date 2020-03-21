@@ -131,3 +131,4 @@ syntax on
 " colours
 set background=dark
 
+set guifont=Hack
