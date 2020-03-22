@@ -23,6 +23,7 @@ source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 alias vim="nvim"
+alias python="python3"
 # alias startx="startxfce4"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 #--force-device-scale-factor=20
