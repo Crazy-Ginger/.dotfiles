@@ -199,7 +199,7 @@ bar
 ##Session##
 ###########
 # start lock hanler with 2min timeout
-exec_always --no-startup-id xset s 120
+exec_always --no-startup-id xset s 180
 exec_always --no-startup-id xss-lock $HOME/bin/screen-locker
 #xec_always --no-startup-id echo $XDG_SESSION_ID > /tmp/locksessionid
 
@@ -232,8 +232,8 @@ hide_edge_borders smart
 for_window [class="^.*"] border pixel 7
 
 # Colours(?)
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $fg i3wm.color1 #f0f0f0
+set_from_resource $bg i3wm.color8 #f0f0f0
 
 #class                  border  backgrd text indicator child_border
 client.focused          $fg     $bg     $fg  $bg       $fg
