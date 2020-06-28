@@ -182,3 +182,76 @@ ls bin/
 vim bin/timeLapseCalc 
 timeLapseCalc 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+stow bash
+stow nvim/
+stow tmux/
+stow zsh/
+stow xrvt/
+cd ..
+ls
+;ls -a
+ls -a
+rm .bash* 
+ls
+ls -a
+ls
+cd Documents/
+ls
+cd ..
+ls
+git clone git@github.com/Crazy-Ginger/.dotfiles.git
+sudo apt install git
+git clone git@github.com/Crazy-Ginger/.dotfiles.git
+git clone https:github.com/CrazyGinger/.dotfiles.git
+sudo apt install tumx
+sudo apt install tmux
+git clone git@github.com:Crazy-Ginger/.dotfiles.git
+git clone https://github.com/Crazy-Ginger/.dotfiles.git
+git clone git@github.com:
+sudo apt install stow
+sudo apt install neovim
+vim
+ls
+ls -a
+rm Music/
+rm Music/ -rf
+ls
+rm Pictures/ rf
+ls
+rm Public/ -rf
+ls
+ls Templates/
+rm Templates/ -rf
+ls Videos/
+rm Videos/ -rf
+ls
+sudo apt install stow
+pip
+python-pip
+python -v
+python --version
+python
+python3
+sudo apt install python3-pip
+pip3 install neovim
+nvim
+tmux
+pwd
+git clone https://github.com/ohmyzsh/ohmyzsh.git
+cd .dotfiles/
+ls
+stow bash/
+tmux
+cd ..
+rm -rf .dotfiles/
+git clone https://github.com/Crazy-Ginger/.dotfiles.git
+cd .dotfiles/
+tmux
+sudo apt install zshell
+sudo apt install zsh
+sudo apt update
+sudo apt upgrade
+ping 8.8.8.8
+ping google.com
+ls
+tmux
