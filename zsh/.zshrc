@@ -57,3 +57,8 @@ if hostname | grep -q "BeccaArchLap"; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
 fi
+
+# For MORSE Simulator
+MORSE_BlENDER=/opt/blneder-2.79b-linux-glibc219-x86_64
+export MORSE_BlENDER=/opt/blneder-2.79b-linux-glibc219-x86_64
+PYTHONPATH=/usr/local/lib/python3/dist-packges/

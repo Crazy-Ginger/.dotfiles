@@ -20,7 +20,6 @@ call plug#begin()
 	Plug 'ncm2/ncm2-path'
     Plug 'ncm2/ncm2-tmux'
     Plug 'Shougo/neco-vim'
-    Plug 'yuki-ycino/ncm2-dictionary'       "dictionary completion
     Plug 'ncm2/ncm2-cssomni'                "css
     Plug 'ncm2/ncm2-tern'                   "javascript
     Plug 'ncm2/ncm2-jedi'                   "python
