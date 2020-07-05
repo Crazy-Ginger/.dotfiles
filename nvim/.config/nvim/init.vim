@@ -67,19 +67,14 @@ let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 "##Custom shit##
 "###############
 
-" Laura told me to put this here so F5 executes python commands (I don't know
-" if this works still)
+" Laura told me to put this here so F5 executes python commands
+" I don't know if this works still
 autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr> 
 
 " setting the size of tab spaces to not be stupid long
 set linebreak
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
-" automates the saving and loading of folds in vim (this generated loads of
-" local files that stored the folds so this method was dropped for the method
-" below)
-" au BufWinLeave ?* mkview 1
-" au BufWinEnter ?* silent loadview 1
 
 " automatic folding enabler for used languages
 " sets the foldmethod to syntax over other alternatives
@@ -101,8 +96,6 @@ let r_syntax_folding=1      "R
 let perl_fold=1             "perl
 let xml_syntax_folding=1    "xml
 
-" allows spell check for text files
-au FileType text set spell spelllang=en_gb spell spellfile="$~/.vim/spell/en.utf-8.add"
 
 " allows accidental holding shift whilst writing commands to still run commands
 command Q q
