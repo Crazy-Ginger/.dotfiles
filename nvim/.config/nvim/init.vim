@@ -111,6 +111,12 @@ syntax on
 " Plugin to do that same also doesn't work
 "command Sw w suda://%
 
+
+" spell checking and toggling it
+set spelllang=en
+nnoremap <silent> <F11> :set spell!<cr>
+inoremap <silent> <F11> <C-O>:set spell!<cr>
+
 "#####################
 "##Colour and Themes##
 "#####################
