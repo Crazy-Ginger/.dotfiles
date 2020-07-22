@@ -4,7 +4,7 @@
 
 "vim-plug to manage plugins for nvim
 call plug#begin()
-    Plug 'w0rp/ale'
+    Plug 'dense-analysis/ale'                     "Linter
 	Plug 'roxma/nvim-yarp'              "a remote plugin framework
     Plug 'sheerun/vim-polyglot'
     Plug 'scrooloose/nerdcommenter'
