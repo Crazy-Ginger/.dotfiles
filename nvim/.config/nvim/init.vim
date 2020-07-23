@@ -62,6 +62,11 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " path to directory where libclang.so can be found
 let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 
+" ALE config, stops lint on enter file and only lints on save
+"let g:ale_lint_on_enter = 0 "seemed to break ALE
+let g:ale_lint_on_save = 1
+
+let g:ale_python_flake8_options = "--max-line-length=120"
 
 "###############
 "##Custom shit##
