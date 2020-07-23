@@ -117,6 +117,7 @@ set spelllang=en
 nnoremap <silent> <F11> :set spell!<cr>
 inoremap <silent> <F11> <C-O>:set spell!<cr>
 
+
 "#####################
 "##Colour and Themes##
 "#####################
