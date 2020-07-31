@@ -54,10 +54,10 @@ bindsym $mod+d exec rofi -modi drun -show drun -show-icons
 
 ## Focus Changers
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -72,10 +72,10 @@ bindsym Mod1+Shift+Tab focus right
 
 ## Moving windows
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -146,6 +146,10 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+Right workspace next
 
+# move to next unused workspace
+# don't know why didm't work
+#bindsym $mod+Shift+o exec --no-start-id $HOME/bin/empty_workspace
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -196,6 +200,8 @@ bar
     status_command i3status
 }
 
+
+
 ###########
 ##Session##
 ###########
@@ -238,7 +244,7 @@ set_from_resource $bg i3wm.color8 #f0f0f0
 
 #class                  border  backgrd text indicator child_border
 client.focused          $fg     $bg     $fg  $bg       $fg
-client.focused_inactive $fg     $bg     $fg  $bg       $fg
+client.focused_inactive $bg     $bg     $fg  $bg       $fg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
