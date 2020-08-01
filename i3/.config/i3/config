@@ -148,7 +148,7 @@ bindsym $mod+Control+Right workspace next
 
 # move to next unused workspace
 # don't know why didm't work
-#bindsym $mod+Shift+o exec --no-start-id $HOME/bin/empty_workspace
+#bindsym $mod+o exec --no-start-id $HOME/bin/empty_workspace
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
