@@ -197,7 +197,7 @@ bindsym $mod+r mode "resize"
 bar 
 {
     font pagno:DejaVu Sans Mono 20
-    status_command i3status -c .i3status.conf
+    status_command i3status -c ~/.i3status.conf
 }
 
 
