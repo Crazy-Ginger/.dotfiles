@@ -13,6 +13,7 @@ call plug#begin()
     "Plug 'numirias/semshi'              "a python highlighter and static tester (possibly didn't set up correctly)
     "Plug 'lambdalisue/suda.vim'         "allows for saving file when not opened with sudo, doesn't work
     Plug 'ryanoasis/vim-devicons'       "allows for nerd fonts (icon fonts)
+    Plug 'luochen1990/rainbow'          "rainbow parenthesis to make code more readable
 
     "autocomplete
     Plug 'ncm2/ncm2'
@@ -68,8 +69,11 @@ let g:ale_lint_on_save = 1
 
 let g:ale_python_flake8_options = "--max-line-length=130"
 
-"to shut up vimtex
+" to shut up vimtex
 let g:tex_flavor = "latex"
+
+" enable rainbow parenthesis
+let g:rainbow_active = 1
 
 "###############
 "##Custom shit##
