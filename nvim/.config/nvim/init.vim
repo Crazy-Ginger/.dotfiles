@@ -66,7 +66,10 @@ let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 "let g:ale_lint_on_enter = 0 "seemed to break ALE
 let g:ale_lint_on_save = 1
 
-let g:ale_python_flake8_options = "--max-line-length=120"
+let g:ale_python_flake8_options = "--max-line-length=130"
+
+"to shut up vimtex
+let g:tex_flavor = "latex"
 
 "###############
 "##Custom shit##
