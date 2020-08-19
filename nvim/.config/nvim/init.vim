@@ -4,34 +4,37 @@
 
 "vim-plug to manage plugins for nvim
 call plug#begin()
-    Plug 'dense-analysis/ale'                     "Linter
-	Plug 'roxma/nvim-yarp'              "a remote plugin framework
-    Plug 'sheerun/vim-polyglot'
-    Plug 'scrooloose/nerdcommenter'
-    Plug 'tpope/vim-surround'           "vim-surround to allow for quick quoting/parenthesising
-"    Plug 'vim-airline/vim-airline'     "removed as it broke
-    "Plug 'numirias/semshi'              "a python highlighter and static tester (possibly didn't set up correctly)
-    "Plug 'lambdalisue/suda.vim'         "allows for saving file when not opened with sudo, doesn't work
-    Plug 'ryanoasis/vim-devicons'       "allows for nerd fonts (icon fonts)
-    Plug 'luochen1990/rainbow'          "rainbow parenthesis to make code more readable
+    Plug 'dense-analysis/ale'               "A collection of linters in one plugin
+	Plug 'roxma/nvim-yarp'                  "a remote plugin framework
+    Plug 'sheerun/vim-polyglot'             "language highlighting
+    Plug 'scrooloose/nerdcommenter'         "Easy commenting
+    Plug 'tpope/vim-surround'               "use cs<><> to replace brackets, quotation marks and more
+    Plug 'ryanoasis/vim-devicons'           "allows for nerd fonts (icon fonts)
+    Plug 'luochen1990/rainbow'              "rainbow parenthesis to make code more readable
 
-    "autocomplete
-    Plug 'ncm2/ncm2'
-	Plug 'ncm2/ncm2-bufword'
-	Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-tmux'
-    Plug 'Shougo/neco-vim'
+    " Autocomplete
+    Plug 'ncm2/ncm2'                        "Completion manager
+	Plug 'ncm2/ncm2-bufword'                "Adds words in current buffer to autocomplete
+	Plug 'ncm2/ncm2-path'                   "Path autocompletion for relative and global autocompletion
+    Plug 'ncm2/ncm2-tmux'                   "Allows for autocompletion between mutliple tmux frames
+    Plug 'Shougo/deoplete.nvim'             "A completion framework (not sure how complete the sources are)
     Plug 'ncm2/ncm2-cssomni'                "css
     Plug 'ncm2/ncm2-tern'                   "javascript
     Plug 'ncm2/ncm2-jedi'                   "python
     Plug 'ncm2/ncm2-racer'                  "rust
-    "Plug 'ncm2/ncm2-pyclang'               "c++, uses clang which requires
-    "building
-    Plug 'lervag/vimtex'                    "LaTex
-    Plug 'ncm2/ncm2-vim'                "vimscript
-    Plug 'ObserverOfTime/ncm2-jc2'      "Java
-    Plug 'gaalcaras/ncm-R'              "R
     Plug 'artur-shaik/vim-javacomplete2'    "java & jsp
+    "Plug 'ncm2/ncm2-pyclang'               "c++, uses clang which requires
+
+    " Building
+    Plug 'lervag/vimtex'                    "LaTex
+    Plug 'ncm2/ncm2-vim'                    "vimscript
+    Plug 'ObserverOfTime/ncm2-jc2'          "Java
+    Plug 'gaalcaras/ncm-R'                  "R
+
+    " To Setup/Fix
+    "Plug 'lambdalisue/suda.vim'            "allows for saving file when not opened with sudo, doesn't work
+    "Plug 'vim-airline/vim-airline'         "A nice status line at the bottom of the window
+    "Plug 'numirias/semshi'                 "Semantic highligher (try setting up for easy reading)
 call plug#end()
 
 " enable ncm2 for all buffers
@@ -39,9 +42,6 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
-
-"NOTE: you need to install completion sources to get completions. Check
-"our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
 
 " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
 " found' messages
@@ -63,17 +63,52 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " path to directory where libclang.so can be found
 let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 
-" ALE config, stops lint on enter file and only lints on save
-"let g:ale_lint_on_enter = 0 "seemed to break ALE
-let g:ale_lint_on_save = 1
-
-let g:ale_python_flake8_options = "--max-line-length=130"
-
 " to shut up vimtex
 let g:tex_flavor = "latex"
 
 " enable rainbow parenthesis
 let g:rainbow_active = 1
+
+" enable deoplete completion framework
+let g:deoplete#enable_at_startup = 1
+
+"###########
+"##Linting##
+"###########
+
+let g:ale_linters = {
+    \ 'sh': ['shellcheck', 'shfmt'],
+    \ 'c': ['gcc'],
+    \ 'python': ['flake8'],
+    \ 'haskell': [],
+    \ 'json': ['jq'],
+    \ }
+
+" ALE config, stops lint on enter file and only lints on save
+"let g:ale_lint_on_enter = 0 "seemed to break ALE
+let g:ale_lint_on_save = 1
+
+
+"##################### as stolen from Laura
+"# Fixers/Formatters #
+"#####################
+
+" Use a couple of preferred fixers/formatters for each lang
+" Then cull whitespace
+" Don't use for whitespace languages
+let g:ale_fixers = {
+    \ "*": ["trim_whitespace", "remove_trailing_lines"],
+    \ "python": ["isort", "yapf", "trim_whitespace", "remove_trailing_lines"],
+    \ "rust": ["rustfmt", "trim_whitespace", "remove_trailing_lines"],
+    \ "sh" : ["shfmt", "trim_whitespace", "remove_trailing_lines"],
+    \ "c" : ["clang-format", "trim_whitespace", "remove_trailing_lines"],
+    \ "java" : ["google_java_format", "trim_whitespace", "remove_trailing_lines"],
+    \ "json" : ["jq", "trim_whitespace", "remove_trailing_lines"],
+    \ "go": ["gofmt", "trim_whitespace", "remove_trailing_lines"],
+    \ }
+let g:ale_fix_on_save = 1
+let g:ale_c_clangformat_options = '-style="{BasedOnStyle: Google, IndentWidth: 4}"'
+
 
 "###############
 "##Custom shit##
@@ -81,7 +116,7 @@ let g:rainbow_active = 1
 
 " Laura told me to put this here so F5 executes python commands
 " I don't know if this works still
-autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr> 
+autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr>
 
 " setting the size of tab spaces to not be stupid long
 set linebreak
