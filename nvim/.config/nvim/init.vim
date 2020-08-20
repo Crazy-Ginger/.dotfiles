@@ -11,19 +11,26 @@ call plug#begin()
     Plug 'tpope/vim-surround'               "use cs<><> to replace brackets, quotation marks and more
     Plug 'ryanoasis/vim-devicons'           "allows for nerd fonts (icon fonts)
     Plug 'luochen1990/rainbow'              "rainbow parenthesis to make code more readable
+    Plug 'dylanaraps/wal.vim'               "Uses pywal to get colour scheme
+    " consider nerd tree preservim/nerdtree
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
 	Plug 'ncm2/ncm2-bufword'                "Adds words in current buffer to autocomplete
 	Plug 'ncm2/ncm2-path'                   "Path autocompletion for relative and global autocompletion
     Plug 'ncm2/ncm2-tmux'                   "Allows for autocompletion between mutliple tmux frames
-    Plug 'Shougo/deoplete.nvim'             "A completion framework (not sure how complete the sources are)
     Plug 'ncm2/ncm2-cssomni'                "css
     Plug 'ncm2/ncm2-tern'                   "javascript
     Plug 'ncm2/ncm2-jedi'                   "python
     Plug 'ncm2/ncm2-racer'                  "rust
     Plug 'artur-shaik/vim-javacomplete2'    "java & jsp
-    "Plug 'ncm2/ncm2-pyclang'               "c++, uses clang which requires
+    Plug 'ncm2/ncm2-pyclang'                "c/c++
+    Plug 'ncm2/ncm2-vim'                    "vimscript
+    Plug 'ncm2/ncm2-markdown-subscope'      "Markdown subscopes
+    Plug 'ncm2/ncm2-racer'                  "Rust
+    Plug 'eagletmt/neco-ghc'                "Haskel
+    Plug 'ncm2/ncm2-go'                     "Go
+    Plug 'Shougo/deoplete.nvim'             "A completion framework (not sure how complete the sources are)
 
     " Building
     Plug 'lervag/vimtex'                    "LaTex
@@ -71,6 +78,7 @@ let g:rainbow_active = 1
 
 " enable deoplete completion framework
 let g:deoplete#enable_at_startup = 1
+
 
 "###########
 "##Linting##
@@ -169,12 +177,11 @@ inoremap <silent> <F11> <C-O>:set spell!<cr>
 "##Colour and Themes##
 "#####################
 
-" allows true colours to be used in the terminal
-" broke xrvt terminal
-"set termguicolors
-
 " set the background to be dark so that nvim nows for certain and uses light
 " colours
 set background=dark
 
 set guifont=Hack
+
+" enable pywal colour scheme
+colorscheme wal

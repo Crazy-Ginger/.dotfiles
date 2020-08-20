@@ -255,3 +255,14 @@ ping 8.8.8.8
 ping google.com
 ls
 tmux
+source ~/.tmux.conf
+source ~/.zshrc
+vim .tmux.conf
+tmux
+tmux && source .tmux.conf
+ls
+ls -a
+tmux source ~/.tmux.conf
+tmux
+vim .tmux.conf 
+reboot

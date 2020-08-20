@@ -1,12 +1,14 @@
 ! ##############
 ! URxvt config##
 ! ##############
+! Colour
+!URxvt.termName: xterm-256color
 ! special
 *.foreground:   #bebebe
 *.background:   #000000
 *.cursorColor:  #bebebe
-URxvt*depth:        32
-
+!URxvt.depth:        32
+!URxvt.background: rgba:1111/1111/1111/dddd
 
 ! black
 *.color0:       #000000
@@ -52,6 +54,7 @@ URxvt.shading: 30
 
 URxvt.scrollBar: false
 
+URxvt.saveLine: 0
 !look into copying and pasting with shortcuts
 !URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 !URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
