@@ -84,10 +84,11 @@ let g:deoplete#enable_at_startup = 1
 "##Linting##
 "###########
 
+" consider adding pylint to python
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
     \ 'c': ['gcc'],
-    \ 'python': ['flake8'],
+    \ 'python': ['flake8', ],
     \ 'haskell': [],
     \ 'json': ['jq'],
     \ }
@@ -96,6 +97,8 @@ let g:ale_linters = {
 "let g:ale_lint_on_enter = 0 "seemed to break ALE
 let g:ale_lint_on_save = 1
 
+" Shut up python linting errors
+let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
 
 "##################### as stolen from Laura
 "# Fixers/Formatters #
