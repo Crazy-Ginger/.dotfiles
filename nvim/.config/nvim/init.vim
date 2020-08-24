@@ -180,6 +180,10 @@ inoremap <silent> <F11> <C-O>:set spell!<cr>
 "##Colour and Themes##
 "#####################
 
+" should let nvim use | cursor for insert mode
+" doesn't throw errors but not working on arch
+:set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
+
 " set the background to be dark so that nvim nows for certain and uses light
 " colours
 set background=dark
