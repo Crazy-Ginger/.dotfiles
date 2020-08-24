@@ -266,3 +266,5 @@ tmux source ~/.tmux.conf
 tmux
 vim .tmux.conf 
 reboot
+ls
+vim .tmux.conf 
