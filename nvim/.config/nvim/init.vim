@@ -95,7 +95,7 @@ let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
     \ 'c': ['gcc'],
-    \ 'python': ['flake8', ],
+    \ 'python': ['flake8' ],
     \ 'haskell': [],
     \ 'json': ['jq'],
     \ }
@@ -111,9 +111,10 @@ let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
 " Use a couple of preferred fixers/formatters for each lang
 " Then cull whitespace
 " Don't use for whitespace languages
+" "yapf",, "add_blank_lines_for_python_control_statements"
 let g:ale_fixers = {
     \ "*": ["trim_whitespace", "remove_trailing_lines"],
-    \ "python": ["isort", "yapf", "trim_whitespace", "remove_trailing_lines"],
+    \ "python": ["isort",  "trim_whitespace", "remove_trailing_lines"],
     \ "rust": ["rustfmt", "trim_whitespace", "remove_trailing_lines"],
     \ "sh" : ["shfmt", "trim_whitespace", "remove_trailing_lines"],
     \ "c" : ["clang-format", "trim_whitespace", "remove_trailing_lines"],
