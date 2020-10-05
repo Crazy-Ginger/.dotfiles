@@ -29,7 +29,6 @@ alias chrome="/usr/bin/google-chrome-stable  %U"
 #--force-device-scale-factor=20
 
 # add user bin files to path
-export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/sbin

@@ -30,6 +30,7 @@ call plug#begin()
     Plug 'ncm2/ncm2-racer'                  "Rust
     Plug 'eagletmt/neco-ghc'                "Haskel
     Plug 'ncm2/ncm2-go'                     "Go
+	Plug 'aklt/plantuml-syntax'				"Syntax complete for plantuml
     "Plug 'Shougo/deoplete.nvim'             "A completion framework (not sure how complete the sources are)(trying ncm2 for now)
 
     " Building
@@ -121,6 +122,7 @@ let g:ale_fixers = {
     \ "java" : ["google_java_format", "trim_whitespace", "remove_trailing_lines"],
     \ "json" : ["jq", "trim_whitespace", "remove_trailing_lines"],
     \ "go": ["gofmt", "trim_whitespace", "remove_trailing_lines"],
+	\ "html": ["prettier"]
     \ }
 " allows ALE to try and fix the file after a save
 let g:ale_fix_on_save = 1
