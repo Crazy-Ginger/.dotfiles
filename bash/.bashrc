@@ -115,6 +115,10 @@ fi
 PATH=$PATH:~/bin
 PATH=$PATH:~/.local/bin
 
+# set default editor to neovim
+export EDITOR=nvim
+export VISUAL=nvim
+
 # For MORSE Simulator
 export MORSE_BlENDER=/opt/blender-2.79b-linux-glibc219-x86_64
 PYTHONPATH=/usr/local/lib/python3/dist-packges/

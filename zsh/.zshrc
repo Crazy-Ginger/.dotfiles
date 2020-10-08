@@ -28,11 +28,14 @@ alias python="python3"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 #--force-device-scale-factor=20
 
-export PATH=$PATH:$HOME/.cargo/bin
-PATH=$PATH:~/bin
-PATH=$PATH:~/.local/bin
-PATH=$PATH:/usr/sbin
+# add user bin files to path
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/usr/sbin
 
+# set neovim as the default editor
+export EDITOR=nvim
+export VISUAL=nvim
 eval $(thefuck --alias)
 
 autoload -Uz compinit

@@ -30,7 +30,8 @@ call plug#begin()
     Plug 'ncm2/ncm2-racer'                  "Rust
     Plug 'eagletmt/neco-ghc'                "Haskel
     Plug 'ncm2/ncm2-go'                     "Go
-    Plug 'Shougo/deoplete.nvim'             "A completion framework (not sure how complete the sources are)
+	Plug 'aklt/plantuml-syntax'				"Syntax complete for plantuml
+    "Plug 'Shougo/deoplete.nvim'             "A completion framework (not sure how complete the sources are)(trying ncm2 for now)
 
     " Building
     Plug 'lervag/vimtex'                    "LaTex
@@ -43,6 +44,18 @@ call plug#begin()
     "Plug 'vim-airline/vim-airline'         "A nice status line at the bottom of the window
     "Plug 'numirias/semshi'                 "Semantic highligher (try setting up for easy reading)
 call plug#end()
+
+" to shut up vimtex
+let g:tex_flavor = "latex"
+
+" enable rainbow parenthesis
+let g:rainbow_active = 1
+
+" enable deoplete completion framework
+" trying ncm2 for now
+"let g:deoplete#enable_at_startup = 1
+
+" ##NCM2##
 
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -70,54 +83,51 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " path to directory where libclang.so can be found
 let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 
-" to shut up vimtex
-let g:tex_flavor = "latex"
-
-" enable rainbow parenthesis
-let g:rainbow_active = 1
-
-" enable deoplete completion framework
-let g:deoplete#enable_at_startup = 1
 
 
-"###########
+
+" #######
+" ##ALE##
+" #######
+
 "##Linting##
-"###########
 
 " consider adding pylint to python
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
     \ 'c': ['gcc'],
-    \ 'python': ['flake8', ],
+    \ 'python': ['flake8' ],
     \ 'haskell': [],
     \ 'json': ['jq'],
     \ }
 
-" ALE config, stops lint on enter file and only lints on save
-"let g:ale_lint_on_enter = 0 "seemed to break ALE
+" enable linting after a save event
 let g:ale_lint_on_save = 1
-
 " Shut up python linting errors
 let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
 
-"##################### as stolen from Laura
-"# Fixers/Formatters #
-"#####################
+" ##Fixers/Formatters##
+" as stolen from Laura
 
 " Use a couple of preferred fixers/formatters for each lang
 " Then cull whitespace
 " Don't use for whitespace languages
+" "yapf",, "add_blank_lines_for_python_control_statements"
 let g:ale_fixers = {
     \ "*": ["trim_whitespace", "remove_trailing_lines"],
-    \ "python": ["isort", "yapf", "trim_whitespace", "remove_trailing_lines"],
+    \ "python": ["isort",  "trim_whitespace", "remove_trailing_lines"],
     \ "rust": ["rustfmt", "trim_whitespace", "remove_trailing_lines"],
     \ "sh" : ["shfmt", "trim_whitespace", "remove_trailing_lines"],
     \ "c" : ["clang-format", "trim_whitespace", "remove_trailing_lines"],
     \ "java" : ["google_java_format", "trim_whitespace", "remove_trailing_lines"],
     \ "json" : ["jq", "trim_whitespace", "remove_trailing_lines"],
     \ "go": ["gofmt", "trim_whitespace", "remove_trailing_lines"],
+	\ "html": ["prettier"]
     \ }
+" allows ALE to try and fix the file after a save
 let g:ale_fix_on_save = 1
+
+" set c style (may need changing)
 let g:ale_c_clangformat_options = '-style="{BasedOnStyle: Google, IndentWidth: 4}"'
 
 
@@ -133,21 +143,21 @@ autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 
 set linebreak
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
-
 " automatic folding enabler for used languages
 " sets the foldmethod to syntax over other alternatives
 au FileType cpp,c,hpp,h,javascript,zsh,java,json set foldmethod=syntax
 au FileType python,html,xml,cmake set foldmethod=indent
 au FileType python set foldignore=
 
-" au FileType html set foldmethod=indent
+" ensures that opening a file will automatically detect folds and close the all
 set foldlevelstart=1
-set foldnestmax=10
+set foldnestmax=50
 " reformats all folds
 au BufRead * normal <CTRL-l>
 " closes all folds
 au BufRead * normal zM
 
+" not sure(?)
 let javaScript_fold=1       "javascript
 let vimsyn_folding='af'     "vim script
 let ruby_fold=1             "Ruby
@@ -170,7 +180,6 @@ syntax on
 " Plugin to do that same also doesn't work
 "command Sw w suda://%
 
-
 " spell checking and toggling it
 set spelllang=en
 nnoremap <silent> <F11> :set spell!<cr>
@@ -183,7 +192,7 @@ inoremap <silent> <F11> <C-O>:set spell!<cr>
 
 " should let nvim use | cursor for insert mode
 " doesn't throw errors but not working on arch
-:set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
+":set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 
 " set the background to be dark so that nvim nows for certain and uses light
 " colours
