@@ -201,4 +201,4 @@ set background=dark
 set guifont=Hack
 
 " enable pywal colour scheme
-colorscheme wal
+"colorscheme wal
