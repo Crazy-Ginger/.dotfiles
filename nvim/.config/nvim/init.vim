@@ -85,7 +85,6 @@ let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 
 
 
-
 " #######
 " ##ALE##
 " #######
