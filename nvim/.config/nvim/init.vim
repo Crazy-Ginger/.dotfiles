@@ -19,6 +19,7 @@ call plug#begin()
 	Plug 'ncm2/ncm2-bufword'                "Adds words in current buffer to autocomplete
 	Plug 'ncm2/ncm2-path'                   "Path autocompletion for relative and global autocompletion
     Plug 'ncm2/ncm2-tmux'                   "Allows for autocompletion between mutliple tmux frames
+    Plug 'filipekiss/ncm2-look.vim'         "Adds dictionary completition using built in word lists
     Plug 'ncm2/ncm2-cssomni'                "css
     Plug 'ncm2/ncm2-tern'                   "javascript
     Plug 'ncm2/ncm2-jedi'                   "python
@@ -148,6 +149,10 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 au FileType cpp,c,hpp,h,javascript,zsh,java,json set foldmethod=syntax
 au FileType python,html,xml,cmake set foldmethod=indent
 au FileType python set foldignore=
+
+" Allow dictionary completition on certain file types
+au FileType markdown,text let b:ncm2_look_enabled = 1
+
 
 " ensures that opening a file will automatically detect folds and close the all
 set foldlevelstart=1
