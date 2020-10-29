@@ -45,7 +45,7 @@ call plug#begin()
     "Plug 'numirias/semshi'                 "Semantic highligher (try setting up for easy reading)
 call plug#end()
 
-" to shut up vimtex
+"/ to shut up vimtex
 let g:tex_flavor = "latex"
 
 " enable rainbow parenthesis
@@ -81,7 +81,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " for pyclang (c++ completor)
 " path to directory where libclang.so can be found
-let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
+let g:ncm2_pyclang#library_path = '/usr/lib/llvm-6.0/lib/libclang-6.0.so.1'
 
 
 
