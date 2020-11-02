@@ -233,7 +233,8 @@ exec_always --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 ##Appearance##
 ##############
 # Chooses a random wallpaper and changes the theme colours
-bindsym $mod+b exec --no-startup-id wal -i /mnt/shared/Pictures/Backgrounds/Arty --saturate 1.0 -a 1.0
+bindsym $mod+b exec --no-startup-id wal -i /mnt/shared/Pictures/Backgrounds/Arty --saturate 1.0
+bindsym $mod+Shift+b exec --no-startup-id wal -b "ffffff"  --saturate 1.0 -l
 
 # Gaps
 gaps outer 7
