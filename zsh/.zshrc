@@ -20,11 +20,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,underline'
 
 alias vim="nvim"
 alias python="python3"
-# alias startx="startxfce4"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 #--force-device-scale-factor=20
 
@@ -33,6 +32,8 @@ export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/sbin
 
+# setup zsh history (it broke for some reason)
+export HISTFILE=~/.zsh_history
 # set neovim as the default editor
 export EDITOR=nvim
 export VISUAL=nvim
