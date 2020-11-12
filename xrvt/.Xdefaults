@@ -43,14 +43,17 @@
 *.color15:      #eeeeee
 
 
-URxvt.font: xft:Hack:pixelsize=14:antialias=true
+URxvt.font: xft:Hack:pixelsize=15:antialias=true
 URxvt.boldFont: xft:Hack-Bold:pixelsize=16:antialias=true
 URxvt.italicFont: xft:Hack-Italic:pixelsize=16:antialias=true
 URxvt.letterSpace: -3
 URxvt.lineSpace: 1
 
 URxvt.transparent: true
-URxvt.shading: 30
+URxvt.shading: 25
+! For true transparency but only with block colours
+!URxct.depth: 32
+!URxvt.background: rgba:0000/0000/0200/c800
 
 URxvt.scrollBar: false
 

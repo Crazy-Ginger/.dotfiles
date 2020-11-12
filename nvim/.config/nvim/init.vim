@@ -19,6 +19,7 @@ call plug#begin()
 	Plug 'ncm2/ncm2-bufword'                "Adds words in current buffer to autocomplete
 	Plug 'ncm2/ncm2-path'                   "Path autocompletion for relative and global autocompletion
     Plug 'ncm2/ncm2-tmux'                   "Allows for autocompletion between mutliple tmux frames
+    Plug 'filipekiss/ncm2-look.vim'         "Adds look up words using look a BSD library
     Plug 'ncm2/ncm2-cssomni'                "css
     Plug 'ncm2/ncm2-tern'                   "javascript
     Plug 'ncm2/ncm2-jedi'                   "python
@@ -81,8 +82,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " for pyclang (c++ completor)
 " path to directory where libclang.so can be found
-let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
-
+"let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 
 
 
@@ -148,7 +148,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 au FileType cpp,c,hpp,h,javascript,zsh,java,json set foldmethod=syntax
 au FileType python,html,xml,cmake set foldmethod=indent
 au FileType python set foldignore=
-
+au FileType markdown,text let b:ncm2_look_enabled = 1
 " ensures that opening a file will automatically detect folds and close the all
 set foldlevelstart=1
 set foldnestmax=50
