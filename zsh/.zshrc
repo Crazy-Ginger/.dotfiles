@@ -24,6 +24,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 alias vim="nvim"
 alias python="python3"
+alias restart="reboot"
 # alias startx="startxfce4"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 #--force-device-scale-factor=20
