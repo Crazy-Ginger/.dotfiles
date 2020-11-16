@@ -25,7 +25,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,underline'
 alias vim="nvim"
 alias python="python3"
 alias chrome="/usr/bin/google-chrome-stable  %U"
-#--force-device-scale-factor=20
+alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -n'
+#--force-device-scale-factor=20 [?]
 
 # add user bin files to path
 export PATH=$PATH:~/bin
@@ -37,6 +38,7 @@ export HISTFILE=~/.zsh_history
 # set neovim as the default editor
 export EDITOR=nvim
 export VISUAL=nvim
+
 eval $(thefuck --alias)
 
 autoload -Uz compinit
