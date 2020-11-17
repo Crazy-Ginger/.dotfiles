@@ -20,7 +20,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10,underline'
 
 alias vim="nvim"
 alias python="python3"
