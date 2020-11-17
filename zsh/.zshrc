@@ -27,6 +27,7 @@ alias python="python3"
 alias restart="reboot"
 # alias startx="startxfce4"
 alias chrome="/usr/bin/google-chrome-stable  %U"
+alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -n'
 #--force-device-scale-factor=20
 
 # add user bin files to path
@@ -37,6 +38,7 @@ export PATH=$PATH:/usr/sbin
 # set neovim as the default editor
 export EDITOR=nvim
 export VISUAL=nvim
+
 eval $(thefuck --alias)
 
 autoload -Uz compinit
