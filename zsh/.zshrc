@@ -65,6 +65,6 @@ if hostname | grep -q "BeccaArchLap"; then
 fi
 
 # For MORSE Simulator
-export MORSE_BLENDER=/opt/blender-2.79b-linux-glibc219-x86_64/blender
+export MORSE_BLENDER=/usr/bin/blender
 PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
-alias blender="/opt/blender-2.79b-linux-glibc219-x86_64/blender"
+alias blender="/usr/bin/blender"
