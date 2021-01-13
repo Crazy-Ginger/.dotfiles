@@ -16,7 +16,6 @@ plugins=(
     colored-man-pages
     vscode
     web-search
-    k
 )
 
 source $ZSH/oh-my-zsh.sh
