@@ -198,7 +198,7 @@ inoremap <silent> <F11> <C-O>:set spell!<cr>
 " colours
 set background=dark
 
-set guifont=Hack
+set guifont=Hack:h15:cANSI
 
 " enable pywal colour scheme
 colorscheme wal
