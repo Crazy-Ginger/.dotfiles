@@ -13,6 +13,7 @@ call plug#begin()
     Plug 'luochen1990/rainbow'              "rainbow parenthesis to make code more readable
     Plug 'dylanaraps/wal.vim'               "Uses pywal to get colour scheme
     " consider nerd tree preservim/nerdtree
+    Plug 'tpope/vim-sensible'               "Some basic starters for vim
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
@@ -185,6 +186,12 @@ set spelllang=en
 nnoremap <silent> <F11> :set spell!<cr>
 inoremap <silent> <F11> <C-O>:set spell!<cr>
 
+
+" disable arrow keys
+noremap <Left> :echo "No arrows for you"<CR>
+noremap <Right> :echo "No arrows for you"<CR>
+noremap <Up> :echo "No arrows for you"<CR>
+noremap <Down> :echo "No arrows for you"<CR>
 
 "#####################
 "##Colour and Themes##
