@@ -99,7 +99,7 @@ let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
     \ 'c': ['gcc'],
     \ 'python': ['flake8' ],
-    \ 'haskell': [],
+    \ 'haskell': ['cabal_ghc', 'ghc', 'stack_build', 'hlint', 'stack_ghc', 'hlint'],
     \ 'json': ['jq'],
     \ }
 
@@ -124,7 +124,8 @@ let g:ale_fixers = {
     \ "java" : ["google_java_format", "trim_whitespace", "remove_trailing_lines"],
     \ "json" : ["jq", "trim_whitespace", "remove_trailing_lines"],
     \ "go": ["gofmt", "trim_whitespace", "remove_trailing_lines"],
-	\ "html": ["prettier"]
+	\ "html": ["prettier"],
+    \ "haskell": ["hlint", "ormolu", "stylish-haskell", "hindent"]
     \ }
 " allows ALE to try and fix the file after a save
 let g:ale_fix_on_save = 1
@@ -147,7 +148,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " automatic folding enabler for used languages
 " sets the foldmethod to syntax over other alternatives
-au FileType cpp,c,hpp,h,javascript,zsh,java,json set foldmethod=syntax
+au FileType cpp,c,hpp,h,javascript,zsh,java,json,haskell set foldmethod=syntax
 au FileType python,html,xml,cmake set foldmethod=indent
 au FileType python set foldignore=
 
