@@ -96,7 +96,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " consider adding pylint to python
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
-    \ 'c': ['gcc'],
+    \ 'c': ['gcc', 'cc', 'flawfinder'],
     \ 'python': ['flake8' ],
     \ 'haskell': [],
     \ 'json': ['jq'],
@@ -108,7 +108,6 @@ let g:ale_lint_on_save = 1
 let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
 
 " ##Fixers/Formatters##
-" as stolen from Laura
 
 " Use a couple of preferred fixers/formatters for each lang
 " Then cull whitespace
@@ -116,13 +115,13 @@ let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
 " "yapf",, "add_blank_lines_for_python_control_statements"
 let g:ale_fixers = {
     \ "*": ["trim_whitespace", "remove_trailing_lines"],
-    \ "python": ["isort",  "trim_whitespace", "remove_trailing_lines"],
-    \ "rust": ["rustfmt", "trim_whitespace", "remove_trailing_lines"],
-    \ "sh" : ["shfmt", "trim_whitespace", "remove_trailing_lines"],
-    \ "c" : ["clang-format", "trim_whitespace", "remove_trailing_lines"],
-    \ "java" : ["google_java_format", "trim_whitespace", "remove_trailing_lines"],
-    \ "json" : ["jq", "trim_whitespace", "remove_trailing_lines"],
-    \ "go": ["gofmt", "trim_whitespace", "remove_trailing_lines"],
+    \ "python": ["isort"],
+    \ "rust": ["rustfmt"],
+    \ "sh" : ["shfmt"],
+    \ "c" : ["astyle"],
+    \ "java" : ["google_java_format"],
+    \ "json" : ["jq"],
+    \ "go": ["gofmt"],
 	\ "html": ["prettier"]
     \ }
 " allows ALE to try and fix the file after a save
