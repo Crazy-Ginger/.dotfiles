@@ -20,7 +20,7 @@ call plug#begin()
 	Plug 'ncm2/ncm2-bufword'                "Adds words in current buffer to autocomplete
 	Plug 'ncm2/ncm2-path'                   "Path autocompletion for relative and global autocompletion
     Plug 'ncm2/ncm2-tmux'                   "Allows for autocompletion between mutliple tmux frames
-    Plug 'filipekiss/ncm2-look.vim'         "Adds dictionary completition using built in word lists
+    Plug 'filipekiss/ncm2-look.vim'         "Adds dictionary completion using built in word lists
     Plug 'ncm2/ncm2-cssomni'                "css
     Plug 'ncm2/ncm2-tern'                   "javascript
     Plug 'ncm2/ncm2-jedi'                   "python
@@ -47,7 +47,7 @@ call plug#begin()
     "Plug 'numirias/semshi'                 "Semantic highligher (try setting up for easy reading)
 call plug#end()
 
-"/ to shut up vimtex
+" to shut up vimtex
 let g:tex_flavor = "latex"
 
 " enable rainbow parenthesis
@@ -97,7 +97,7 @@ let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang-7.so.1'
 " consider adding pylint to python
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
-    \ 'c': ['gcc'],
+    \ 'c': ['gcc', 'flawfinder', 'cppcheck'],
     \ 'python': ['flake8' ],
     \ 'haskell': ['cabal_ghc', 'ghc', 'stack_build', 'hlint', 'stack_ghc', 'hlint'],
     \ 'json': ['jq'],
@@ -117,13 +117,14 @@ let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
 " "yapf",, "add_blank_lines_for_python_control_statements"
 let g:ale_fixers = {
     \ "*": ["trim_whitespace", "remove_trailing_lines"],
-    \ "python": ["isort",  "trim_whitespace", "remove_trailing_lines"],
-    \ "rust": ["rustfmt", "trim_whitespace", "remove_trailing_lines"],
-    \ "sh" : ["shfmt", "trim_whitespace", "remove_trailing_lines"],
-    \ "c" : ["clang-format", "trim_whitespace", "remove_trailing_lines"],
-    \ "java" : ["google_java_format", "trim_whitespace", "remove_trailing_lines"],
-    \ "json" : ["jq", "trim_whitespace", "remove_trailing_lines"],
-    \ "go": ["gofmt", "trim_whitespace", "remove_trailing_lines"],
+    \ "python": ["isort"],
+    \ "rust": ["rustfmt"],
+    \ "sh" : ["shfmt"],
+    \ "c" : ["astyle"],
+    \ "cpp" : ["astyle"],
+    \ "java" : ["google_java_format"],
+    \ "json" : ["jq"],
+    \ "go": ["gofmt"],
 	\ "html": ["prettier"],
     \ "haskell": ["hlint", "ormolu", "stylish-haskell", "hindent"]
     \ }
@@ -132,6 +133,7 @@ let g:ale_fix_on_save = 1
 
 " set c style (may need changing)
 let g:ale_c_clangformat_options = '-style="{BasedOnStyle: Google, IndentWidth: 4}"'
+let g:ale_c_astyle = '--style=allman'
 
 
 "###############
