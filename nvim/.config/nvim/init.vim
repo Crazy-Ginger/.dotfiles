@@ -12,8 +12,8 @@ call plug#begin()
     Plug 'ryanoasis/vim-devicons'           "allows for nerd fonts (icon fonts)
     Plug 'luochen1990/rainbow'              "rainbow parenthesis to make code more readable
     Plug 'dylanaraps/wal.vim'               "Uses pywal to get colour scheme
-    " consider nerd tree preservim/nerdtree
     Plug 'tpope/vim-sensible'               "Some basic starters for vim
+    " consider nerd tree
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
@@ -33,18 +33,21 @@ call plug#begin()
     Plug 'eagletmt/neco-ghc'                "Haskel
     Plug 'ncm2/ncm2-go'                     "Go
 	Plug 'aklt/plantuml-syntax'				"Syntax complete for plantuml
-    "Plug 'Shougo/deoplete.nvim'             "A completion framework (not sure how complete the sources are)(trying ncm2 for now)
+    Plug 'artur-shaik/vim-javacomplete2'  "Java
+    "Plug 'gaalcaras/ncm-R'                  "R
+
 
     " Building
     Plug 'lervag/vimtex'                    "LaTex
-    Plug 'ncm2/ncm2-vim'                    "vimscript
+    "Plug 'ncm2/ncm2-vim'                    "vimscript
     Plug 'ObserverOfTime/ncm2-jc2'          "Java
-    Plug 'gaalcaras/ncm-R'                  "R
 
     " To Setup/Fix
     "Plug 'lambdalisue/suda.vim'            "allows for saving file when not opened with sudo, doesn't work
     "Plug 'vim-airline/vim-airline'         "A nice status line at the bottom of the window
+    "Plug 'preservim/nerdtree'              "file system explorer for the Vim
     "Plug 'numirias/semshi'                 "Semantic highligher (try setting up for easy reading)
+    "Plug 'Shougo/deoplete.nvim'            "A completion framework (not sure how complete the sources are)(trying ncm2 for now)
 call plug#end()
 
 " to shut up vimtex
@@ -85,7 +88,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " path to directory where libclang.so can be found
 let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang-7.so.1'
 
-
+" javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 
 " #######
