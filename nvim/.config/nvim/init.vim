@@ -33,7 +33,7 @@ call plug#begin()
     Plug 'eagletmt/neco-ghc'                "Haskel
     Plug 'ncm2/ncm2-go'                     "Go
 	Plug 'aklt/plantuml-syntax'				"Syntax complete for plantuml
-    Plug 'artur-shaik/vim-javacomplete2'  "Java
+    "Plug 'artur-shaik/vim-javacomplete2'  "Java
     "Plug 'gaalcaras/ncm-R'                  "R
 
 
