@@ -34,6 +34,8 @@ alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | u
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/sbin
+# add stack bin for haskell
+export PATH=$PATH:/home/becca/.stack/snapshots/x86_64-linux-tinfo6/79c880a6a9866d8f91ffe40e7020e52eed7edeea96bad2d125d3da52a788c03d/8.10.3/bin:/home/becca/.stack/compiler-tools/x86_64-linux-tinfo6/ghc-8.10.3/bin:/home/becca/.stack/programs/x86_64-linux/ghc-tinfo6-8.10.3/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/jvm/default/bin:/home/becca/bin:/home/becca/.local/bin:/usr/sbin
 
 # set neovim as the default editor
 export EDITOR=nvim
