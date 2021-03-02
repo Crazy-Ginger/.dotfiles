@@ -14,7 +14,6 @@ plugins=(
 
     # testing some new plugins
     colored-man-pages
-    vscode
     web-search
 )
 
