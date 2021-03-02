@@ -21,6 +21,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,underline'
+bindkey '^[[1;5C' forward-word
 
 alias vim="TERM=screen-256color nvim"
 alias python="python3"
@@ -68,3 +69,5 @@ fi
 export MORSE_BLENDER=/usr/bin/blender
 PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
 alias blender="/usr/bin/blender"
+
+export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"

@@ -123,3 +123,5 @@ export VISUAL=nvim
 export MORSE_BlENDER=/opt/blender-2.79b-linux-glibc219-x86_64
 PYTHONPATH=/usr/local/lib/python3/dist-packges/
 source "$HOME/.cargo/env"
+
+export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
