@@ -1,5 +1,5 @@
 #auto starts zsh in tmux after checking to ensure no nested tmux
-[[ $TERM != "screen" ]] && exec tmux
+[[ $TERM != "screen-256color" ]] && exec tmux
 
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
