@@ -28,6 +28,7 @@ call plug#begin()
     Plug 'artur-shaik/vim-javacomplete2'    "java & jsp
     Plug 'ncm2/ncm2-pyclang'                "c/c++
     Plug 'ncm2/ncm2-vim'                    "vimscript
+    Plug 'Shougo/neco-vim'                  "Requirement for vimscript
     Plug 'ncm2/ncm2-markdown-subscope'      "Markdown subscopes
     Plug 'ncm2/ncm2-racer'                  "Rust
     Plug 'eagletmt/neco-ghc'                "Haskel
