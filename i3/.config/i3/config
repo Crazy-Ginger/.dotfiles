@@ -42,6 +42,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+space exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -105,7 +106,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Ctrl+Shift+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -204,7 +205,7 @@ bar
 # My screenshot bindings (screenshot is a script that saves the fullscreen as time and date)
 bindsym Print --release exec "scrot -sf -q 100 foo.png ; xclip -selection c -t image/png < foo.png"
 bindsym $mod+Print exec "scrot -f -q 100 foo.png ; xclip -selection c -t image/png < foo.png"
-bindsym Print+Ctrl+Shift --release exec "~/bin/screenshot"
+#bindsym Print+Ctrl+Shift --release exec "~/bin/screenshot"
 
 ###########
 ##Session##
@@ -233,7 +234,8 @@ exec_always --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 ##Appearance##
 ##############
 # Chooses a random wallpaper and changes the theme colours
-bindsym $mod+b exec --no-startup-id $HOME/bin/rand-wal
+bindsym $mod+b exec --no-startup-id wal -i /mnt/shared/Pictures/Backgrounds/Arty --saturate 1.0
+bindsym $mod+Shift+b exec --no-startup-id wal -b "ffffff"  --saturate 1.0 -l
 
 # Gaps
 gaps outer 7
