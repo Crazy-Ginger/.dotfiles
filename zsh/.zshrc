@@ -62,7 +62,7 @@ else
 fi
 
 # Import colourscheme from 'wal' asynchronously
-if hostname | grep -q "BeccaArchLap"; then
+if command -v tmux >/dev/null 2>&1; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
 fi
