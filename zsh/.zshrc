@@ -67,7 +67,13 @@ if command -v wal &> /dev/null; then
     source ~/.cache/wal/colors-tty.sh
 fi
 
-# For MORSE Simulator
-export MORSE_BLENDER=/opt/blender-2.79b-linux-glibc219-x86_64/blender
-PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
-alias blender="/opt/blender-2.79b-linux-glibc219-x86_64/blender"
+if command -v morse &> /dev/null; then
+    # For MORSE Simulator
+    export MORSE_BLENDER=/opt/blender-2.79b-linux-glibc219-x86_64/blender
+    PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
+    alias blender="/opt/blender-2.79b-linux-glibc219-x86_64/blender"
+fi
+
+if cat /proc/version | grep -q WSL; then
+    export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+fi
