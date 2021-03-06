@@ -67,11 +67,14 @@ if command -v tmux >/dev/null 2>&1; then
     source ~/.cache/wal/colors-tty.sh
 fi
 
-# For MORSE Simulator
-export MORSE_BLENDER=/usr/bin/blender
-PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
-alias blender="/usr/bin/blender"
 
-if cat /proc/version =~ WSL; then
+if command -v morse &> /dev/null; then
+# For MORSE Simulator
+    export MORSE_BLENDER=/usr/bin/blender
+    PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
+    alias blender="/usr/bin/blender"
+fi
+
+if cat /proc/version | grep -q WSL; then
     export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 fi
