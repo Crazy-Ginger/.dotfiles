@@ -25,7 +25,7 @@ source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,underline'
 bindkey '^[[1;5C' forward-word
 
-alias vim="TERM=screen-256color nvim"
+alias vim="nvim"
 alias python="python3"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -n'
@@ -72,4 +72,6 @@ export MORSE_BLENDER=/usr/bin/blender
 PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
 alias blender="/usr/bin/blender"
 
-export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+if cat /proc/version =~ WSL; then
+    export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+fi
