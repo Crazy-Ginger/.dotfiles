@@ -1,5 +1,8 @@
 #auto starts zsh in tmux after checking to ensure no nested tmux
-[[ $TERM != "screen" ]] && exec tmux
+if command -v tmux >/dev/null 2>&1; then
+    # if not inside a tmux session, and if no session is started, start a new session
+    [ -z "${TMUX}" ] && (tmux) >/dev/null 2>&1
+fi
 
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
