@@ -13,7 +13,6 @@ call plug#begin()
     Plug 'luochen1990/rainbow'              "rainbow parenthesis to make code more readable
     Plug 'dylanaraps/wal.vim'               "Uses pywal to get colour scheme
     Plug 'tpope/vim-sensible'               "Some basic starters for vim
-    " consider nerd tree
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
@@ -28,22 +27,22 @@ call plug#begin()
     Plug 'artur-shaik/vim-javacomplete2'    "java & jsp
     Plug 'ncm2/ncm2-pyclang'                "c/c++
     Plug 'ncm2/ncm2-vim'                    "vimscript
+    Plug 'Shougo/neco-vim'                  "Requirement for vimscript
     Plug 'ncm2/ncm2-markdown-subscope'      "Markdown subscopes
     Plug 'ncm2/ncm2-racer'                  "Rust
     Plug 'eagletmt/neco-ghc'                "Haskel
     Plug 'ncm2/ncm2-go'                     "Go
 	Plug 'aklt/plantuml-syntax'				"Syntax complete for plantuml
-    "Plug 'artur-shaik/vim-javacomplete2'  "Java
     "Plug 'gaalcaras/ncm-R'                  "R
 
 
     " Building
     Plug 'lervag/vimtex'                    "LaTex
-    "Plug 'ncm2/ncm2-vim'                    "vimscript
     Plug 'ObserverOfTime/ncm2-jc2'          "Java
 
     " To Setup/Fix
     "Plug 'lambdalisue/suda.vim'            "allows for saving file when not opened with sudo, doesn't work
+    "Plug 'artur-shaik/vim-javacomplete2'  "Java
     "Plug 'vim-airline/vim-airline'         "A nice status line at the bottom of the window
     "Plug 'preservim/nerdtree'              "file system explorer for the Vim
     "Plug 'numirias/semshi'                 "Semantic highligher (try setting up for easy reading)
@@ -113,7 +112,6 @@ let g:ale_lint_on_save = 1
 let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
 
 " ##Fixers/Formatters##
-" as stolen from Laura
 
 " Use a couple of preferred fixers/formatters for each lang
 " Then cull whitespace
@@ -158,7 +156,7 @@ au FileType cpp,c,hpp,h,javascript,zsh,java,json,haskell set foldmethod=syntax
 au FileType python,html,xml,cmake set foldmethod=indent
 au FileType python set foldignore=
 
-" Allow dictionary completition on certain file types
+" Allow dictionary completion on certain file types
 au FileType markdown,text let b:ncm2_look_enabled = 1
 
 
@@ -220,7 +218,7 @@ inoremap <C-e> <End>
 " colours
 set background=dark
 
-set guifont=Hack
+set guifont=Hack-Regular:h13:cDEFAULT
 
 " enable pywal colour scheme
 "colorscheme wal
