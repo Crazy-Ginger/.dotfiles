@@ -1,5 +1,5 @@
 #auto starts zsh in tmux after checking to ensure no nested tmux
-[[ $TERM != "screen-256color" ]] && exec tmux
+#[[ $TERM != "screen" ]] && exec tmux
 
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
@@ -14,29 +14,28 @@ plugins=(
 
     # testing some new plugins
     colored-man-pages
-    vscode
     web-search
 )
 
 source $ZSH/oh-my-zsh.sh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10,underline'
+bindkey '^[[1;5C' forward-word
 
 alias vim="nvim"
 alias python="python3"
 alias restart="reboot"
-# alias startx="startxfce4"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -n'
-#--force-device-scale-factor=20
+#--force-device-scale-factor=20 [?]
 
 # add user bin files to path
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/sbin
-# add stack bin for haskell
-export PATH=$PATH:/home/becca/.stack/snapshots/x86_64-linux-tinfo6/79c880a6a9866d8f91ffe40e7020e52eed7edeea96bad2d125d3da52a788c03d/8.10.3/bin:/home/becca/.stack/compiler-tools/x86_64-linux-tinfo6/ghc-8.10.3/bin:/home/becca/.stack/programs/x86_64-linux/ghc-tinfo6-8.10.3/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/jvm/default/bin:/home/becca/bin:/home/becca/.local/bin:/usr/sbin
 
+# setup zsh history (it broke for some reason)
+export HISTFILE=~/.zsh_history
 # set neovim as the default editor
 export EDITOR=nvim
 export VISUAL=nvim
@@ -61,12 +60,7 @@ else
 fi
 
 # Import colourscheme from 'wal' asynchronously
-if hostname | grep -q "BeccaArchLap"; then
+if command -v wal &> /dev/null; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
 fi
-
-# For MORSE Simulator
-export MORSE_BLENDER=/opt/blender-2.79b-linux-glibc219-x86_64/blender
-PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
-alias blender="/opt/blender-2.79b-linux-glibc219-x86_64/blender"
