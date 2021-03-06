@@ -4,7 +4,6 @@ if command -v tmux >/dev/null 2>&1; then
     [ -z "${TMUX}" ] && (tmux) >/dev/null 2>&1
 fi
 
-
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="gallois"
@@ -23,12 +22,11 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10,underline'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,underline'
 bindkey '^[[1;5C' forward-word
 
 alias vim="nvim"
 alias python="python3"
-alias restart="reboot"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -n'
 #--force-device-scale-factor=20 [?]
@@ -64,7 +62,19 @@ else
 fi
 
 # Import colourscheme from 'wal' asynchronously
-if command -v wal &> /dev/null; then
+if command -v tmux >/dev/null 2>&1; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
+fi
+
+
+if command -v morse &> /dev/null; then
+# For MORSE Simulator
+    export MORSE_BLENDER=/usr/bin/blender
+    PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
+    alias blender="/usr/bin/blender"
+fi
+
+if cat /proc/version | grep -q WSL; then
+    export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 fi
