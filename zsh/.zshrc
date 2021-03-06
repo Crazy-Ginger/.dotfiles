@@ -27,7 +27,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10,underline'
 alias vim="nvim"
 alias python="python3"
 alias restart="reboot"
-# alias startx="startxfce4"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -n'
 #--force-device-scale-factor=20
@@ -63,7 +62,7 @@ else
 fi
 
 # Import colourscheme from 'wal' asynchronously
-if hostname | grep -q "BeccaArchLap"; then
+if command -v wal &> /dev/null; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
 fi
