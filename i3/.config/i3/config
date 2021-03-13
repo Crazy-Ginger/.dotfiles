@@ -201,11 +201,13 @@ bar
     status_command i3status -c ~/.i3status.conf
 }
 
-# Fixing required only works once
-# My screenshot bindings (screenshot is a script that saves the fullscreen as time and date)
-bindsym Print --release exec "scrot -sf -q 100 foo.png ; xclip -selection c -t image/png < foo.png"
-bindsym $mod+Print exec "scrot -f -q 100 foo.png ; xclip -selection c -t image/png < foo.png"
-#bindsym Print+Ctrl+Shift --release exec "~/bin/screenshot"
+# Copies screenshots to clipboard for sharing
+bindsym Print --release exec "scrot -zfs /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+bindsym Shift+Print exec "scrot -zf /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+
+# Saves screenshots to pictures file (and copies to clipboard)
+bindsym $mod+Print --release exec "scrot -zfs ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+bindsym $mod+Shift+Print exec "scrot -zf ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 
 ###########
 ##Session##
