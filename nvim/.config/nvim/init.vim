@@ -142,10 +142,6 @@ let g:ale_c_astyle = '--style=allman'
 "##Custom shit##
 "###############
 
-" Laura told me to put this here so F5 executes python commands
-" I don't know if this works still
-autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr>
-
 " setting the size of tab spaces to not be stupid long
 set linebreak
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
@@ -204,6 +200,30 @@ noremap <Down> :echo "No arrows for you"<CR>
 
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
+
+" Auto toggle paste mode when pasting
+" Stops autoindent/commenting
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 
 "#####################
