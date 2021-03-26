@@ -27,7 +27,7 @@ bindkey '^[[1;5C' forward-word
 
 alias vim="nvim"
 alias python="python3"
-alias restart="reboot"
+#alias restart="reboot"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -n'
 #--force-device-scale-factor=20 [?]
