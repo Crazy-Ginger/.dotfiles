@@ -28,7 +28,7 @@ alias vim="nvim"
 alias python="python3"
 alias restart="reboot"
 alias chrome="/usr/bin/google-chrome-stable  %U"
-alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -n'
+alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
 #--force-device-scale-factor=20
 
 # add user bin files to path
@@ -44,11 +44,14 @@ export VISUAL=nvim
 
 eval $(thefuck --alias)
 
-autoload -Uz compinit
-compinit
+# stuff to do with autocomplete possibly (not sure)
+autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1
+
+# fix alias autocomplete
+zstyle ':completion:*' completer _expand_alias _complete _ignored
 
 # sets the directory path to be minimal by reducing to minimal chars by selecting the as many as it needs for the path to be unique
 setopt prompt_subst
