@@ -14,7 +14,7 @@
     indicate_hidden = true
 
     # Shrink window if it's smaller than the width
-    shrink = false
+    shrink = true
 
     # The transparency of the window.  Range: [0; 100].
     transparency = 0
@@ -33,7 +33,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 2
+    frame_width = 0
 
     # Defines color of the frame around the notification window.
     frame_color = "#aaaaaa"

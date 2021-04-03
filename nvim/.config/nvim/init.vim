@@ -14,6 +14,7 @@ call plug#begin()
     Plug 'dylanaraps/wal.vim'               "Uses pywal to get colour scheme
     " consider nerd tree preservim/nerdtree
     Plug 'tpope/vim-sensible'               "Some basic starters for vim
+    Plug 'sirtaj/vim-openscad'
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
