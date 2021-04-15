@@ -38,6 +38,17 @@ export PATH=$PATH:/usr/sbin
 
 # setup zsh history (it broke for some reason)
 export HISTFILE=~/.zsh_history
+
+# trying to reduce History size after cutting it down manually
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+
+# limit history to 5,000 lines
+HISTSIZE=5000
+SAVEHIST=5000
+
 # set neovim as the default editor
 export EDITOR=nvim
 export VISUAL=nvim
