@@ -47,7 +47,7 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 
 # limit history to 5,000 lines
-HISTFILE=5000
+HISTSIZE=5000
 SAVEHIST=5000
 
 # set neovim as the default editor
