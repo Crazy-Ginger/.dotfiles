@@ -28,8 +28,7 @@ bindkey '^[[1;5C' forward-word
 alias vim="nvim"
 alias python="python3"
 alias chrome="/usr/bin/google-chrome-stable  %U"
-alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -n'
-#--force-device-scale-factor=20 [?]
+alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
 
 # add user bin files to path
 export PATH=$PATH:~/bin
@@ -78,9 +77,8 @@ if command -v wal &> /dev/null; then
     source ~/.cache/wal/colors-tty.sh
 fi
 
-
-if command -v morse &> /dev/null; then
 # For MORSE Simulator
+if command -v morse &> /dev/null; then
     export MORSE_BLENDER=/usr/bin/blender
     PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
     alias blender="/usr/bin/blender"
