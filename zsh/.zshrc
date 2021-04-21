@@ -55,8 +55,8 @@ export VISUAL=nvim
 
 eval $(thefuck --alias)
 
-autoload -Uz compinit
-compinit
+# stuff to do with autocomplete possibly (not sure)
+autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1
