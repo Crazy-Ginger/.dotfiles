@@ -246,7 +246,7 @@ gaps inner 7
 # Borders(?)
 default_border none
 hide_edge_borders smart
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 4
 
 # Colours(?)
 set_from_resource $fg i3wm.color1 #f0f0f0
