@@ -17,6 +17,7 @@ plugins=(
 
     # testing some new plugins
     colored-man-pages
+    vscode
     web-search
 )
 
@@ -26,7 +27,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10,underline'
 
 alias vim="nvim"
 alias python="python3"
-alias restart="reboot"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
 #--force-device-scale-factor=20
@@ -41,6 +41,18 @@ export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
 export INCLUDE="/usr/local/include:$INCLUDE"
 # add stack bin for haskell
 export PATH=$PATH:/home/becca/.stack/snapshots/x86_64-linux-tinfo6/79c880a6a9866d8f91ffe40e7020e52eed7edeea96bad2d125d3da52a788c03d/8.10.3/bin:/home/becca/.stack/compiler-tools/x86_64-linux-tinfo6/ghc-8.10.3/bin:/home/becca/.stack/programs/x86_64-linux/ghc-tinfo6-8.10.3/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/jvm/default/bin:/home/becca/bin:/home/becca/.local/bin:/usr/sbin
+
+# zsh_history (limit size)
+export HISTFILE=~/.zsh_history
+
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+
+# limit history to 5000 lines
+HISTSIZE=5000
+SAVEHIST=5000
 
 # set neovim as the default editor
 export EDITOR=nvim
@@ -74,8 +86,8 @@ if command -v wal &> /dev/null; then
     source ~/.cache/wal/colors-tty.sh
 fi
 
-if command -v morse &> /dev/null; then
     # For MORSE Simulator
+if command -v morse &> /dev/null; then
     export MORSE_BLENDER=/opt/blender-2.79b-linux-glibc219-x86_64/blender
     PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
     alias blender="/opt/blender-2.79b-linux-glibc219-x86_64/blender"
