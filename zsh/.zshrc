@@ -18,6 +18,8 @@ plugins=(
     # testing some new plugins
     colored-man-pages
     web-search
+    docker
+    docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh

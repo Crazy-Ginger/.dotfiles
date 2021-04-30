@@ -176,6 +176,8 @@ let xml_syntax_folding=1    "xml
 " allows accidental holding shift whilst writing commands to still run commands
 command Q q
 command W w
+command Wq wq
+command WQ wq
 
 " alway set syntax on to enable code highlighting (didn't seem to make a
 " difference but don't want to take chances)
