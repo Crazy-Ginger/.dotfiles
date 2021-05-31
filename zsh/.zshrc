@@ -27,6 +27,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10,underline'
 
 alias vim="nvim"
 alias python="python3"
+alias ip="ip -c"
+alias pping="prettyping"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
 #--force-device-scale-factor=20
