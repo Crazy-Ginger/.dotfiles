@@ -30,6 +30,9 @@ bindkey '^[[1;5C' forward-word
 alias vim="nvim"
 alias python="python3"
 alias chrome="/usr/bin/google-chrome-stable  %U"
+alias ip="ip -c"
+alias pping="prettyping"
+alias svim="sudoedit"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
 
 # add user bin files to path
