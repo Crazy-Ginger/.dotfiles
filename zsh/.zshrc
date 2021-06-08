@@ -29,6 +29,7 @@ alias vim="nvim"
 alias python="python3"
 alias ip="ip -c"
 alias pping="prettyping"
+alias svim="sudoedit"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
 #--force-device-scale-factor=20
@@ -41,6 +42,7 @@ export PATH=$PATH:/usr/sbin
 # add local to cpp compiler
 export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
 export INCLUDE="/usr/local/include:$INCLUDE"
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 # add stack bin for haskell
 export PATH=$PATH:/home/becca/.stack/snapshots/x86_64-linux-tinfo6/79c880a6a9866d8f91ffe40e7020e52eed7edeea96bad2d125d3da52a788c03d/8.10.3/bin:/home/becca/.stack/compiler-tools/x86_64-linux-tinfo6/ghc-8.10.3/bin:/home/becca/.stack/programs/x86_64-linux/ghc-tinfo6-8.10.3/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/jvm/default/bin:/home/becca/bin:/home/becca/.local/bin:/usr/sbin
 
