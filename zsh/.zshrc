@@ -34,8 +34,6 @@ alias pping="prettyping"
 alias svim="sudoedit"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias svim="sudoedit"
-alias pping="prettyping"
-alias ip="ip -c"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -n'
 
 # add user bin files to path
