@@ -12,7 +12,6 @@ call plug#begin()
     Plug 'ryanoasis/vim-devicons'           "allows for nerd fonts (icon fonts)
     Plug 'luochen1990/rainbow'              "rainbow parenthesis to make code more readable
     Plug 'dylanaraps/wal.vim'               "Uses pywal to get colour scheme
-    " consider nerd tree preservim/nerdtree
     Plug 'tpope/vim-sensible'               "Some basic starters for vim
 
     " Autocomplete
@@ -28,23 +27,26 @@ call plug#begin()
     Plug 'artur-shaik/vim-javacomplete2'    "java & jsp
     Plug 'ncm2/ncm2-pyclang'                "c/c++
     Plug 'ncm2/ncm2-vim'                    "vimscript
+    Plug 'Shougo/neco-vim'                  "Requirement for vimscript
     Plug 'ncm2/ncm2-markdown-subscope'      "Markdown subscopes
     Plug 'ncm2/ncm2-racer'                  "Rust
     Plug 'eagletmt/neco-ghc'                "Haskel
     Plug 'ncm2/ncm2-go'                     "Go
 	Plug 'aklt/plantuml-syntax'				"Syntax complete for plantuml
-    "Plug 'Shougo/deoplete.nvim'             "A completion framework (not sure how complete the sources are)(trying ncm2 for now)
+    "Plug 'gaalcaras/ncm-R'                  "R
+
 
     " Building
     Plug 'lervag/vimtex'                    "LaTex
-    Plug 'ncm2/ncm2-vim'                    "vimscript
     Plug 'ObserverOfTime/ncm2-jc2'          "Java
-    Plug 'gaalcaras/ncm-R'                  "R
 
     " To Setup/Fix
     "Plug 'lambdalisue/suda.vim'            "allows for saving file when not opened with sudo, doesn't work
+    "Plug 'artur-shaik/vim-javacomplete2'  "Java
     "Plug 'vim-airline/vim-airline'         "A nice status line at the bottom of the window
+    "Plug 'preservim/nerdtree'              "file system explorer for the Vim
     "Plug 'numirias/semshi'                 "Semantic highligher (try setting up for easy reading)
+    "Plug 'Shougo/deoplete.nvim'            "A completion framework (not sure how complete the sources are)(trying ncm2 for now)
 call plug#end()
 
 " to shut up vimtex
@@ -83,8 +85,10 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " for pyclang (c++ completor)
 " path to directory where libclang.so can be found
-"let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
+"let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang-7.so.1'
 
+" javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 
 " #######
@@ -96,9 +100,9 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " consider adding pylint to python
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
-    \ 'c': ['gcc', 'cc', 'flawfinder'],
+    \ 'c': ['gcc', 'flawfinder', 'cppcheck'],
     \ 'python': ['flake8' ],
-    \ 'haskell': [],
+    \ 'haskell': ['cabal_ghc', 'ghc', 'stack_build', 'hlint', 'stack_ghc', 'hlint'],
     \ 'json': ['jq'],
     \ }
 
@@ -119,25 +123,24 @@ let g:ale_fixers = {
     \ "rust": ["rustfmt"],
     \ "sh" : ["shfmt"],
     \ "c" : ["astyle"],
+    \ "cpp" : ["astyle"],
     \ "java" : ["google_java_format"],
     \ "json" : ["jq"],
     \ "go": ["gofmt"],
-	\ "html": ["prettier"]
+	\ "html": ["prettier"],
+    \ "haskell": ["hlint", "ormolu", "stylish-haskell", "hindent"]
     \ }
 " allows ALE to try and fix the file after a save
 let g:ale_fix_on_save = 1
 
 " set c style (may need changing)
 let g:ale_c_clangformat_options = '-style="{BasedOnStyle: Google, IndentWidth: 4}"'
+let g:ale_c_astyle = '--style=allman'
 
 
 "###############
 "##Custom shit##
 "###############
-
-" Laura told me to put this here so F5 executes python commands
-" I don't know if this works still
-autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr>
 
 " setting the size of tab spaces to not be stupid long
 set linebreak
@@ -145,12 +148,14 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " automatic folding enabler for used languages
 " sets the foldmethod to syntax over other alternatives
-au FileType cpp,c,hpp,h,javascript,zsh,java,json set foldmethod=syntax
+au FileType cpp,c,hpp,h,javascript,zsh,java,json,haskell set foldmethod=syntax
 au FileType python,html,xml,cmake set foldmethod=indent
 au FileType python set foldignore=
 
 " Allow dictionary completion on certain file types
 au FileType markdown,text let b:ncm2_look_enabled = 1
+
+
 " ensures that opening a file will automatically detect folds and close the all
 set foldlevelstart=1
 set foldnestmax=50
@@ -189,12 +194,39 @@ set spelllang=en
 nnoremap <silent> <F11> :set spell!<cr>
 inoremap <silent> <F11> <C-O>:set spell!<cr>
 
-
 " disable arrow keys
 noremap <Left> :echo "No arrows for you"<CR>
 noremap <Right> :echo "No arrows for you"<CR>
 noremap <Up> :echo "No arrows for you"<CR>
 noremap <Down> :echo "No arrows for you"<CR>
+
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+
+" Auto toggle paste mode when pasting
+" Stops autoindent/commenting
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
 
 "#####################
 "##Colour and Themes##
@@ -211,4 +243,4 @@ set background=dark
 set guifont=Hack-Regular:h13:cDEFAULT
 
 " enable pywal colour scheme
-colorscheme wal
+"colorscheme wal

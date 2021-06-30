@@ -29,11 +29,12 @@ bindkey '^[[1;5C' forward-word
 
 alias vim="nvim"
 alias python="python3"
+alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ping="ping -c"
+alias ip="ip -c"
 alias pping="prettyping"
 alias svim="sudoedit"
-alias chrome="/usr/bin/google-chrome-stable  %U"
-alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -n'
+alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
 
 # add user bin files to path
 export PATH=$PATH:~/bin
@@ -59,8 +60,8 @@ export VISUAL=nvim
 
 eval $(thefuck --alias)
 
-autoload -Uz compinit
-compinit
+# stuff to do with autocomplete possibly (not sure)
+autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1
@@ -77,14 +78,13 @@ else
 fi
 
 # Import colourscheme from 'wal' asynchronously
-if command -v wal >/dev/null 2>&1; then
+if command -v wal &> /dev/null; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
 fi
 
-
-if command -v morse &> /dev/null; then
 # For MORSE Simulator
+if command -v morse &> /dev/null; then
     export MORSE_BLENDER=/usr/bin/blender
     PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
     alias blender="/usr/bin/blender"
