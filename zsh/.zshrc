@@ -30,6 +30,7 @@ bindkey '^[[1;5C' forward-word
 alias vim="nvim"
 alias python="python3"
 alias chrome="/usr/bin/google-chrome-stable  %U"
+alias ping="ping -c"
 alias ip="ip -c"
 alias pping="prettyping"
 alias svim="sudoedit"
