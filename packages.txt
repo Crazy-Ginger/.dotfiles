@@ -1,0 +1,11 @@
+curl
+wget
+tmux
+zsh
+git
+htop
+bmon
+python3-pip
+neovim
+clang
+stow
