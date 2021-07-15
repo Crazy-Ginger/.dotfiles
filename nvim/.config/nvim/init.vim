@@ -100,7 +100,8 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " consider adding pylint to python
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
-    \ 'c': ['gcc', 'flawfinder', 'cppcheck'],
+    \ 'c': ['gcc', 'flawfinder', 'cppcheck', 'clang-tidy'],
+    \ 'cpp' : ['cc', 'clang-tidy', 'flawfinder', 'cppcheck', 'flawfinder', 'cppcheck'],
     \ 'python': ['flake8' ],
     \ 'haskell': ['cabal_ghc', 'ghc', 'stack_build', 'hlint', 'stack_ghc', 'hlint'],
     \ 'json': ['jq'],
@@ -110,6 +111,7 @@ let g:ale_linters = {
 let g:ale_lint_on_save = 1
 " Shut up python linting errors
 let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
+let g:ale_completion_enabled = 1
 
 " ##Fixers/Formatters##
 
@@ -122,7 +124,7 @@ let g:ale_fixers = {
     \ "python": ["isort"],
     \ "rust": ["rustfmt"],
     \ "sh" : ["shfmt"],
-    \ "c" : ["astyle"],
+    \ "c" : [ "clang-format", "astyle"],
     \ "cpp" : ["astyle"],
     \ "java" : ["google_java_format"],
     \ "json" : ["jq"],
