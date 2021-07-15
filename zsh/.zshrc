@@ -36,6 +36,10 @@ alias pping="prettyping"
 alias svim="sudoedit"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
 
+## WSL
+alias expl="explorer.exe ."
+alias notepad="notepad.exe"
+
 # add user bin files to path
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
@@ -93,3 +97,6 @@ fi
 if cat /proc/version | grep -q WSL; then
     export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 fi
+
+# Runs Spack (if it exists)
+source ~/spack/share/spack/setup-env.sh
