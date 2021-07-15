@@ -1,8 +1,7 @@
-cd $HOME && git clone https://www.github.com/Crazy-Ginger/.dotfiles
-
-
 # Bash
-cd $HOME/.dotfiles && rm $HOME/.bashrc && stow bash
+cd $HOME/.dotfiles 
+rm $HOME/.bashrc 
+stow bash
 
 
 # Tmux
@@ -13,8 +12,10 @@ cd $HOME
 # Zsh setup
 chsh -s /bin/zsh
 # Oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-cd $HOME/.dotfiles && rm $HOME/.zshrc && stow zsh
+CHSH=no RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+cd $HOME/.dotfiles 
+rm $HOME/.zshrc 
+stow zsh
 cd $HOME
 
 # oh-my-zsh plugins
