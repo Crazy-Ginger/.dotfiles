@@ -13,6 +13,8 @@ call plug#begin()
     Plug 'luochen1990/rainbow'              "rainbow parenthesis to make code more readable
     Plug 'dylanaraps/wal.vim'               "Uses pywal to get colour scheme
     Plug 'tpope/vim-sensible'               "Some basic starters for vim
+    Plug 'numirias/semshi'                  "Semantic highligher (try setting up for easy reading)
+    Plug 'preservim/nerdtree'               "file system explorer for the Vim
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
@@ -42,10 +44,8 @@ call plug#begin()
 
     " To Setup/Fix
     "Plug 'lambdalisue/suda.vim'            "allows for saving file when not opened with sudo, doesn't work
-    "Plug 'artur-shaik/vim-javacomplete2'  "Java
+    "Plug 'artur-shaik/vim-javacomplete2'   "Java
     "Plug 'vim-airline/vim-airline'         "A nice status line at the bottom of the window
-    "Plug 'preservim/nerdtree'              "file system explorer for the Vim
-    "Plug 'numirias/semshi'                 "Semantic highligher (try setting up for easy reading)
     "Plug 'Shougo/deoplete.nvim'            "A completion framework (not sure how complete the sources are)(trying ncm2 for now)
 call plug#end()
 
@@ -85,7 +85,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " for pyclang (c++ completor)
 " path to directory where libclang.so can be found
-"let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang-7.so.1'
+let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang-7.so.1'
 
 " javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -100,7 +100,8 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " consider adding pylint to python
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
-    \ 'c': ['gcc', 'flawfinder', 'cppcheck'],
+    \ 'c': ['gcc', 'flawfinder', 'cppcheck', 'clang-tidy'],
+    \ 'cpp' : ['cc', 'clang-tidy', 'flawfinder', 'cppcheck', 'flawfinder', 'cppcheck'],
     \ 'python': ['flake8' ],
     \ 'haskell': ['cabal_ghc', 'ghc', 'stack_build', 'hlint', 'stack_ghc', 'hlint'],
     \ 'json': ['jq'],
@@ -110,6 +111,7 @@ let g:ale_linters = {
 let g:ale_lint_on_save = 1
 " Shut up python linting errors
 let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
+let g:ale_completion_enabled = 1
 
 " ##Fixers/Formatters##
 
@@ -122,7 +124,7 @@ let g:ale_fixers = {
     \ "python": ["isort"],
     \ "rust": ["rustfmt"],
     \ "sh" : ["shfmt"],
-    \ "c" : ["astyle"],
+    \ "c" : [ "clang-format", "astyle"],
     \ "cpp" : ["astyle"],
     \ "java" : ["google_java_format"],
     \ "json" : ["jq"],
