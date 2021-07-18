@@ -4,6 +4,9 @@ if command -v tmux >/dev/null 2>&1; then
     [ -z "${TMUX}" ] && (tmux) >/dev/null 2>&1
 fi
 
+# speed up zsh on large git repos
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="gallois"
@@ -72,15 +75,26 @@ zstyle ':completion::complete:*' gain-privileges 1
 # sets the directory path to be minimal by reducing to minimal chars by selecting the as many as it needs for the path to be unique
 setopt prompt_subst
 
-# appends the hostname to the terminal line if in SSH
-if [[ -n $SSH_CONNECTION ]]; then
-    #PS1 = "$(hostname) $PS1"
-    PS1='%{$fg[magenta]%}$(hostname)%{$fg[red]%}->%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
-else
-    PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
-fi
+# checks if git info should be displayed (for large repos)
+#if [ -z $(git config --get .oh-my-zsh.hide-info) ]; then
+    # appends the hostname to the terminal line if in SSH
+    if [[ -n $SSH_CONNECTION ]]; then
+        #PS1 = "$(hostname) $PS1"
+        PS1='%{$fg[magenta]%}$(hostname)%{$fg[red]%}->%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+    else
+        PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+    fi
+#else
+    ## appends the hostname to the terminal line if in SSH
+    #if [[ -n $SSH_CONNECTION ]]; then
+        #PS1='%{$fg[magenta]%}$(hostname)%{$fg[red]%}->%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+    #else
+        #PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+    #fi
 
-# Import colourscheme from 'wal' asynchronously
+#fi
+
+# Import colourscheme from 'wal' if desktop environment
 if command -v wal &> /dev/null; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
