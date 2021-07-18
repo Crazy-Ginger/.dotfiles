@@ -4,6 +4,9 @@ if command -v tmux >/dev/null 2>&1; then
     [ -z "${TMUX}" ] && (tmux) >/dev/null 2>&1
 fi
 
+# speed up zsh on large git repos
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="gallois"
@@ -34,6 +37,10 @@ alias ip="ip -c"
 alias pping="prettyping"
 alias svim="sudoedit"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
+
+## WSL
+alias expl="explorer.exe ."
+alias notepad="notepad.exe"
 
 # add user bin files to path
 export PATH=$PATH:~/bin
@@ -68,15 +75,26 @@ zstyle ':completion::complete:*' gain-privileges 1
 # sets the directory path to be minimal by reducing to minimal chars by selecting the as many as it needs for the path to be unique
 setopt prompt_subst
 
-# appends the hostname to the terminal line if in SSH
-if [[ -n $SSH_CONNECTION ]]; then
-    #PS1 = "$(hostname) $PS1"
-    PS1='%{$fg[magenta]%}$(hostname)%{$fg[red]%}->%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
-else
-    PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
-fi
+# checks if git info should be displayed (for large repos)
+#if [ -z $(git config --get .oh-my-zsh.hide-info) ]; then
+    # appends the hostname to the terminal line if in SSH
+    if [[ -n $SSH_CONNECTION ]]; then
+        #PS1 = "$(hostname) $PS1"
+        PS1='%{$fg[magenta]%}$(hostname)%{$fg[red]%}->%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+    else
+        PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+    fi
+#else
+    ## appends the hostname to the terminal line if in SSH
+    #if [[ -n $SSH_CONNECTION ]]; then
+        #PS1='%{$fg[magenta]%}$(hostname)%{$fg[red]%}->%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+    #else
+        #PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+    #fi
 
-# Import colourscheme from 'wal' asynchronously
+#fi
+
+# Import colourscheme from 'wal' if desktop environment
 if command -v wal &> /dev/null; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
@@ -91,4 +109,9 @@ fi
 
 if cat /proc/version | grep -q WSL; then
     export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+fi
+
+# Runs Spack (if it exists)
+if command -v spack &> /dev/null; then
+    source ~/spack/share/spack/setup-env.sh
 fi
