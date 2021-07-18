@@ -84,8 +84,9 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " for pyclang (c++ completor)
-" path to directory where libclang.so can be found
-let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang-7.so.1'
+"path to directory where libclang.so can be found
+let g:ncm2_pyclang#library_path = system("find / -mount -iname '*libclang.so*' -print 2>/dev/null")
+"'/usr/lib/llvm-7/lib/libclang-7.so.1'
 
 " javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
