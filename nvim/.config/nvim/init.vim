@@ -12,9 +12,8 @@ call plug#begin()
     Plug 'ryanoasis/vim-devicons'           "allows for nerd fonts (icon fonts)
     Plug 'luochen1990/rainbow'              "rainbow parenthesis to make code more readable
     Plug 'dylanaraps/wal.vim'               "Uses pywal to get colour scheme
+    " consider nerd tree preservim/nerdtree
     Plug 'tpope/vim-sensible'               "Some basic starters for vim
-    Plug 'numirias/semshi'                  "Semantic highligher (try setting up for easy reading)
-    Plug 'preservim/nerdtree'               "file system explorer for the Vim
     Plug 'sirtaj/vim-openscad'
 
     " Autocomplete
@@ -36,18 +35,18 @@ call plug#begin()
     Plug 'eagletmt/neco-ghc'                "Haskel
     Plug 'ncm2/ncm2-go'                     "Go
 	Plug 'aklt/plantuml-syntax'				"Syntax complete for plantuml
-    "Plug 'gaalcaras/ncm-R'                  "R
-
+    "Plug 'Shougo/deoplete.nvim'             "A completion framework (not sure how complete the sources are)(trying ncm2 for now)
 
     " Building
     Plug 'lervag/vimtex'                    "LaTex
+    Plug 'ncm2/ncm2-vim'                    "vimscript
     Plug 'ObserverOfTime/ncm2-jc2'          "Java
+    Plug 'gaalcaras/ncm-R'                  "R
 
     " To Setup/Fix
     "Plug 'lambdalisue/suda.vim'            "allows for saving file when not opened with sudo, doesn't work
-    "Plug 'artur-shaik/vim-javacomplete2'   "Java
     "Plug 'vim-airline/vim-airline'         "A nice status line at the bottom of the window
-    "Plug 'Shougo/deoplete.nvim'            "A completion framework (not sure how complete the sources are)(trying ncm2 for now)
+    "Plug 'numirias/semshi'                 "Semantic highligher (try setting up for easy reading)
 call plug#end()
 
 " to shut up vimtex
@@ -85,12 +84,9 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " for pyclang (c++ completor)
-"path to directory where libclang.so can be found
-let g:ncm2_pyclang#library_path = system("find / -mount -iname '*libclang.so*' -print 2>/dev/null")
-"'/usr/lib/llvm-7/lib/libclang-7.so.1'
+" path to directory where libclang.so can be found
+"let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
 
-" javacomplete2
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 
 " #######
@@ -102,10 +98,9 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " consider adding pylint to python
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
-    \ 'c': ['gcc', 'flawfinder', 'cppcheck', 'clang-tidy'],
-    \ 'cpp' : ['cc', 'clang-tidy', 'flawfinder', 'cppcheck', 'flawfinder', 'cppcheck'],
+    \ 'c': ['gcc', 'cc', 'flawfinder'],
     \ 'python': ['flake8' ],
-    \ 'haskell': ['cabal_ghc', 'ghc', 'stack_build', 'hlint', 'stack_ghc', 'hlint'],
+    \ 'haskell': [],
     \ 'json': ['jq'],
     \ }
 
@@ -113,7 +108,6 @@ let g:ale_linters = {
 let g:ale_lint_on_save = 1
 " Shut up python linting errors
 let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
-let g:ale_completion_enabled = 1
 
 " ##Fixers/Formatters##
 
@@ -126,25 +120,26 @@ let g:ale_fixers = {
     \ "python": ["isort"],
     \ "rust": ["rustfmt"],
     \ "sh" : ["shfmt"],
-    \ "c" : [ "clang-format", "astyle"],
-    \ "cpp" : ["astyle"],
+    \ "c" : ["astyle"],
     \ "java" : ["google_java_format"],
     \ "json" : ["jq"],
     \ "go": ["gofmt"],
-	\ "html": ["prettier"],
-    \ "haskell": ["hlint", "ormolu", "stylish-haskell", "hindent"]
+	\ "html": ["prettier"]
     \ }
 " allows ALE to try and fix the file after a save
 let g:ale_fix_on_save = 1
 
 " set c style (may need changing)
 let g:ale_c_clangformat_options = '-style="{BasedOnStyle: Google, IndentWidth: 4}"'
-let g:ale_c_astyle = '--style=allman'
 
 
 "###############
 "##Custom shit##
 "###############
+
+" Laura told me to put this here so F5 executes python commands
+" I don't know if this works still
+autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr>
 
 " setting the size of tab spaces to not be stupid long
 set linebreak
@@ -152,14 +147,12 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " automatic folding enabler for used languages
 " sets the foldmethod to syntax over other alternatives
-au FileType cpp,c,hpp,h,javascript,zsh,java,json,haskell,openscad set foldmethod=syntax
+au FileType cpp,c,hpp,h,javascript,zsh,java,json,openscad set foldmethod=syntax
 au FileType python,html,xml,cmake set foldmethod=indent
 au FileType python set foldignore=
 
 " Allow dictionary completion on certain file types
 au FileType markdown,text let b:ncm2_look_enabled = 1
-
-
 " ensures that opening a file will automatically detect folds and close the all
 set foldlevelstart=1
 set foldnestmax=50
@@ -180,8 +173,6 @@ let xml_syntax_folding=1    "xml
 " allows accidental holding shift whilst writing commands to still run commands
 command Q q
 command W w
-command Wq wq
-command WQ wq
 
 " alway set syntax on to enable code highlighting (didn't seem to make a
 " difference but don't want to take chances)
@@ -198,39 +189,12 @@ set spelllang=en
 nnoremap <silent> <F11> :set spell!<cr>
 inoremap <silent> <F11> <C-O>:set spell!<cr>
 
+
 " disable arrow keys
 noremap <Left> :echo "No arrows for you"<CR>
 noremap <Right> :echo "No arrows for you"<CR>
 noremap <Up> :echo "No arrows for you"<CR>
 noremap <Down> :echo "No arrows for you"<CR>
-
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-
-" Auto toggle paste mode when pasting
-" Stops autoindent/commenting
-function! WrapForTmux(s)
-  if !exists('$TMUX')
-    return a:s
-  endif
-
-  let tmux_start = "\<Esc>Ptmux;"
-  let tmux_end = "\<Esc>\\"
-
-  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
-endfunction
-
-let &t_SI .= WrapForTmux("\<Esc>[?2004h")
-let &t_EI .= WrapForTmux("\<Esc>[?2004l")
-
-function! XTermPasteBegin()
-  set pastetoggle=<Esc>[201~
-  set paste
-  return ""
-endfunction
-
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
-
 
 "#####################
 "##Colour and Themes##
@@ -238,7 +202,7 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 " should let nvim use | cursor for insert mode
 " doesn't throw errors but not working on arch
-":set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
+:set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 
 " set the background to be dark so that nvim nows for certain and uses light
 " colours
