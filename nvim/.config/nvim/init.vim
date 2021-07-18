@@ -13,6 +13,8 @@ call plug#begin()
     Plug 'luochen1990/rainbow'              "rainbow parenthesis to make code more readable
     Plug 'dylanaraps/wal.vim'               "Uses pywal to get colour scheme
     Plug 'tpope/vim-sensible'               "Some basic starters for vim
+    Plug 'numirias/semshi'                  "Semantic highligher (try setting up for easy reading)
+    Plug 'preservim/nerdtree'               "file system explorer for the Vim
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
@@ -42,10 +44,8 @@ call plug#begin()
 
     " To Setup/Fix
     "Plug 'lambdalisue/suda.vim'            "allows for saving file when not opened with sudo, doesn't work
-    "Plug 'artur-shaik/vim-javacomplete2'  "Java
+    "Plug 'artur-shaik/vim-javacomplete2'   "Java
     "Plug 'vim-airline/vim-airline'         "A nice status line at the bottom of the window
-    "Plug 'preservim/nerdtree'              "file system explorer for the Vim
-    "Plug 'numirias/semshi'                 "Semantic highligher (try setting up for easy reading)
     "Plug 'Shougo/deoplete.nvim'            "A completion framework (not sure how complete the sources are)(trying ncm2 for now)
 call plug#end()
 
