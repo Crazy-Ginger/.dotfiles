@@ -43,18 +43,22 @@
 *.color15:      #eeeeee
 
 
-URxvt.font: xft:Hack:pixelsize=14:antialias=true
-URxvt.boldFont: xft:Hack-Bold:pixelsize=16:antialias=true
-URxvt.italicFont: xft:Hack-Italic:pixelsize=16:antialias=true
-URxvt.letterSpace: -3
-URxvt.lineSpace: 1
+URxvt.font: xft:Hack-Regular:size=13:antialias=true
+URxvt.boldFont: xft:Hack-Bold:size=13:antialias=true
+URxvt.italicFont: xft:Hack-Italic:size=13:antialias=true
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
 
 URxvt.transparent: true
-URxvt.shading: 30
+URxvt.shading: 15
+! For true transparency but only with block colours
+!URxct.depth: 32
+!URxvt.background: rgba:0000/0000/0200/c800
 
 URxvt.scrollBar: false
 
 URxvt.saveLine: 0
+URxvt*saveLines:0
 !look into copying and pasting with shortcuts
 !URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 !URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
