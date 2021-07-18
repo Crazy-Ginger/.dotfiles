@@ -17,12 +17,11 @@ plugins=(
     zsh-syntax-highlighting
     tmux
     shrink-path
-
-    # testing some new plugins
     colored-man-pages
     web-search
     docker
     docker-compose
+    vscode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -47,7 +46,12 @@ export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/sbin
 
-# setup zsh history (it broke for some reason)
+# add /usr/local/ to cpp compiler
+export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
+export INCLUDE="/usr/local/include:$INCLUDE"
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+
+# set zsh_history
 export HISTFILE=~/.zsh_history
 
 # trying to reduce History size after cutting it down manually

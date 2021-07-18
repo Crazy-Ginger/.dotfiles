@@ -15,6 +15,7 @@ call plug#begin()
     Plug 'tpope/vim-sensible'               "Some basic starters for vim
     Plug 'numirias/semshi'                  "Semantic highligher (try setting up for easy reading)
     Plug 'preservim/nerdtree'               "file system explorer for the Vim
+    Plug 'sirtaj/vim-openscad'
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
@@ -151,7 +152,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " automatic folding enabler for used languages
 " sets the foldmethod to syntax over other alternatives
-au FileType cpp,c,hpp,h,javascript,zsh,java,json,haskell set foldmethod=syntax
+au FileType cpp,c,hpp,h,javascript,zsh,java,json,haskell,openscad set foldmethod=syntax
 au FileType python,html,xml,cmake set foldmethod=indent
 au FileType python set foldignore=
 
