@@ -27,6 +27,11 @@ source $ZSH/oh-my-zsh.sh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,underline'
 
+
+###########
+##Aliases##
+###########
+
 alias vim="nvim"
 alias python="python3"
 alias ip="ip -c"
@@ -34,6 +39,10 @@ alias pping="prettyping"
 alias svim="sudoedit"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
+
+#########
+##Paths##
+#########
 
 # add user bin files to path
 export PATH=$PATH:~/bin
@@ -45,6 +54,9 @@ export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
 export INCLUDE="/usr/local/include:$INCLUDE"
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 
+###############
+##Zsh History##
+###############
 # set zsh_history
 export HISTFILE=~/.zsh_history
 
@@ -86,16 +98,19 @@ else
     PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
 fi
 
+
 # Set Ctrl + left arrow to forward word on certain systems
 if ! [[ $(cat /proc/version | grep -q arch) ]]; then
     bindkey '^[[1;5C' forward-word
 fi
+
 
 # Import colourscheme from wal if desktop environment
 if command -v wal &> /dev/null; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
 fi
+
 
 # Setup MORSE Simulator if installed
 if command -v morse &> /dev/null; then
@@ -104,10 +119,12 @@ if command -v morse &> /dev/null; then
     alias blender="/opt/blender-2.79b-linux-glibc219-x86_64/blender"
 fi
 
+
 # Setup display for wsl to run through XServer
 if cat /proc/version | grep -q WSL; then
     export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 fi
+
 
 # Setup Spack if installed
 if command -v spack &> /dev/null; then
