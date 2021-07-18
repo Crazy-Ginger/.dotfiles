@@ -112,4 +112,6 @@ if cat /proc/version | grep -q WSL; then
 fi
 
 # Runs Spack (if it exists)
-source ~/spack/share/spack/setup-env.sh
+if command -v spack &> /dev/null; then
+    source ~/spack/share/spack/setup-env.sh
+fi
