@@ -197,21 +197,23 @@ bindsym $mod+r mode "resize"
 # look into using polybar to replace this full battery at 70%
 bar
 {
-    font pagno:DejaVu Sans Mono 20
+    font pagno:Hack 20, DejaVu Sans Mono 20
     status_command i3status -c ~/.i3status.conf
 }
 
-# Fixing required only works once
-# My screenshot bindings (screenshot is a script that saves the fullscreen as time and date)
-bindsym Print --release exec "scrot -sf -q 100 foo.png ; xclip -selection c -t image/png < foo.png"
-bindsym $mod+Print exec "scrot -f -q 100 foo.png ; xclip -selection c -t image/png < foo.png"
-#bindsym Print+Ctrl+Shift --release exec "~/bin/screenshot"
+# Copies screenshots to clipboard for sharing
+bindsym Print --release exec "scrot -zfs /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+bindsym Shift+Print exec "scrot -zf /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+
+# Saves screenshots to pictures file (and copies to clipboard)
+bindsym $mod+Print --release exec "scrot -zfs ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+bindsym $mod+Shift+Print exec "scrot -zf ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 
 ###########
 ##Session##
 ###########
 # start lock hanler with 2min timeout
-exec_always --no-startup-id xset s 180
+exec_always --no-startup-id xset s 300
 exec_always --no-startup-id xss-lock $HOME/bin/screen-locker
 #xec_always --no-startup-id echo $XDG_SESSION_ID > /tmp/locksessionid
 
@@ -234,17 +236,17 @@ exec_always --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 ##Appearance##
 ##############
 # Chooses a random wallpaper and changes the theme colours
-bindsym $mod+b exec --no-startup-id wal -i /mnt/shared/Pictures/Backgrounds/Arty --saturate 1.0
+bindsym $mod+b exec --no-startup-id wal -i /mnt/shared/Pictures/Backgrounds/Arty --saturate 1.0 --iterative
 bindsym $mod+Shift+b exec --no-startup-id wal -b "ffffff"  --saturate 1.0 -l
 
 # Gaps
-gaps outer 7
+gaps outer 3
 gaps inner 7
 
 # Borders(?)
 default_border none
 hide_edge_borders smart
-for_window [class="^.*"] border pixel 7
+for_window [class="^.*"] border pixel 4
 
 # Colours(?)
 set_from_resource $fg i3wm.color1 #f0f0f0
