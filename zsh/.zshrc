@@ -4,6 +4,8 @@ if command -v tmux >/dev/null 2>&1; then
     [ -z "${TMUX}" ] && (tmux) >/dev/null 2>&1
 fi
 
+DISABLE_UNTRACK_FILE_DIRTY="true"
+
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="gallois"
@@ -14,16 +16,21 @@ plugins=(
     zsh-syntax-highlighting
     tmux
     shrink-path
-
-    # testing some new plugins
     colored-man-pages
-    vscode
     web-search
+    docker
+    docker-compose
+    vscode
 )
 
 source $ZSH/oh-my-zsh.sh
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10,underline'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,underline'
+
+
+###########
+##Aliases##
+###########
 
 alias vim="nvim"
 alias python="python3"
@@ -32,21 +39,25 @@ alias pping="prettyping"
 alias svim="sudoedit"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
-#--force-device-scale-factor=20
+
+#########
+##Paths##
+#########
 
 # add user bin files to path
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/sbin
 
-# add local to cpp compiler
+# add /usr/local/ to cpp compiler
 export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
 export INCLUDE="/usr/local/include:$INCLUDE"
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
-# add stack bin for haskell
-export PATH=$PATH:/home/becca/.stack/snapshots/x86_64-linux-tinfo6/79c880a6a9866d8f91ffe40e7020e52eed7edeea96bad2d125d3da52a788c03d/8.10.3/bin:/home/becca/.stack/compiler-tools/x86_64-linux-tinfo6/ghc-8.10.3/bin:/home/becca/.stack/programs/x86_64-linux/ghc-tinfo6-8.10.3/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/jvm/default/bin:/home/becca/bin:/home/becca/.local/bin:/usr/sbin
 
-# zsh_history (limit size)
+###############
+##Zsh History##
+###############
+# set zsh_history
 export HISTFILE=~/.zsh_history
 
 setopt HIST_IGNORE_DUPS
@@ -54,7 +65,7 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 
-# limit history to 5000 lines
+# limit history to 5,000 lines
 HISTSIZE=5000
 SAVEHIST=5000
 
@@ -76,6 +87,9 @@ zstyle ':completion:*' completer _expand_alias _complete _ignored
 # sets the directory path to be minimal by reducing to minimal chars by selecting the as many as it needs for the path to be unique
 setopt prompt_subst
 
+# TODO: look into disabling git status for large repos
+# use: git config --get .oh-my-zsh.hide-info
+
 # appends the hostname to the terminal line if in SSH
 if [[ -n $SSH_CONNECTION ]]; then
     #PS1 = "$(hostname) $PS1"
@@ -84,19 +98,35 @@ else
     PS1='%{$fg[cyan]%}[$(shrink_path -t)]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
 fi
 
-# Import colourscheme from 'wal' asynchronously
+
+# Set Ctrl + left arrow to forward word on certain systems
+if ! [[ $(cat /proc/version | grep -q arch) ]]; then
+    bindkey '^[[1;5C' forward-word
+fi
+
+
+# Import colourscheme from wal if desktop environment
 if command -v wal &> /dev/null; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
 fi
 
-    # For MORSE Simulator
+
+# Setup MORSE Simulator if installed
 if command -v morse &> /dev/null; then
     export MORSE_BLENDER=/opt/blender-2.79b-linux-glibc219-x86_64/blender
     PYTHONPATH=/usr/local/lib/python3.5/dist-packges/
     alias blender="/opt/blender-2.79b-linux-glibc219-x86_64/blender"
 fi
 
-if cat /proc/version | grep -q WSL;then
+
+# Setup display for wsl to run through XServer
+if cat /proc/version | grep -q WSL; then
     export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+fi
+
+
+# Setup Spack if installed
+if command -v spack &> /dev/null; then
+    source ~/spack/share/spack/setup-env.sh
 fi
