@@ -14,7 +14,8 @@ call plug#begin()
     Plug 'dylanaraps/wal.vim'               "Uses pywal to get colour scheme
     " consider nerd tree preservim/nerdtree
     Plug 'tpope/vim-sensible'               "Some basic starters for vim
-    Plug 'sirtaj/vim-openscad'
+    Plug 'sirtaj/vim-openscad'              "OpenScad support
+    Plug 'Chiel92/vim-autoformat'           "Autoformating
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
@@ -99,6 +100,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
     \ 'c': ['gcc', 'cc', 'flawfinder'],
+    \ 'cpp' : ['gcc', 'cc', 'flawfinder', 'cclang'],
     \ 'python': ['flake8' ],
     \ 'haskell': [],
     \ 'json': ['jq'],
@@ -109,18 +111,21 @@ let g:ale_lint_on_save = 1
 " Shut up python linting errors
 let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
 
-" ##Fixers/Formatters##
+" ##Fixers
+" Encountered errors with formatting, using another plugin to do that instead
 
 " Use a couple of preferred fixers/formatters for each lang
 " Then cull whitespace
 " Don't use for whitespace languages
 " "yapf",, "add_blank_lines_for_python_control_statements"
+
 let g:ale_fixers = {
     \ "*": ["trim_whitespace", "remove_trailing_lines"],
     \ "python": ["isort"],
     \ "rust": ["rustfmt"],
     \ "sh" : ["shfmt"],
     \ "c" : ["astyle"],
+    \ "cpp" : ["astyle"],
     \ "java" : ["google_java_format"],
     \ "json" : ["jq"],
     \ "go": ["gofmt"],
@@ -130,16 +135,20 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 
 " set c style (may need changing)
-let g:ale_c_clangformat_options = '-style="{BasedOnStyle: Google, IndentWidth: 4}"'
+"let g:ale_c_clangformat_options = '-style="{BasedOnStyle: Google, IndentWidth: 4}"'
 
+
+"#################
+"##AutoFormating##
+"#################
+
+let g:formatdef_c_style= '"astyle --style=allman"'
+let g:formatters_c = ['c_style']
+let g:formatters_cpp = ['c_style']
 
 "###############
 "##Custom shit##
 "###############
-
-" Laura told me to put this here so F5 executes python commands
-" I don't know if this works still
-autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr>
 
 " setting the size of tab spaces to not be stupid long
 set linebreak
