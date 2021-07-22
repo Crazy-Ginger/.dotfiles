@@ -34,6 +34,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,underline'
 
 alias vim="nvim"
 alias python="python3"
+alias pip="pip3"
 alias ip="ip -c"
 alias pping="prettyping"
 alias svim="sudoedit"
