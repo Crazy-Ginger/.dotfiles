@@ -40,6 +40,11 @@ alias svim="sudoedit"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
 
+if cat /proc/version | grep -q WSL; then
+    alias expl="explorer.exe ."
+    alias notpad="notepad.exe"
+fi
+
 #########
 ##Paths##
 #########
