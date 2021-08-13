@@ -28,5 +28,8 @@ mkdir -p $HOME/.config/nvim/autoload
 cd $HOME/.dotfiles && stow nvim && cd $HOME
 vim +PlugInstall +qall
 
+# Find libclang and symlinks to home dir
+find /usr/ -mount -iname '*libclang.so*' -exec ln -s {} /home/becca/.libclang.so
+
 
 source $HOME/.zshrc

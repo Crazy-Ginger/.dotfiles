@@ -86,7 +86,11 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " for pyclang (c++ completor)
 " path to directory where libclang.so can be found
-"let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
+"let g:ncm2_pyclang#library_path = system("find /usr/ -mount -iname '*libclang.so*' -print 2>/dev/null")
+"let g:ncm2_pyclang#library_path = '~/.clanglib/libclang.so.1'
+"let g:ncm2_pyclang#library_path = '/home/becca/.libclang.so'
+"let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib'
+let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang-7.so.1'
 
 
 
@@ -124,13 +128,15 @@ let g:ale_fixers = {
     \ "python": ["isort"],
     \ "rust": ["rustfmt"],
     \ "sh" : ["shfmt"],
-    \ "c" : ["astyle"],
-    \ "cpp" : ["astyle"],
     \ "java" : ["google_java_format"],
     \ "json" : ["jq"],
     \ "go": ["gofmt"],
 	\ "html": ["prettier"]
     \ }
+
+" moved to autoformat for easier parameter setting
+"\ "c" : ["astyle"],
+    "\ "cpp" : ["astyle"],
 " allows ALE to try and fix the file after a save
 let g:ale_fix_on_save = 1
 
@@ -142,7 +148,7 @@ let g:ale_fix_on_save = 1
 "##AutoFormating##
 "#################
 
-let g:formatdef_c_style= '"astyle --style=allman"'
+let g:formatdef_c_style= '"astyle --style=allman --indent-classes"'
 let g:formatters_c = ['c_style']
 let g:formatters_cpp = ['c_style']
 
@@ -182,6 +188,10 @@ let xml_syntax_folding=1    "xml
 " allows accidental holding shift whilst writing commands to still run commands
 command Q q
 command W w
+
+command Wq wq
+command WQ wq
+
 
 " alway set syntax on to enable code highlighting (didn't seem to make a
 " difference but don't want to take chances)
