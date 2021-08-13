@@ -11,24 +11,18 @@
 # sets the mod as windows key
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:monospace 12
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
+## Audio
 # Use pactl to adjust volume in PulseAudio
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master 2%+ unmute"
 bindsym XF86AudioLowerVolume exec--no-startup-id "amixer -q sset Master 2%- unmute"
 bindsym XF86AudioMute exec --no-startup-id "amixer -q sset Master toggle"
 
-
+## Lighting
 # Uses xbacklight to increase and decrease the screen brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10"
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
@@ -192,15 +186,10 @@ mode "resize"
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# look into using polybar to replace this full battery at 70%
-bar
-{
-    font pagno:Hack 20, DejaVu Sans Mono 20
-    status_command i3status -c ~/.i3status.conf
-}
 
+###############
+##Screenshots##
+###############
 # Copies screenshots to clipboard for sharing
 bindsym Print --release exec "scrot -zfs /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 bindsym Shift+Print exec "scrot -zf /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
@@ -208,6 +197,7 @@ bindsym Shift+Print exec "scrot -zf /tmp/screenshot-$(date +%F_%T).png -e 'xclip
 # Saves screenshots to pictures file (and copies to clipboard)
 bindsym $mod+Print --release exec "scrot -zfs ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 bindsym $mod+Shift+Print exec "scrot -zf ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+
 
 ###########
 ##Session##
@@ -232,9 +222,29 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # start dunst (notifcation handler)
 exec_always --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 
+
 ##############
 ##Appearance##
 ##############
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+#
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Hack Regular 16
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+# look into using polybar to replace this full battery at 70%
+bar
+{
+    font pango:Hack Regular 14,
+    #font pango:DejaVu Sans Mono 14
+    status_command i3status -c ~/.i3status.conf
+}
+
 # Chooses a random wallpaper and changes the theme colours
 bindsym $mod+b exec --no-startup-id wal -i /mnt/shared/Pictures/Backgrounds/Arty --saturate 1.0 --iterative
 bindsym $mod+Shift+b exec --no-startup-id wal -b "ffffff"  --saturate 1.0 -l
