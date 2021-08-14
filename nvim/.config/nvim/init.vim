@@ -148,7 +148,7 @@ let g:ale_fix_on_save = 1
 "##AutoFormating##
 "#################
 
-let g:formatdef_c_style= '"astyle --style=allman --indent-classes"'
+let g:formatdef_c_style= '"astyle --style=allman --indent-classes --pad-oper --break-blocks --align-pointer=name --remove-braces"'
 let g:formatters_c = ['c_style']
 let g:formatters_cpp = ['c_style']
 
