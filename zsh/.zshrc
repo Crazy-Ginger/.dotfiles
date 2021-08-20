@@ -84,8 +84,8 @@ eval $(thefuck --alias)
 # stuff to do with autocomplete possibly (not sure)
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
-setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1
+setopt nocompletealiases
 
 # fix alias autocomplete
 zstyle ':completion:*' completer _expand_alias _complete _ignored
