@@ -127,3 +127,4 @@ source "$HOME/.cargo/env"
 if cat /proc/version | grep -q WSL; then
     export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 fi
+. "$HOME/.cargo/env"
