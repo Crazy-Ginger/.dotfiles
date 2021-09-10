@@ -95,6 +95,10 @@ setopt prompt_subst
 
 # TODO: look into disabling git status for large repos
 # use: git config --get .oh-my-zsh.hide-info
+__git_prompt_git () {
+	GIT_OPTIONAL_LOCKS=0 command timeout 0.3s git "$@"
+}
+
 
 # appends the hostname to the terminal line if in SSH
 if [[ -n $SSH_CONNECTION ]]; then
