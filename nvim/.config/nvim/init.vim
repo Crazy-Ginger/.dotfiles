@@ -16,6 +16,7 @@ call plug#begin()
     Plug 'tpope/vim-sensible'               "Some basic starters for vim
     Plug 'sirtaj/vim-openscad'              "OpenScad support
     Plug 'Chiel92/vim-autoformat'           "Autoformating
+    Plug 'isobit/vim-caddyfile'             " Caddyfile support
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
