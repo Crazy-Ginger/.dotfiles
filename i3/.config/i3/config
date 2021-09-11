@@ -18,40 +18,55 @@ set $mod Mod4
 ## Audio
 # Use pactl to adjust volume in PulseAudio
 set $refresh_i3status killall -SIGUSR1 i3status
+# %%hotkey: Volume ++2% %%
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master 2%+ unmute"
+# %%hotkey: Volume --2% %%
 bindsym XF86AudioLowerVolume exec--no-startup-id "amixer -q sset Master 2%- unmute"
+# %%hotkey: Toggle mute %%
 bindsym XF86AudioMute exec --no-startup-id "amixer -q sset Master toggle"
 
 ## Lighting
-# Uses xbacklight to increase and decrease the screen brightness
+# Uses xbacklight to change screen Brightness
+# %%hotkey: Brightness ++10% %%
 bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10"
+# %%hotkey: Brightness --10% %%
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
+# %%hotkey: Brightness ++5% %%
 bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 5"
+# %%hotkey: Brightness --5% %%
 bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 5"
+# %%hotkey: Brightness ++1% %%
 bindsym Mod1+XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 1"
+# %%hotkey: Brightness --1% %%
 bindsym Mod1+XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 1"
 
 # Use Mouse+$mod to drag floating windows to their wanted position (doesn't work?)
 floating_modifier $mod
 
 # start a terminal
+# %%hotkey: Open terminal %%
 bindsym $mod+Return exec i3-sensible-terminal
+# %%hotkey: Open terminal %%
 bindsym $mod+space exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec rofi -modi drun -show drun -show-icons
+# %%hotkey: Opeon Rofi (start menu) %%
+bindsym $mod+d exec rofi -show drun -show-icons -modi drun
 
 # Alternative menu that uses dmenu but only lists graphical applications
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 ## Focus Changers
-# change focus
+
+# %%hotkey: i3- focus left %%
 bindsym $mod+h focus left
+# %%hotkey: i3- focus down %%
 bindsym $mod+j focus down
+# %%hotkey: i3- focus up %%
 bindsym $mod+k focus up
+# %%hotkey: i3- focus right %%
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
@@ -60,16 +75,20 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-#using alt+tab
+# %%hotkey: i3- alt tab %%
 bindsym Mod1+Tab focus left
 bindsym Mod1+Shift+Tab focus right
 
 
 ## Moving windows
-# move focused window
+
+# %%hotkey: i3- move window left %%
 bindsym $mod+Shift+h move left
+# %%hotkey: i3- move window down %%
 bindsym $mod+Shift+j move down
+# %%hotkey: i3- move window up %%
 bindsym $mod+Shift+k move up
+# %%hotkey: i3- move window right %%
 bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
@@ -79,35 +98,39 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 
-## Change split axis
 # split in horizontal orientation
-bindsym $mod+g split h
+# %%hotkey: i3- change split to verticle%%
+bindsym $mod+v split h
 
-# split in vertical orientation
-bindsym $mod+v split v
+# %%hotkey: i3- change split to horizontal%%
+bindsym $mod+g split v
 
 
 ## Change layout of Windows
-# enter fullscreen mode for the focused container
+# %%hotkey: i3- Enter fullscreen mode%%
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
+# %%hotkey: i3- set container to stacking%%
 bindsym $mod+s layout stacking
+# %%hotkey: i3- set container to tabbed%%
 bindsym $mod+w layout tabbed
+# %%hotkey: i3- set container to split%%
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
+# %%hotkey: i3- toggle floating window%%
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
+# %%hotkey: i3- change focus to tiling window%%
 bindsym $mod+Ctrl+Shift+space focus mode_toggle
 
 # focus the parent container
+# %%hotkey: i3- focus parent%%
 bindsym $mod+a focus parent
 
-# focus the child container
-bindsym $mod+c focus child
-
+# focus the child container bindsym $mod+c focus child
 
 ## Workspace stuff
 # Define names for default workspaces for which we configure key bindings later on.
@@ -136,14 +159,15 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # cycle through workspaces with windows-tab and arrow keys
+# %%hotkey: i3- move workpsace%%
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Tab workspace next
 bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+Right workspace next
 
 # move to next unused workspace
-# don't know why didm't work
-#bindsym $mod+o exec --no-start-id $HOME/bin/empty_workspace
+# %%hotkey: i3- move to empty workpsace%%
+bindsym $mod+o exec $HOME/bin/empty_workspace
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -184,25 +208,31 @@ mode "resize"
     bindsym $mod+r mode "default"
 }
 
+# %%hotkey: i3- enter resize mode%%
 bindsym $mod+r mode "resize"
 
+bindsym $mod+m --release exec "dmenu_hotkeys run -m rofi -a i3"
 
 ###############
 ##Screenshots##
 ###############
 # Copies screenshots to clipboard for sharing
+# %%hotkey: scrot- copies screenshot to clipboard (selection)%%
 bindsym Print --release exec "scrot -zfs /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+# %%hotkey: scrot- copies screenshot to clipboard (whole screen)%%
 bindsym Shift+Print exec "scrot -zf /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 
 # Saves screenshots to pictures file (and copies to clipboard)
+# %%hotkey: scrot- saves and copies to clipboard (selection)%%
 bindsym $mod+Print --release exec "scrot -zfs ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+# %%hotkey: scrot- saves and copies to clipboard (whole screen)%%
 bindsym $mod+Shift+Print exec "scrot -zf ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 
 
 ###########
 ##Session##
 ###########
-# start lock hanler with 2min timeout
+# start lock handler with 2min timeout
 exec_always --no-startup-id xset s 300
 exec_always --no-startup-id xss-lock $HOME/bin/screen-locker
 #xec_always --no-startup-id echo $XDG_SESSION_ID > /tmp/locksessionid
@@ -211,9 +241,10 @@ exec_always --no-startup-id xss-lock $HOME/bin/screen-locker
 bindsym Control+Mod1+Delete exec --no-startup-id $HOME/bin/screen-locker
 
 # reload the configuration file
+# %%hotkey: i3- reload config file%%
 bindsym $mod+Shift+c reload
 
-# restart i3 inp<Down>lace (preserves your layout/session, can be used to upgrade i3)
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
@@ -246,7 +277,10 @@ bar
 }
 
 # Chooses a random wallpaper and changes the theme colours
+# %%hotkey: i3- random wallpaper%%
 bindsym $mod+b exec --no-startup-id wal -i /mnt/shared/Pictures/Backgrounds/Arty --saturate 1.0 --iterative
+# TODO:
+# Choose a wall paper lightmode
 bindsym $mod+Shift+b exec --no-startup-id wal -b "ffffff"  --saturate 1.0 -l
 
 # Gaps
