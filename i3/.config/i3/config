@@ -168,6 +168,7 @@ bindsym $mod+Control+Right workspace next
 # move to next unused workspace
 # %%hotkey: i3- move to empty workpsace%%
 bindsym $mod+o exec $HOME/bin/empty_workspace
+bindsym $mod+Shift+o exec "$HOME/bin/empty_workspace 1"
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
