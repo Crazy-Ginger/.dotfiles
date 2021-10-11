@@ -106,7 +106,7 @@ let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
     \ 'c': ['gcc', 'cc', 'flawfinder'],
     \ 'cpp' : ['gcc', 'cc', 'flawfinder', 'cclang'],
-    \ 'python': ['flake8' ],
+    \ 'python': ['flake8', "pylint"],
     \ 'haskell': [],
     \ 'json': ['jq'],
     \ }
