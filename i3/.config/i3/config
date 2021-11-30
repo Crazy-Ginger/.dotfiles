@@ -169,6 +169,8 @@ bindsym $mod+Control+Right workspace next
 # %%hotkey: i3- move to empty workpsace%%
 bindsym $mod+o exec $HOME/bin/empty_workspace
 bindsym $mod+Shift+o exec --no-startup-id "$HOME/bin/empty_workspace 1"
+# %%hotkey: i3- move current window to empty workspace%%
+bindsym $mod+n exec $HOME/bin/window_move
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
