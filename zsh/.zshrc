@@ -140,3 +140,12 @@ fi
 if command -v spack &> /dev/null; then
     source ~/spack/share/spack/setup-env.sh
 fi
+
+# Turn ros2 on
+ros2_on(){
+     export ROS_DOMAIN_ID=42
+     export ROS_VERSION=2
+     export ROS_PYTHON_VERSION=3
+     export ROS_DISTRO=foxy
+     source /opt/ros2/foxy/setup.zsh
+}

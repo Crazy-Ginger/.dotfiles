@@ -167,8 +167,13 @@ bindsym $mod+Control+Right workspace next
 
 # move to next unused workspace
 # %%hotkey: i3- move to empty workpsace%%
-bindsym $mod+o exec $HOME/bin/empty_workspace
-bindsym $mod+Shift+o exec "$HOME/bin/empty_workspace 1"
+bindsym $mod+o exec --no-startup-id $HOME/bin/empty_workspace
+# %%hotkey: i3- open terminal in next empty workspace%%
+bindsym $mod+Shift+o exec --no-startup-id "$HOME/bin/empty_workspace 1"
+# %%hotkey: i3- move current window to empty workspace%%
+bindsym $mod+n exec --no-startup-id $HOME/bin/window_move
+# %%hotkey: i3- move current window to empty workspace and follow it%%
+bindsym $mod+Shift+n exec --no-startup-id "$HOME/bin/window_move 1"
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -212,7 +217,11 @@ mode "resize"
 # %%hotkey: i3- enter resize mode%%
 bindsym $mod+r mode "resize"
 
-bindsym $mod+m --release exec "dmenu_hotkeys run -m rofi -a i3"
+# Keyboard shortcut displayer
+# %%hotkey: i3- display this menu%%
+bindsym $mod+m  exec dmenu_hotkeys run -m rofi -a i3 -d True
+# %%hotkey: i3- display this menu%%
+bindsym $mod+Shift+?  exec dmenu_hotkeys run -m rofi -a i3 -d True
 
 ###############
 ##Screenshots##
