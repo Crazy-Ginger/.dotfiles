@@ -109,6 +109,7 @@ let g:ale_linters = {
     \ 'python': ['flake8', "pylint"],
     \ 'haskell': [],
     \ 'json': ['jq'],
+    \ 'rust': ['rls'],
     \ }
 
 " enable linting after a save event
