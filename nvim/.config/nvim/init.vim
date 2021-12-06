@@ -15,7 +15,7 @@ call plug#begin()
     " consider nerd tree preservim/nerdtree
     Plug 'tpope/vim-sensible'               "Some basic starters for vim
     Plug 'sirtaj/vim-openscad'              "OpenScad support
-    Plug 'Chiel92/vim-autoformat'           "Autoformating
+    "Plug 'Chiel92/vim-autoformat'           "Autoformating
     Plug 'isobit/vim-caddyfile'             " Caddyfile support
 
     " Autocomplete
@@ -106,6 +106,7 @@ let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
     \ 'c': ['gcc', 'cc', 'flawfinder'],
     \ 'cpp' : ['gcc', 'cc', 'flawfinder', 'cclang'],
+    \ 'rs' : ['cargo', 'rls'],
     \ 'python': ['flake8', "pylint"],
     \ 'haskell': [],
     \ 'json': ['jq'],
@@ -126,6 +127,8 @@ let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
 
 let g:ale_fixers = {
     \ "*": ["trim_whitespace", "remove_trailing_lines"],
+    \ "c": ["astyle"],
+    \ "cpp": ["astyle"],
     \ "python": ["isort"],
     \ "rust": ["rustfmt"],
     \ "sh" : ["shfmt"],
@@ -149,9 +152,12 @@ let g:ale_fix_on_save = 1
 "##AutoFormating##
 "#################
 
-let g:formatdef_c_style= '"astyle --style=allman --indent-classes --pad-oper --break-blocks --align-pointer=name --remove-braces"'
-let g:formatters_c = ['c_style']
-let g:formatters_cpp = ['c_style']
+let g:ale_c_clangformat_options = '-style="{BasedOnStyle: GNU, IndentWidth:4}"'
+"let g:ale_c_astyle_executable = 'astyle --style=allman --indent-classes --pad-oper --break-blocks --align-pointer=name --remove-braces'
+"let g:ale_cpp_astyle_executable = '"astyle --style=allman --indent-classes --pad-oper --break-blocks --align-pointer=name --remove-braces"'
+"let g:formatters_c = ['c_style']
+"let g:formatters_cpp = ['c_style']
+let g:formatdef_rustfmt= '""'
 
 "###############
 "##Custom shit##
