@@ -171,7 +171,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 " automatic folding enabler for used languages
 " sets the foldmethod to syntax over other alternatives
 au FileType cpp,c,hpp,h,javascript,zsh,java,json,openscad,rust set foldmethod=syntax
-au FileType python,html,xml,cmake,sh set foldmethod=indent
+au FileType python,html,xml,cmake,sh,yml set foldmethod=indent
 au FileType python set foldignore=
 
 " Allow dictionary completion on certain file types
