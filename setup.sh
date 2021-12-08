@@ -31,5 +31,9 @@ vim +PlugInstall +qall
 # Find libclang and symlinks to home dir
 find /usr/ -mount -iname '*libclang.so*' -exec ln -s {} /home/becca/.libclang.so
 
+# Set up astyle
+cd $HOME/.dotfiles
+stow asyle
+cd $HOME
 
 source $HOME/.zshrc

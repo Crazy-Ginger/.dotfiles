@@ -1,0 +1,9 @@
+# Brace style {}
+--style=allman
+--indent-classes
+--pad-oper
+--break-blocks
+--align-pointer=name
+--remove-braces
+--attach-return-type
+--remove-comment-prefix

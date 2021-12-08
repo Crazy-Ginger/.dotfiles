@@ -134,7 +134,7 @@ let g:ale_fixers = {
     \ "python": ["isort"],
     \ "rust": ["rustfmt"],
     \ "sh" : ["shfmt"],
-    \ "java" : ["google_java_format"],
+    \ "java" : ["astyle"],
     \ "json" : ["jq"],
     \ "go": ["gofmt"],
 	\ "html": ["prettier"]
@@ -146,19 +146,14 @@ let g:ale_fixers = {
 " allows ALE to try and fix the file after a save
 let g:ale_fix_on_save = 1
 
-" set c style (may need changing)
-"let g:ale_c_clangformat_options = '-style="{BasedOnStyle: Google, IndentWidth: 4}"'
+" C style now moved to astylerc in $HOME
+"let g:ale_cpp_astyle_project_options = '--style=allman --indent-classes --pad-oper --break-blocks --align-pointer=name --remove-braces'
 
 
 "#################
 "##AutoFormating##
 "#################
 
-let g:ale_c_clangformat_options = '-style="{BasedOnStyle: GNU, IndentWidth:4}"'
-"let g:ale_c_astyle_executable = 'astyle --style=allman --indent-classes --pad-oper --break-blocks --align-pointer=name --remove-braces'
-"let g:ale_cpp_astyle_executable = '"astyle --style=allman --indent-classes --pad-oper --break-blocks --align-pointer=name --remove-braces"'
-"let g:formatters_c = ['c_style']
-"let g:formatters_cpp = ['c_style']
 let g:formatdef_rustfmt= '""'
 
 "###############
