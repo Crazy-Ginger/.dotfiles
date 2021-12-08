@@ -10,3 +10,4 @@ neovim
 clang
 stow
 neofetch
+astyle
