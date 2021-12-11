@@ -19,9 +19,9 @@ set $mod Mod4
 # Use pactl to adjust volume in PulseAudio
 set $refresh_i3status killall -SIGUSR1 i3status
 # %%hotkey: Volume ++2% %%
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master 2%+ unmute"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%"
 # %%hotkey: Volume --2% %%
-bindsym XF86AudioLowerVolume exec--no-startup-id "amixer -q sset Master 2%- unmute"
+bindsym XF86AudioLowerVolume exec--no-startup-id "pactl set-sink-volume 0 -5%"
 # %%hotkey: Toggle mute %%
 bindsym XF86AudioMute exec --no-startup-id "amixer -q sset Master toggle"
 
