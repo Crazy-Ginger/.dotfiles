@@ -7,3 +7,4 @@
 --remove-braces
 --attach-return-type
 --remove-comment-prefix
+--indent-coll-comments
