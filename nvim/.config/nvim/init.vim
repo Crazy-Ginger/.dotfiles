@@ -114,6 +114,7 @@ let g:ale_linters = {
     \ 'haskell': [],
     \ 'json': ['jq'],
     \ 'rust': ['rls'],
+    \ 'markdown': ['markdownlint', 'mdl', 'writegood', 'remark_lint'],
     \ }
 
 " enable linting after a save event
@@ -141,7 +142,8 @@ let g:ale_fixers = {
     \ "java" : ["astyle"],
     \ "json" : ["jq"],
     \ "go": ["gofmt"],
-	\ "html": ["prettier"]
+	\ "html": ["prettier"],
+    \ "markdown": ["pandoc", "prettier", "remark-lint"],
     \ }
 
 " moved to autoformat for easier parameter setting
