@@ -112,6 +112,9 @@ fi
 # Set Ctrl + left arrow to forward word on certain systems
 if ! [[ $(cat /proc/version | grep -q arch) ]]; then
     bindkey '^[[1;5C' forward-word
+
+    # if paraview workaround is installed add to path
+    [[ -d "/opt/paraview-opt" ]] && export PATH=$PATH:/opt/paraview-opt/bin
 fi
 
 
