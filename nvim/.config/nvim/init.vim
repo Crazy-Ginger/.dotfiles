@@ -58,9 +58,10 @@ let g:tex_flavor = "latex"
 " enable rainbow parenthesis
 let g:rainbow_active = 1
 
-" enable deoplete completion framework
-" trying ncm2 for now
-"let g:deoplete#enable_at_startup = 1
+" ### NERDCommenter ###
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
 " ##NCM2##
 
