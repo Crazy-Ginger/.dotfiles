@@ -13,7 +13,6 @@ ZSH_THEME="gallois"
 plugins=(
     git
     zsh-autosuggestions
-    zsh-syntax-highlighting
     tmux
     shrink-path
     colored-man-pages
@@ -21,6 +20,7 @@ plugins=(
     docker
     docker-compose
     vscode
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
