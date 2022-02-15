@@ -145,6 +145,10 @@ if command -v spack &> /dev/null; then
     source ~/spack/share/spack/setup-env.sh
 fi
 
+if command -v cargo &> /dev/null; then
+    export PATH=$PATH:~/.cargo/bin
+fi
+
 # Turn ros2 on
 ros2_on(){
      export ROS_DOMAIN_ID=42
