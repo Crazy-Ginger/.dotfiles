@@ -228,15 +228,19 @@ bindsym $mod+Shift+?  exec dmenu_hotkeys run -m rofi -a i3 -d True
 ###############
 # Copies screenshots to clipboard for sharing
 # %%hotkey: scrot- copies screenshot to clipboard (selection)%%
-bindsym Print --release exec "scrot -zfs /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+# bindsym Print --release exec "scrot -zfs /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 # %%hotkey: scrot- copies screenshot to clipboard (whole screen)%%
-bindsym Shift+Print exec "scrot -zf /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+# bindsym Shift+Print exec "scrot -zf /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 
 # Saves screenshots to pictures file (and copies to clipboard)
 # %%hotkey: scrot- saves and copies to clipboard (selection)%%
-bindsym $mod+Print --release exec "scrot -zfs ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+# bindsym $mod+Print --release exec "scrot -zfs ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 # %%hotkey: scrot- saves and copies to clipboard (whole screen)%%
-bindsym $mod+Shift+Print exec "scrot -zf ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+# bindsym $mod+Shift+Print exec "scrot -zf ~/Pictures/Screenshots/$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+
+# %%hotkey: flameshot capture to keyboard%%
+bindsym Print --release exec "flameshot gui -c"
+
 
 
 ###########
