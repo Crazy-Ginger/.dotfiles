@@ -2,11 +2,14 @@
 "##Plugins##
 "###########
 
+" Requested by polyglot
+set nocompatible
+
 "vim-plug to manage plugins for nvim
 call plug#begin()
     Plug 'dense-analysis/ale'               "A collection of linters in one plugin
 	Plug 'roxma/nvim-yarp'                  "a remote plugin framework
-    Plug 'sheerun/vim-polyglot'             "language highlighting
+    " Plug 'sheerun/vim-polyglot'             "language highlighting
     Plug 'scrooloose/nerdcommenter'         "Easy commenting
     Plug 'tpope/vim-surround'               "use cs<><> to replace brackets, quotation marks and more
     Plug 'ryanoasis/vim-devicons'           "allows for nerd fonts (icon fonts)
