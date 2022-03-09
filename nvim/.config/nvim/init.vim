@@ -119,7 +119,7 @@ let g:ale_linters = {
     \ 'haskell': [],
     \ 'json': ['jq'],
     \ 'rust': ['rls'],
-    \ 'markdown': ['markdownlint', 'mdl', 'writegood', 'remark-lint'],
+    \ 'markdown': ['markdownlint', 'mdl', 'remark-lint'],
     \ }
 
 " enable linting after a save event
