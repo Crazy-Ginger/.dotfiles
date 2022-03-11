@@ -141,7 +141,7 @@ let g:ale_fixers = {
     \ "cpp": ["astyle"],
     \ "h": ["astyle"],
     \ "hpp": ["astyle"],
-    \ "python": ["isort"],
+    \ "python": ["isort", "yapf"],
     \ "rust": ["rustfmt"],
     \ "sh" : ["shfmt"],
     \ "java" : ["astyle"],
