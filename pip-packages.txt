@@ -3,3 +3,5 @@ numpy
 matplotlib
 jedi
 speedtest-cli
+yapf
+pylint

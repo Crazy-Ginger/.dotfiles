@@ -36,6 +36,9 @@ function nvim_setup {
     mkdir -p $HOME/.config/nvim/autoload
     cd $HOME/.dotfiles && stow nvim && cd $HOME
     vim +PlugInstall +qall
+    astyle_setup
+    yapf_setup
+    pylint_setup
 }
 
 # Find libclang and symlinks to home dir
@@ -57,11 +60,16 @@ function yapf_setup {
     cd $HOME
 }
 
+function pylint_setup {
+    cd $HOME/.dotfiles
+    stow pylint
+    cd $HOME
+}
+
+
 bash_setup
 tmux_setup
 zsh_setup
 omz_plugins
 nvim_setup
 libclang_find
-astyle_setup
-yapf_setup

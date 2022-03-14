@@ -125,7 +125,7 @@ let g:ale_linters = {
 " enable linting after a save event
 let g:ale_lint_on_save = 1
 " Shut up python linting errors
-let g:ale_python_flake8_options = "--ignore=E501,E226,VNE001"
+let g:ale_python_flake8_options = "--ignore=E501,E226,E251,VNE001"
 
 " ##Fixers
 " Encountered errors with formatting, using another plugin to do that instead
