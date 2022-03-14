@@ -155,5 +155,5 @@ ros2_on(){
      export ROS_VERSION=2
      export ROS_PYTHON_VERSION=3
      export ROS_DISTRO=foxy
-     source /opt/ros2/foxy/setup.zsh
+     source /opt/ros/foxy/setup.zsh
 }
