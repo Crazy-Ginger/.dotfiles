@@ -19,7 +19,6 @@ plugins=(
     web-search
     docker
     docker-compose
-    vscode
     zsh-syntax-highlighting
 )
 
