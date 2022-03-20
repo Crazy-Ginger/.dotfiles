@@ -254,6 +254,8 @@ exec_always --no-startup-id xss-lock $HOME/bin/screen-locker
 # lock screen
 bindsym Control+Mod1+Delete exec --no-startup-id $HOME/bin/screen-locker
 
+exec --no-startup-id picom -b
+
 # reload the configuration file
 # %%hotkey: i3- reload config file%%
 bindsym $mod+Shift+c reload
