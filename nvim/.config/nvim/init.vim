@@ -7,6 +7,7 @@ set nocompatible
 
 "vim-plug to manage plugins for nvim
 call plug#begin()
+    Plug 'nvim-treesitter/nvim-treesitter'  "Adds more complex syntax highlighting to nvim (unstable?)
     Plug 'dense-analysis/ale'               "A collection of linters in one plugin
 	Plug 'roxma/nvim-yarp'                  "a remote plugin framework
     " Plug 'sheerun/vim-polyglot'             "language highlighting
