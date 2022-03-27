@@ -2,8 +2,13 @@
 --style=allman
 --indent-classes
 --pad-oper
+--pad-comma
+--unpad-paren
 --break-blocks
 --align-pointer=name
+--align-reference=name
+--break-one-line-headers
+--close-templates
 --remove-braces
 --attach-return-type
 --remove-comment-prefix
