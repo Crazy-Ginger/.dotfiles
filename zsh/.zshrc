@@ -52,6 +52,7 @@ fi
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/sbin
+export PATH=$PATH:/usr/include
 
 # add /usr/local/ to cpp compiler
 export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
