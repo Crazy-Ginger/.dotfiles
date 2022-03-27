@@ -86,7 +86,7 @@ inoremap <c-c> <ESC>
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
 " line.
-"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -94,19 +94,18 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " for pyclang (c++ completor)
 " path to directory where libclang.so can be found
-"let g:ncm2_pyclang#library_path = system("find /usr/ -mount -iname '*libclang.so*' -print 2>/dev/null")
-"let g:ncm2_pyclang#library_path = '~/.clanglib/libclang.so.1'
-"let g:ncm2_pyclang#library_path = '/home/becca/.libclang.so'
-"let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib'
+" let g:ncm2_pyclang#library_path = system("find /usr/ -mount -iname '*libclang.so*' -print 2>/dev/null")
+" let g:ncm2_pyclang#library_path = '~/.clanglib/libclang.so.1'
+" let g:ncm2_pyclang#library_path = '/home/becca/.libclang.so'
+" let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib'
 let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang-7.so.1'
 
 
+" ###########
+" ##Linting##
+" ###########
 
-" #######
-" ##ALE##
-" #######
-
-"##Linting##
+" Linting currently done via ALE
 
 " consider adding pylint to python
 let g:ale_linters = {
@@ -128,13 +127,17 @@ let g:ale_lint_on_save = 1
 " Shut up python linting errors
 let g:ale_python_flake8_options = "--ignore=E501,E226,E251,VNE001"
 
-" ##Fixers
+
+" #################
+" ##Formating##
+" #################
+
+" Formatting mostly done via ALE
 " Encountered errors with formatting, using another plugin to do that instead
 
 " Use a couple of preferred fixers/formatters for each lang
 " Then cull whitespace
 " Don't use for whitespace languages
-" "yapf",, "add_blank_lines_for_python_control_statements"
 
 let g:ale_fixers = {
     \ "*": ["trim_whitespace", "remove_trailing_lines"],
@@ -152,20 +155,12 @@ let g:ale_fixers = {
     \ "markdown": ["pandoc", "prettier", "remark-lint"],
     \ }
 
-" moved to autoformat for easier parameter setting
-"\ "c" : ["astyle"],
-    "\ "cpp" : ["astyle"],
 " allows ALE to try and fix the file after a save
 let g:ale_fix_on_save = 1
 
-" C style now moved to astylerc in $HOME
-"let g:ale_cpp_astyle_project_options = '--style=allman --indent-classes --pad-oper --break-blocks --align-pointer=name --remove-braces'
+" C/C++ style options is done via .astylerc in $HOME
 
-
-"#################
-"##AutoFormating##
-"#################
-
+" TODO: sort out rustfmt options to make it nice
 let g:formatdef_rustfmt= '""'
 
 "###############
@@ -190,7 +185,7 @@ set foldnestmax=50
 " reformats all folds
 au BufRead * normal <CTRL-l>
 " closes all folds
-au BufRead * normal zM
+" au BufRead * normal zM
 
 " not sure(?)
 let javaScript_fold=1       "javascript
@@ -208,17 +203,34 @@ command W w
 command Wq wq
 command WQ wq
 
+" nvim-treesitter config
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
 
-" alway set syntax on to enable code highlighting (didn't seem to make a
-" difference but don't want to take chances)
-syntax on
+  -- Install languages synchronously (only applied to `ensure_installed`)
+  sync_install = true,
+  ensure_installed = {
+      "cpp", "c", "python", "java", "javascript", "cmake", "cuda", "css", "html", "dockerfile", "foam", "json", "latex", "make", "llvm", "regex", "rust", "typescript", "vim", "yaml"
+    },
 
-" should enable sudo saving even when file isn't opened as sudo
-" doesn't work as neovim won't take sudo password
-"command Sw w !sudo tee > /dev/null %
-" Plugin to do that same also doesn't work
-"command Sw w suda://%
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
 
+    -- list of language that will be disabled
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+
+syntax off
 " spell checking and toggling it
 set spelllang=en
 nnoremap <silent> <F11> :set spell!<cr>
