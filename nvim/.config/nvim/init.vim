@@ -212,7 +212,7 @@ require'nvim-treesitter.configs'.setup {
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = true,
   ensure_installed = {
-      "cpp", "c", "python", "java", "javascript", "cmake", "cuda", "css", "html", "dockerfile", "foam", "json", "latex", "make", "llvm", "regex", "rust", "typescript", "vim", "yaml"
+      "cpp", "c", "python", "java", "javascript", "cmake", "cuda", "css", "html", "dockerfile", "foam", "json", "latex", "make", "llvm", "regex", "rust", "typescript", "vim", "yaml", "markdown"
     },
 
   highlight = {
