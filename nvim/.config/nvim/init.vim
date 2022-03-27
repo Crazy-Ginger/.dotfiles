@@ -110,9 +110,9 @@ let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang-7.so.1'
 " consider adding pylint to python
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
-    \ 'c': ['gcc', 'cc', 'flawfinder'],
+    \ 'c': ['gcc', 'cc', 'flawfinder', 'ccls'],
     \ 'cpp' : ['gcc', 'cc', 'flawfinder', 'cclang'],
-    \ 'h': ['gcc', 'cc', 'flawfinder'],
+    \ 'h': ['gcc', 'cc', 'flawfinder', 'ccls'],
     \ 'hpp': ['gcc', 'cc', 'flawfinder', 'cclang'],
     \ 'rs' : ['cargo', 'rls'],
     \ 'python': ['flake8', "pylint"],
