@@ -167,6 +167,9 @@ let g:formatdef_rustfmt= '""'
 "##Custom shit##
 "###############
 
+" Enable line numbering
+set number
+
 " setting the size of tab spaces to not be stupid long
 set linebreak
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
