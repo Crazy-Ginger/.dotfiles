@@ -56,7 +56,7 @@ export PATH=$PATH:/usr/include
 
 # add /usr/local/ to cpp compiler
 export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
-export INCLUDE="/usr/local/include:$INCLUDE"
+export INCLUDE="/usr/include/vtk:/usr/local/include:$INCLUDE"
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 
 ###############
