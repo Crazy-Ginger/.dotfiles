@@ -7,7 +7,7 @@ set nocompatible
 
 "vim-plug to manage plugins for nvim
 call plug#begin()
-    Plug 'nvim-treesitter/nvim-treesitter'  "Adds more complex syntax highlighting to nvim (unstable?)
+    Plug 'nvim-treesitter/nvim-treesitter'  "Adds more complex syntax highlighting to nvim (unstable?) (run :TSUpdate to fix some stuff)
     Plug 'dense-analysis/ale'               "A collection of linters in one plugin
 	Plug 'roxma/nvim-yarp'                  "a remote plugin framework
     " Plug 'sheerun/vim-polyglot'             "language highlighting
@@ -33,7 +33,6 @@ call plug#begin()
     Plug 'ncm2/ncm2-cssomni'                "css
     Plug 'ncm2/ncm2-tern'                   "javascript
     Plug 'ncm2/ncm2-jedi'                   "python
-    Plug 'ncm2/ncm2-racer'                  "rust
     Plug 'artur-shaik/vim-javacomplete2'    "java & jsp
     Plug 'ncm2/ncm2-pyclang'                "c/c++
     Plug 'ncm2/ncm2-vim'                    "vimscript
