@@ -169,6 +169,10 @@ if command -v cargo &> /dev/null; then
     export PATH=$PATH:~/.cargo/bin
 fi
 
+if [[ -d "/usr/local/cuda" ]]; then
+    export PATH=$PATH:/usr/local/cuda/bin
+fi
+
 # Turn ros2 on
 ros2_on(){
      export ROS_DOMAIN_ID=42
