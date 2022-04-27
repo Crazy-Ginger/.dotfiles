@@ -142,6 +142,7 @@ let g:ale_fixers = {
     \ "*": ["trim_whitespace", "remove_trailing_lines"],
     \ "c": ["astyle"],
     \ "cpp": ["astyle"],
+    \ "cuda": ["astyle"],
     \ "h": ["astyle"],
     \ "hpp": ["astyle"],
     \ "python": ["isort", "yapf"],
@@ -175,7 +176,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " automatic folding enabler for used languages
 " sets the foldmethod to syntax over other alternatives
-au FileType cpp,c,hpp,h,javascript,zsh,java,json,openscad,rust set foldmethod=syntax
+au FileType cpp,c,hpp,h,cuda,javascript,zsh,java,json,openscad,rust set foldmethod=syntax
 au FileType python,html,xml,cmake,sh set foldmethod=indent
 au FileType python set foldignore=
 
