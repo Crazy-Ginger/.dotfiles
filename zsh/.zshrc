@@ -55,12 +55,13 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/usr/include
 
 # add /usr/local/ to cpp compiler
-export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
+export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH:/opt/cuda/targets/x86_64-linux/lib"
 
-export C_INCLUDE_PATH="/usr/local/include:/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include:$C_INCLUDE_PATH"
+export C_INCLUDE_PATH="/usr/local/include:/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include:$C_INCLUDE_PATH:/opt/cuda/targets/x86_64-linux/include"
 
-export CPLUS_INCLUDE_PATH="/usr/include/vtk:$CPLUS_INCLUDE_PATH"
-export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+export CPLUS_INCLUDE_PATH="/usr/include/vtk:$CPLUS_INCLUDE_PATH:/opt/cuda/targets/x86_64-linux/include"
+
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH:/opt/cuda/targets/x86_64-linux/lib"
 
 ###############
 ##Zsh History##
