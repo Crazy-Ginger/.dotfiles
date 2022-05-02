@@ -178,7 +178,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 " sets the foldmethod to syntax over other alternatives
 au FileType cpp,c,hpp,h,cuda,javascript,zsh,java,json,openscad,rust set foldmethod=syntax
 au FileType python,html,xml,cmake,sh set foldmethod=indent
-au FileType python set foldignore=
+" au FileType python set foldignore=
 
 " Allow dictionary completion on certain file types
 au FileType markdown,text let b:ncm2_look_enabled = 1
@@ -228,12 +228,13 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
   },
 }
 EOF
 
-syntax off
+syntax on
+
 " spell checking and toggling it
 set spelllang=en
 nnoremap <silent> <F11> :set spell!<cr>
