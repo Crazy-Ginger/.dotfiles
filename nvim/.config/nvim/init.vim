@@ -92,12 +92,9 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " for pyclang (c++ completor)
-" path to directory where libclang.so can be found
-" let g:ncm2_pyclang#library_path = system("find /usr/ -mount -iname '*libclang.so*' -print 2>/dev/null")
-" let g:ncm2_pyclang#library_path = '~/.clanglib/libclang.so.1'
-" let g:ncm2_pyclang#library_path = '/home/becca/.libclang.so'
-" let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib'
-let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang-7.so.1'
+" path to directory where libclang.so can be found (used a symlink to get
+" around issues using both debian and arch but requires sudo)
+let g:ncm2_pyclang#library_path = '/usr/lib/libclang.so'
 
 
 " ###########
