@@ -244,6 +244,12 @@ noremap <Right> :echo "No arrows for you"<CR>
 noremap <Up> :echo "No arrows for you"<CR>
 noremap <Down> :echo "No arrows for you"<CR>
 
+nnoremap <silent> <C-Right> <c-w>l
+nnoremap <silent> <C-Left> <c-w>h
+nnoremap <silent> <C-Up> <c-w>k
+nnoremap <silent> <C-Down> <c-w>j
+
+
 "#####################
 "##Colour and Themes##
 "#####################
