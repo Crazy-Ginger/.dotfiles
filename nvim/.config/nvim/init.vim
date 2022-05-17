@@ -22,7 +22,7 @@ call plug#begin()
     "Plug 'Chiel92/vim-autoformat'           "Autoformating
     Plug 'isobit/vim-caddyfile'             " Caddyfile support
     Plug 'pedrohdz/vim-yaml-folds'          "yml folding
-    " Plug 'vmchale/just-vim'                 " Justfile colours
+    Plug 'NoahTheDuke/vim-just'                 " Justfile colours
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
