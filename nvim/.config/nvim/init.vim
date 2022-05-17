@@ -249,6 +249,8 @@ nnoremap <silent> <C-Left> <c-w>h
 nnoremap <silent> <C-Up> <c-w>k
 nnoremap <silent> <C-Down> <c-w>j
 
+nnoremap <silent> <C-H> <c-w>
+
 
 "#####################
 "##Colour and Themes##
