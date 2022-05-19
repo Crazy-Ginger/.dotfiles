@@ -7,43 +7,44 @@ set nocompatible
 
 "vim-plug to manage plugins for nvim
 call plug#begin()
-    Plug 'nvim-treesitter/nvim-treesitter'  "Adds more complex syntax highlighting to nvim (unstable?) (run :TSUpdate to fix some stuff)
-    Plug 'dense-analysis/ale'               "A collection of linters in one plugin
-	Plug 'roxma/nvim-yarp'                  "a remote plugin framework
-    " Plug 'sheerun/vim-polyglot'             "language highlighting
-    Plug 'scrooloose/nerdcommenter'         "Easy commenting
-    Plug 'tpope/vim-surround'               "use cs<><> to replace brackets, quotation marks and more
-    Plug 'ryanoasis/vim-devicons'           "allows for nerd fonts (icon fonts)
-    Plug 'luochen1990/rainbow'              "rainbow parenthesis to make code more readable
-    Plug 'dylanaraps/wal.vim'               "Uses pywal to get colour scheme
+    Plug 'nvim-treesitter/nvim-treesitter'  " Adds more complex syntax highlighting to nvim (unstable?) (run :TSUpdate to fix some stuff)
+    Plug 'dense-analysis/ale'               " A collection of linters in one plugin
+	Plug 'roxma/nvim-yarp'                  " a remote plugin framework
+    " Plug 'sheerun/vim-polyglot'           " language highlighting
+    Plug 'scrooloose/nerdcommenter'         " Easy commenting
+    Plug 'tpope/vim-surround'               " use cs<><> to replace brackets, quotation marks and more
+    Plug 'ryanoasis/vim-devicons'           " allows for nerd fonts (icon fonts)
+    Plug 'luochen1990/rainbow'              " rainbow parenthesis to make code more readable
+    Plug 'dylanaraps/wal.vim'               " Uses pywal to get colour scheme
     " consider nerd tree preservim/nerdtree
-    Plug 'tpope/vim-sensible'               "Some basic starters for vim
-    Plug 'sirtaj/vim-openscad'              "OpenScad support
-    "Plug 'Chiel92/vim-autoformat'           "Autoformating
+    Plug 'tpope/vim-sensible'               " Some basic starters for vim
+    Plug 'sirtaj/vim-openscad'              " OpenScad support
+    "Plug 'Chiel92/vim-autoformat'          " Autoformating
     Plug 'isobit/vim-caddyfile'             " Caddyfile support
-    Plug 'pedrohdz/vim-yaml-folds'          "yml folding
-    Plug 'NoahTheDuke/vim-just'                 " Justfile colours
-    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'pedrohdz/vim-yaml-folds'          " yml folding
+    Plug 'NoahTheDuke/vim-just'             " Justfile colours
+    Plug 'christoomey/vim-tmux-navigator'   " Adds ability to jump between tmux panes using vim split commands
+    Plug 'JuliaEditorSupport/julia-vim'     " Adds unicode transformation for julia files
 
     " Autocomplete
-    Plug 'ncm2/ncm2'                        "Completion manager
-	Plug 'ncm2/ncm2-bufword'                "Adds words in current buffer to autocomplete
-	Plug 'ncm2/ncm2-path'                   "Path autocompletion for relative and global autocompletion
-    Plug 'ncm2/ncm2-tmux'                   "Allows for autocompletion between mutliple tmux frames
-    Plug 'filipekiss/ncm2-look.vim'         "Adds dictionary completion using built in word lists
-    Plug 'ncm2/ncm2-cssomni'                "css
-    Plug 'ncm2/ncm2-tern'                   "javascript
-    Plug 'ncm2/ncm2-jedi'                   "python
-    Plug 'artur-shaik/vim-javacomplete2'    "java & jsp
-    Plug 'ncm2/ncm2-pyclang'                "c/c++
-    Plug 'ncm2/ncm2-vim'                    "vimscript
-    Plug 'Shougo/neco-vim'                  "Requirement for vimscript
-    Plug 'ncm2/ncm2-markdown-subscope'      "Markdown subscopes
-    Plug 'ncm2/ncm2-racer'                  "Rust
-    Plug 'eagletmt/neco-ghc'                "Haskel
-    Plug 'ncm2/ncm2-go'                     "Go
-	Plug 'aklt/plantuml-syntax'				"Syntax complete for plantuml
-    "Plug 'Shougo/deoplete.nvim'             "A completion framework (not sure how complete the sources are)(trying ncm2 for now)
+    Plug 'ncm2/ncm2'                        " Completion manager
+	Plug 'ncm2/ncm2-bufword'                " Adds words in current buffer to autocomplete
+	Plug 'ncm2/ncm2-path'                   " Path autocompletion for relative and global autocompletion
+    Plug 'ncm2/ncm2-tmux'                   " Allows for autocompletion between mutliple tmux frames
+    Plug 'filipekiss/ncm2-look.vim'         " Adds dictionary completion using built in word lists
+    Plug 'ncm2/ncm2-cssomni'                " css
+    Plug 'ncm2/ncm2-tern'                   " javascript
+    Plug 'ncm2/ncm2-jedi'                   " python
+    Plug 'artur-shaik/vim-javacomplete2'    " java & jsp
+    Plug 'ncm2/ncm2-pyclang'                " c/c++
+    Plug 'ncm2/ncm2-vim'                    " vimscript
+    Plug 'Shougo/neco-vim'                  " Requirement for vimscript
+    Plug 'ncm2/ncm2-markdown-subscope'      " Markdown subscopes
+    Plug 'ncm2/ncm2-racer'                  " Rust
+    Plug 'eagletmt/neco-ghc'                " Haskel
+    Plug 'ncm2/ncm2-go'                     " Go
+	Plug 'aklt/plantuml-syntax'				" Syntax complete for plantuml
+    "Plug 'Shougo/deoplete.nvim'            " A completion framework (not sure how complete the sources are)(trying ncm2 for now)
 
     " Building
     Plug 'lervag/vimtex'                    "LaTex
@@ -97,6 +98,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " around issues using both debian and arch but requires sudo)
 let g:ncm2_pyclang#library_path = '/usr/lib/libclang.so'
 
+" Enables latex to unicode to be evaluated in real time
+let g:latex_to_unicode_auto = 1
 
 " ###########
 " ##Linting##
@@ -117,12 +120,15 @@ let g:ale_linters = {
     \ 'json': ['jq'],
     \ 'rust': ['rls'],
     \ 'markdown': ['markdownlint', 'mdl', 'remark-lint'],
+    \ 'julia': ['languageserver'],
     \ }
 
 " enable linting after a save event
 let g:ale_lint_on_save = 1
 " Shut up python linting errors
 let g:ale_python_flake8_options = "--ignore=E501,E226,E251,VNE001"
+
+let g:ale_julia_executable = "~/.julia/packages/LanguageServer/NWirc/src/LanguageServer.jl"
 
 
 " #################
