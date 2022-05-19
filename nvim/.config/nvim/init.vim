@@ -251,6 +251,8 @@ nnoremap <silent> <C-Down> <c-w>j
 
 nnoremap <silent> <C-H> <c-w>
 
+set iskeyword-=_
+
 
 "#####################
 "##Colour and Themes##
