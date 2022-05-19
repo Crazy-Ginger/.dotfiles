@@ -23,6 +23,7 @@ call plug#begin()
     Plug 'isobit/vim-caddyfile'             " Caddyfile support
     Plug 'pedrohdz/vim-yaml-folds'          "yml folding
     Plug 'NoahTheDuke/vim-just'                 " Justfile colours
+    Plug 'christoomey/vim-tmux-navigator'
 
     " Autocomplete
     Plug 'ncm2/ncm2'                        "Completion manager
