@@ -299,7 +299,7 @@ bar
 bindsym $mod+b exec --no-startup-id wal -i /mnt/Shared/Pictures/Backgrounds/Arty --saturate 1.0 --iterative -a 70
 # TODO:
 # Choose a wall paper lightmode
-bindsym $mod+Shift+b exec --no-startup-id wal -b "ffffff"  --saturate 1.0 -l
+bindsym $mod+Shift+b exec --no-startup-id wal -i /mnt/Shared/Pictures/Backgrounds/Arty -b "ffffff"  --saturate 1.0 -l
 
 # Gaps
 gaps outer 3
