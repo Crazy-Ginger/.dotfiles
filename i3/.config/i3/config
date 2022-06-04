@@ -45,9 +45,9 @@ floating_modifier $mod
 
 # start a terminal
 # %%hotkey: Open terminal %%
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 # %%hotkey: Open terminal %%
-bindsym $mod+space exec i3-sensible-terminal
+bindsym $mod+space exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -296,7 +296,7 @@ bar
 
 # Chooses a random wallpaper and changes the theme colours
 # %%hotkey: i3- random wallpaper%%
-bindsym $mod+b exec --no-startup-id wal -i /mnt/Shared/Pictures/Backgrounds/Arty --saturate 1.0 --iterative -a 70
+bindsym $mod+b exec --no-startup-id wal -i /mnt/Shared/Pictures/Backgrounds/Arty --saturate 1.0 --iterative -a 70 -b "000000"
 # TODO:
 # Choose a wall paper lightmode
 bindsym $mod+Shift+b exec --no-startup-id wal -i /mnt/Shared/Pictures/Backgrounds/Arty -b "ffffff"  --saturate 1.0 -l
