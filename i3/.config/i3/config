@@ -256,6 +256,8 @@ bindsym Control+Mod1+Delete exec --no-startup-id $HOME/bin/screen-locker
 
 exec --no-startup-id picom -b
 
+exec --no-startup-id wal -i /mnt/Shared/Pictures/Backgrounds/Arty --saturate 1.0 --iterative -a 70 -b "000000"
+
 # reload the configuration file
 # %%hotkey: i3- reload config file%%
 bindsym $mod+Shift+c reload
