@@ -179,9 +179,9 @@ fi
 
 # Turn ros2 on
 ros2_on(){
-     export ROS_DOMAIN_ID=42
-     export ROS_VERSION=2
-     export ROS_PYTHON_VERSION=3
-     export ROS_DISTRO=foxy
-     source /opt/ros/foxy/setup.zsh
+    export ROS_DOMAIN_ID=42
+    export ROS_VERSION=2
+    export ROS_PYTHON_VERSION=3
+    export ROS_DISTRO=galactic
+    source /opt/ros2/galactic/setup.bash
 }
