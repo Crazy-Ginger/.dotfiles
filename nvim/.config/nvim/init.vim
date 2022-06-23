@@ -121,6 +121,7 @@ let g:ale_linters = {
     \ 'rust': ['rls'],
     \ 'markdown': ['markdownlint', 'mdl', 'remark-lint'],
     \ 'julia': ['languageserver'],
+    \ 'typescript': ['deno', 'cspell', 'eslint', 'tslint', 'tsserver', 'typecheck'],
     \ }
 
 " enable linting after a save event
@@ -157,6 +158,7 @@ let g:ale_fixers = {
     \ "go": ["gofmt"],
 	\ "html": ["prettier"],
     \ "markdown": ["pandoc", "prettier", "remark-lint"],
+    \ "typescript": ['dprint', 'eslint', 'deno'],
     \ }
 
 " allows ALE to try and fix the file after a save
