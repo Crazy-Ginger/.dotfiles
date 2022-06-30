@@ -183,5 +183,5 @@ ros2_on(){
     export ROS_VERSION=2
     export ROS_PYTHON_VERSION=3
     export ROS_DISTRO=galactic
-    source /opt/ros2/galactic/setup.bash
+    source /opt/ros2/galactic/setup.zsh
 }
