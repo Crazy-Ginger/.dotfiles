@@ -38,7 +38,9 @@ call plug#begin()
     " Plug 'svermeulen/ncm2-yoink'           " Yank history (throws error over missing function)
 
     Plug 'ncm2/ncm2-cssomni'                " css
+    Plug 'ncm2/ncm2-html-subscope'          " html subscopes
     Plug 'ncm2/ncm2-tern'                   " javascript
+    Plug 'mhartington/nvim-typescript'      " typescript
     Plug 'ncm2/ncm2-jedi'                   " python
     Plug 'artur-shaik/vim-javacomplete2'    " java & jsp
     Plug 'ncm2/ncm2-pyclang'                " c/c++
