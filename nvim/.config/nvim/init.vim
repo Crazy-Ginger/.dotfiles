@@ -17,9 +17,9 @@ call plug#begin()
     Plug 'luochen1990/rainbow'              " rainbow parenthesis to make code more readable
     Plug 'dylanaraps/wal.vim'               " Uses pywal to get colour scheme
     " consider nerd tree preservim/nerdtree
+    Plug 'preservim/nerdtree'               " file system explorer
     Plug 'tpope/vim-sensible'               " Some basic starters for vim
     Plug 'sirtaj/vim-openscad'              " OpenScad support
-    "Plug 'Chiel92/vim-autoformat'          " Autoformating
     Plug 'isobit/vim-caddyfile'             " Caddyfile support
     Plug 'pedrohdz/vim-yaml-folds'          " yml folding
     Plug 'NoahTheDuke/vim-just'             " Justfile colours
@@ -32,6 +32,8 @@ call plug#begin()
 	Plug 'ncm2/ncm2-path'                   " Path autocompletion for relative and global autocompletion
     Plug 'ncm2/ncm2-tmux'                   " Allows for autocompletion between mutliple tmux frames
     Plug 'filipekiss/ncm2-look.vim'         " Adds dictionary completion using built in word lists
+    " Plug 'svermeulen/ncm2-yoink'           " Yank history (throws error over missing function)
+
     Plug 'ncm2/ncm2-cssomni'                " css
     Plug 'ncm2/ncm2-tern'                   " javascript
     Plug 'ncm2/ncm2-jedi'                   " python
@@ -122,6 +124,7 @@ let g:ale_linters = {
     \ 'markdown': ['markdownlint', 'mdl', 'remark-lint'],
     \ 'julia': ['languageserver'],
     \ 'typescript': ['deno', 'cspell', 'eslint', 'tslint', 'tsserver', 'typecheck'],
+    \ 'javascript': ['deno', 'cspell', 'eslint', 'tsserver'],
     \ }
 
 " enable linting after a save event
@@ -159,6 +162,7 @@ let g:ale_fixers = {
 	\ "html": ["prettier"],
     \ "markdown": ["pandoc", "prettier", "remark-lint"],
     \ "typescript": ['dprint', 'eslint', 'deno'],
+    \ "javascript": ['dprint', 'eslint', 'importjs'],
     \ }
 
 " allows ALE to try and fix the file after a save
