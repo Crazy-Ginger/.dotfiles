@@ -16,8 +16,11 @@ call plug#begin()
     Plug 'ryanoasis/vim-devicons'           " allows for nerd fonts (icon fonts)
     Plug 'luochen1990/rainbow'              " rainbow parenthesis to make code more readable
     Plug 'dylanaraps/wal.vim'               " Uses pywal to get colour scheme
-    " consider nerd tree preservim/nerdtree
+
     Plug 'preservim/nerdtree'               " file system explorer
+    Plug 'Xuyuanp/nerdtree-git-plugin'      " Added git flags to nerdtree
+    Plug 'ryanoasis/vim-devicons'           " Adds file Icons to nerdtree
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'tpope/vim-sensible'               " Some basic starters for vim
     Plug 'sirtaj/vim-openscad'              " OpenScad support
     Plug 'isobit/vim-caddyfile'             " Caddyfile support
@@ -180,6 +183,10 @@ let g:formatdef_rustfmt= '""'
 " Enable line numbering
 set number
 
+
+" Allow dictionary completion on certain file types
+au FileType markdown,text let b:ncm2_look_enabled = 1
+
 " setting the size of tab spaces to not be stupid long
 set linebreak
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
@@ -188,10 +195,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 " sets the foldmethod to syntax over other alternatives
 au FileType cpp,c,hpp,h,cuda,javascript,zsh,java,json,openscad,rust set foldmethod=syntax
 au FileType python,html,xml,cmake,sh set foldmethod=indent
-" au FileType python set foldignore=
 
-" Allow dictionary completion on certain file types
-au FileType markdown,text let b:ncm2_look_enabled = 1
 " ensures that opening a file will automatically detect folds and close the all
 set foldlevelstart=1
 set foldnestmax=50
@@ -265,6 +269,8 @@ nnoremap <silent> <C-Down> <c-w>j
 nnoremap <silent> <C-H> <c-w>
 
 set iskeyword-=_
+
+nnoremap <C-t> :NERDTreeToggle<CR>
 
 
 "#####################
