@@ -129,7 +129,7 @@ let g:ale_linters = {
     \ 'markdown': ['markdownlint', 'mdl', 'remark-lint'],
     \ 'julia': ['languageserver'],
     \ 'typescript': ['deno', 'cspell', 'eslint', 'tslint', 'tsserver', 'typecheck'],
-    \ 'javascript': ['deno', 'cspell', 'eslint', 'tsserver'],
+    \ 'javascript': ['deno', 'cspell', 'jshint', 'tsserver'],
     \ }
 
 " enable linting after a save event
