@@ -29,6 +29,8 @@ call plug#begin()
     Plug 'christoomey/vim-tmux-navigator'   " Adds ability to jump between tmux panes using vim split commands
     Plug 'JuliaEditorSupport/julia-vim'     " Adds unicode transformation for julia files
 
+    Plug 'neovim/nvim-lspconfig'            " Neovim config for LSP
+
     " Autocomplete
     Plug 'ncm2/ncm2'                        " Completion manager
 	Plug 'ncm2/ncm2-bufword'                " Adds words in current buffer to autocomplete
@@ -129,7 +131,7 @@ let g:ale_linters = {
     \ 'markdown': ['markdownlint', 'mdl', 'remark-lint'],
     \ 'julia': ['languageserver'],
     \ 'typescript': ['deno', 'cspell', 'eslint', 'tslint', 'tsserver', 'typecheck'],
-    \ 'javascript': ['deno', 'cspell', 'jshint', 'tsserver'],
+    \ 'javascript': ['deno', 'cspell', 'jshint', 'esling', 'tsserver'],
     \ }
 
 " enable linting after a save event
@@ -199,7 +201,7 @@ au FileType cpp,c,hpp,h,cuda,javascript,zsh,java,json,openscad,rust set foldmeth
 au FileType python,html,xml,cmake,sh set foldmethod=indent
 
 " ensures that opening a file will automatically detect folds and close the all
-set foldlevelstart=1
+set foldlevelstart=3
 set foldnestmax=50
 " reformats all folds
 au BufRead * normal <CTRL-l>
