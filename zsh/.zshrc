@@ -18,6 +18,7 @@ plugins=(
     docker
     docker-compose
     zsh-syntax-highlighting
+    dotenv
 )
 
 source $ZSH/oh-my-zsh.sh
