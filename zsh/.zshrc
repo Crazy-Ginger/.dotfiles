@@ -58,9 +58,9 @@ export PATH=$PATH:/usr/include
 # add /usr/local/ to cpp compiler
 export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH:/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/x86_64-linux/lib"
 
-export C_INCLUDE_PATH="/usr/local/include:/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include:$C_INCLUDE_PATH:/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include"
+export C_INCLUDE_PATH="/usr/local/include:/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include:$C_INCLUDE_PATH:/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include:/usr/share/arduino/hardware/archlinux-arduino/avr/cores/arduino/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/EEPROM/src:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/HID/src:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/SoftwareSerial/src/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/SPI/src/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/Wire/src/"
 
-export CPLUS_INCLUDE_PATH="/usr/include/vtk:$CPLUS_INCLUDE_PATH:/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include"
+export CPLUS_INCLUDE_PATH="/usr/include/vtk:$CPLUS_INCLUDE_PATH:/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include:/usr/share/arduino/hardware/archlinux-arduino/avr/cores/arduino/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/EEPROM/src:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/HID/src:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/SoftwareSerial/src/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/SPI/src/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/Wire/src/"
 
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH:/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/x86_64-linux/lib"
 
