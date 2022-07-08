@@ -119,10 +119,10 @@ let g:latex_to_unicode_auto = 1
 " consider adding pylint to python
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
-    \ 'c': ['gcc', 'cc', 'flawfinder', 'ccls'],
-    \ 'cpp' : ['gcc', 'cc', 'flawfinder', 'cclang'],
+    \ 'c': ['cc', 'flawfinder', 'ccls'],
+    \ 'cpp' : ['cc', 'flawfinder', 'cclang', 'ccls', 'cppcheck'],
     \ 'h': ['gcc', 'cc', 'flawfinder', 'ccls'],
-    \ 'hpp': ['gcc', 'cc', 'flawfinder', 'cclang'],
+    \ 'hpp': ['gcc', 'cc', 'flawfinder', 'cclang', 'ccls'],
     \ 'rs' : ['cargo', 'rls'],
     \ 'python': ['flake8', "pylint"],
     \ 'haskell': [],
