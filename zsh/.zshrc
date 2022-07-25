@@ -186,3 +186,5 @@ ros2_on(){
     export ROS_DISTRO=galactic
     source /opt/ros2/galactic/setup.zsh
 }
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
