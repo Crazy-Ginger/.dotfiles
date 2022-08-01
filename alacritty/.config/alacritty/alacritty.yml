@@ -6,3 +6,6 @@ font:
 
 window:
   opacity: 0.9
+
+shell:
+  program: /bin/zsh

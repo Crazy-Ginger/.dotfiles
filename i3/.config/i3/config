@@ -1,6 +1,6 @@
-# Should you change your keyboard layout some time, delete
+ Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
-
+/
 # i3 config file (v4)
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
@@ -246,7 +246,7 @@ bindsym Print --release exec "flameshot gui -c"
 ###########
 ##Session##
 ###########
-# start lock handler with 2min timeout
+# start lock handler with 5min timeout
 exec_always --no-startup-id xset s 300
 exec_always --no-startup-id xss-lock $HOME/bin/screen-locker
 #xec_always --no-startup-id echo $XDG_SESSION_ID > /tmp/locksessionid
