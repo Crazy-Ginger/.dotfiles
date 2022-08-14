@@ -177,6 +177,10 @@ fi
 if [[ -d "/usr/local/cuda" ]]; then
     export PATH=$PATH:/usr/local/cuda/bin
 fi
+if [[ -d "$HOME/.pyenv" ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    eval "$(pyenv init -)"
+fi
 
 # Turn ros2 on
 ros2_on(){
@@ -186,5 +190,3 @@ ros2_on(){
     export ROS_DISTRO=galactic
     source /opt/ros2/galactic/setup.zsh
 }
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init -)"
