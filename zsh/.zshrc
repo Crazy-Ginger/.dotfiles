@@ -188,3 +188,10 @@ ros2_on(){
 }
 export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
+
+webots_on(){
+    export WEBOTS_HOME="/usr/local/webots"
+    LD_LIBRARY_PATH="$WEBOTS_HOME/lib/controller:$LD_LIBRARY_PATH"
+    PYTHONPATH="$WEBOTS_HOME/lib/controller/python:$PYTHONPATH"
+    PYTHONIOENCODING=UTF-8
+}
