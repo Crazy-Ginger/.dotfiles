@@ -45,6 +45,7 @@ if cat /proc/version | grep -q WSL; then
     alias notpad="notepad.exe"
 fi
 
+
 #########
 ##Paths##
 #########
@@ -56,17 +57,37 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/usr/include
 
 # add /usr/local/ to cpp compiler
-export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH:/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/x86_64-linux/lib"
+export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
+# add CUDA paths
+export LIBRARY_PATH="/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/x86_64-linux/lib:$LIBRARY_PATH"
 
-export C_INCLUDE_PATH="/usr/local/include:/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include:$C_INCLUDE_PATH:/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include:/usr/share/arduino/hardware/archlinux-arduino/avr/cores/arduino/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/EEPROM/src:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/HID/src:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/SoftwareSerial/src/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/SPI/src/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/Wire/src/"
 
-export CPLUS_INCLUDE_PATH="/usr/include/vtk:$CPLUS_INCLUDE_PATH:/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include:/usr/share/arduino/hardware/archlinux-arduino/avr/cores/arduino/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/EEPROM/src:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/HID/src:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/SoftwareSerial/src/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/SPI/src/:/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/Wire/src/"
+export C_INCLUDE_PATH="/usr/local/include:$C_INCLUDE_PATH"
+# add CUDA paths
+export C_INCLUDE_PATH="/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include:$LIBRARY_PATH"
+# add /usr/include/c++
 
-export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH:/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/x86_64-linux/lib"
+
+# add CUDA paths
+if [ -z $CPLUS_INCLUDE_PATH ]; then
+    export CPLUS_INCLUDE_PATH="/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include"
+else
+    export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include"
+fi
+# export CPLUS_INCLUDE_PATH="/usr/include/vtk:$CPLUS_INCLUDE_PATH"
+# add arduino paths (currently breaks std library for some reason)
+# export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/share/arduino/hardware/archlinux-arduino/avr/cores/arduino/"
+
+
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+# add CUDA paths
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/x86_64-linux/lib"
+
 
 ###############
 ##Zsh History##
 ###############
+
 # set zsh_history
 export HISTFILE=~/.zsh_history
 
