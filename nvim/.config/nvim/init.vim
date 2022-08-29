@@ -1,6 +1,6 @@
-"###########
-"##Plugins##
-"###########
+"#############
+"## Plugins ##
+"#############
 
 " Requested by polyglot
 set nocompatible
@@ -28,6 +28,8 @@ call plug#begin()
     Plug 'NoahTheDuke/vim-just'             " Justfile colours
     Plug 'christoomey/vim-tmux-navigator'   " Adds ability to jump between tmux panes using vim split commands
     Plug 'JuliaEditorSupport/julia-vim'     " Adds unicode transformation for julia files
+    Plug 'numirias/semshi'                  " Semantic highligher (try setting up for easy reading)
+    Plug 'chrisbra/csv.vim'                 " CSV tabler
 
     Plug 'neovim/nvim-lspconfig'            " Neovim config for LSP
 
@@ -62,9 +64,7 @@ call plug#begin()
     Plug 'gaalcaras/ncm-R'                  "R
 
     " To Setup/Fix
-    "Plug 'lambdalisue/suda.vim'            "allows for saving file when not opened with sudo, doesn't work
     "Plug 'vim-airline/vim-airline'         "A nice status line at the bottom of the window
-    "Plug 'numirias/semshi'                 "Semantic highligher (try setting up for easy reading)
 call plug#end()
 
 " to shut up vimtex
@@ -110,9 +110,13 @@ let g:ncm2_pyclang#library_path = '/usr/lib/libclang.so'
 " Enables latex to unicode to be evaluated in real time
 let g:latex_to_unicode_auto = 1
 
-" ###########
-" ##Linting##
-" ###########
+" Auto CSV formatting
+let g:csv_autocmd_arrange	   = 1
+let g:csv_autocmd_arrange_size = 1024*1024
+
+" #############
+" ## Linting ##
+" #############
 
 " Linting currently done via ALE
 
@@ -142,9 +146,9 @@ let g:ale_python_flake8_options = "--ignore=E501,E226,E251,VNE001"
 let g:ale_julia_executable = "~/.julia/packages/LanguageServer/NWirc/src/LanguageServer.jl"
 
 
-" #################
-" ##Formating##
-" #################
+" ###############
+" ## Formating ##
+" ###############
 
 " Formatting mostly done via ALE
 " Encountered errors with formatting, using another plugin to do that instead
@@ -180,9 +184,9 @@ let g:ale_fix_on_save = 1
 " TODO: sort out rustfmt options to make it nice
 let g:formatdef_rustfmt= '""'
 
-"###############
-"##Custom shit##
-"###############
+"#################
+"## Custom shit ##
+"#################
 
 " Enable line numbering
 set number
@@ -198,7 +202,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 " automatic folding enabler for used languages
 " sets the foldmethod to syntax over other alternatives
 au FileType cpp,c,hpp,h,cuda,javascript,zsh,java,json,openscad,rust,html set foldmethod=syntax
-au FileType python,xml,cmake,sh set foldmethod=indent
+au FileType python,xml,cmake,sh,vim set foldmethod=indent
 
 " ensures that opening a file will automatically detect folds and close the all
 set foldlevelstart=3
@@ -265,6 +269,7 @@ noremap <Right> :echo "No arrows for you"<CR>
 noremap <Up> :echo "No arrows for you"<CR>
 noremap <Down> :echo "No arrows for you"<CR>
 
+" Allow vim panel navigation with control-arrows
 nnoremap <silent> <C-Right> <c-w>l
 nnoremap <silent> <C-Left> <c-w>h
 nnoremap <silent> <C-Up> <c-w>k
@@ -272,14 +277,14 @@ nnoremap <silent> <C-Down> <c-w>j
 
 nnoremap <silent> <C-H> <c-w>
 
-set iskeyword-=_
+" set iskeyword-=_
 
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 
-"#####################
-"##Colour and Themes##
-"#####################
+"###################
+"## GUI & Colour ###
+"###################
 
 " should let nvim use | cursor for insert mode
 " doesn't throw errors but not working on arch
