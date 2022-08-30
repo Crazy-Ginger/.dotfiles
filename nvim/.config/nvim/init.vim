@@ -1,6 +1,6 @@
-"#############
-"## Plugins ##
-"#############
+" #############
+" ## Plugins ##
+" #############
 
 " Requested by polyglot
 set nocompatible
@@ -184,9 +184,9 @@ let g:ale_fix_on_save = 1
 " TODO: sort out rustfmt options to make it nice
 let g:formatdef_rustfmt= '""'
 
-"#################
-"## Custom shit ##
-"#################
+" #################
+" ## Custom shit ##
+" #################
 
 " Enable line numbering
 set number
@@ -282,13 +282,22 @@ nnoremap <silent> <C-H> <c-w>
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 
-"###################
-"## GUI & Colour ###
-"###################
+" ###################
+" ## GUI & Colour ###
+" ###################
 
+" TODO: add abbreviated file path before filename
+" TODO: highlighting of important information with colours
+" set statusline=%f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %P%)
+" Show filename and filetype
+set statusline=%F\ >%Y
+" readonly flags and the like
+set statusline+=\ %h%w%m%r
+"
+set statusline+=\ %=%([%l,%c%V]\ %=\ %P%)
 " should let nvim use | cursor for insert mode
 " doesn't throw errors but not working on arch
-:set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
+set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 
 " set the background to be dark so that nvim nows for certain and uses light
 " colours
