@@ -13,3 +13,4 @@
 --attach-return-type
 --remove-comment-prefix
 --indent-col1-comments
+--indent-preproc-block
