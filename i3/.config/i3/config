@@ -239,6 +239,7 @@ bindsym $mod+Shift+?  exec dmenu_hotkeys run -m rofi -a i3 -d True
 
 # %%hotkey: flameshot capture to keyboard%%
 bindsym Print --release exec "flameshot gui -c"
+bindsym $mod+Print --release exec "flameshot gui"
 
 
 
