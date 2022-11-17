@@ -10,15 +10,15 @@ export ZSH="$HOME/.oh-my-zsh"
 export TERMINAL=alacritty
 plugins=(
     git
-    zsh-autosuggestions
     tmux
+    zsh-autosuggestions
     shrink-path
     colored-man-pages
     web-search
     docker
     docker-compose
-    zsh-syntax-highlighting
     dotenv
+    # zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -181,9 +181,10 @@ fi
 
 
 # Setup display for wsl to run through XServer
-if cat /proc/version | grep -q WSL; then
-    export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
-fi
+# if cat /proc/version | grep -q WSL; then
+    # export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+# fi
+#
 
 
 # Setup Spack if installed
@@ -222,3 +223,18 @@ webots_on(){
     PYTHONPATH="$WEBOTS_HOME/lib/controller/python:$PYTHONPATH"
     PYTHONIOENCODING=UTF-8
 }
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/becca/Junk/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/becca/Junk/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/becca/Junk/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/becca/Junk/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
