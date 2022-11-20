@@ -126,7 +126,7 @@ PYTHONPATH=/usr/local/lib/python3/dist-packges/
 
 source "$HOME/.cargo/env"
 
-if cat /proc/version | grep -q WSL; then
-    export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
-fi
+# if cat /proc/version | grep -q WSL; then
+    # export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+# fi
 . "$HOME/.cargo/env"
