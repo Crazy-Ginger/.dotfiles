@@ -64,8 +64,11 @@ export LIBRARY_PATH="/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/
 
 export C_INCLUDE_PATH="/usr/local/include:$C_INCLUDE_PATH"
 # add CUDA paths
-export C_INCLUDE_PATH="/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include:$LIBRARY_PATH"
+export C_INCLUDE_PATH="/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include:$C_INCLUDE_PATH"
 # add /usr/include/c++
+# add PICO_SDK
+# export C_INCLUDE_PATH="$C_INCLUDE_PATH:$HOME/Source/Embedded/libraries/pico-sdk"
+# export C_INCLUDE_PATH="$_INCLUDE_PATH:$HOME/Source/Embedded/libraries/pico-sdk/src/common/pico_stdlib/include"
 
 
 # add CUDA paths
@@ -77,12 +80,16 @@ fi
 # export CPLUS_INCLUDE_PATH="/usr/include/vtk:$CPLUS_INCLUDE_PATH"
 # add arduino paths (currently breaks std library for some reason)
 # export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/share/arduino/hardware/archlinux-arduino/avr/cores/arduino/"
-
+# add PICO_SDK
+# export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/Source/Embedded/libraries/pico-sdk/src/common/pico_stdlib/include/pico"
+# export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/Source/Embedded/libraries/pico-sdk/src/common/pico_stdlib/include"
 
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 # add CUDA paths
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/x86_64-linux/lib"
 
+
+export PICO_SDK_PATH="$HOME/Source/Embedded/libraries/pico-sdk"
 
 ###############
 ##Zsh History##
