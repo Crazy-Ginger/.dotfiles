@@ -1,3 +1,11 @@
+" Allow project-specific nvimrc
+
+" exrc allows loading local executing local rc files.
+set exrc
+" secure disallows the use of :autocmd, shell and write commands in local .vimrc files.
+set secure
+
+
 " #############
 " ## Plugins ##
 " #############
@@ -106,6 +114,11 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " path to directory where libclang.so can be found (used a symlink to get
 " around issues using both debian and arch but requires sudo)
 let g:ncm2_pyclang#library_path = '/usr/lib/libclang.so'
+let g:ncm2_pyclang#database_path = [
+            \ 'compile_commands.json',
+            \ 'build/compile_commands.json',
+            \ 'bin/compile_commands.json'
+            \ ]
 
 " Enables latex to unicode to be evaluated in real time
 let g:latex_to_unicode_auto = 1
@@ -140,9 +153,15 @@ let g:ale_linters = {
 
 " enable linting after a save event
 let g:ale_lint_on_save = 1
+
 " Shut up python linting errors
 let g:ale_python_flake8_options = "--ignore=E501,E226,E251,VNE001"
 
+" Enable local c/c++
+let g:ale_c_cc_options="-Wall"
+let g:ale_cpp_cc_options="-Wall"
+
+" Julia LanguageServer
 let g:ale_julia_executable = "~/.julia/packages/LanguageServer/NWirc/src/LanguageServer.jl"
 
 
