@@ -136,7 +136,7 @@ let g:csv_autocmd_arrange_size = 1024*1024
 " consider adding pylint to python
 let g:ale_linters = {
     \ 'sh': ['shellcheck', 'shfmt'],
-    \ 'c': ['cc', 'flawfinder', 'ccls'],
+    \ 'c': ['cc', 'flawfinder', 'ccls', 'cppcheck'],
     \ 'cpp' : ['cc', 'flawfinder', 'cclang', 'ccls', 'cppcheck'],
     \ 'h': ['gcc', 'cc', 'flawfinder', 'ccls'],
     \ 'hpp': ['gcc', 'cc', 'flawfinder', 'cclang', 'ccls'],
