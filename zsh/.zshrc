@@ -89,7 +89,7 @@ export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/x86_64-linux/lib"
 
 
-export PICO_SDK_PATH="$HOME/Source/Embedded/libraries/pico-sdk"
+export PICO_SDK_PATH="/usr/share/pico-sdk"
 
 ###############
 ##Zsh History##
