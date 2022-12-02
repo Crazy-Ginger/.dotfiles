@@ -38,6 +38,8 @@ call plug#begin()
     Plug 'JuliaEditorSupport/julia-vim'     " Adds unicode transformation for julia files
     Plug 'numirias/semshi'                  " Semantic highligher (try setting up for easy reading)
     Plug 'chrisbra/csv.vim'                 " CSV tabler
+    " Plug 'universal-ctags/ctags'          " Ctags program which enables finding definitions
+    Plug 'ludovicchabant/vim-gutentags'     " Ctags generator
 
     Plug 'neovim/nvim-lspconfig'            " Neovim config for LSP
 
@@ -140,11 +142,10 @@ let g:ale_linters = {
     \ 'cpp' : ['cc', 'flawfinder', 'cclang', 'ccls', 'cppcheck'],
     \ 'h': ['gcc', 'cc', 'flawfinder', 'ccls'],
     \ 'hpp': ['gcc', 'cc', 'flawfinder', 'cclang', 'ccls'],
-    \ 'rs' : ['cargo', 'rls'],
+    \ 'rust' : ['cargo', 'rustc', 'analyzer'],
     \ 'python': ['flake8', "pylint"],
     \ 'haskell': [],
     \ 'json': ['jq'],
-    \ 'rust': ['rls'],
     \ 'markdown': ['markdownlint', 'mdl', 'remark-lint'],
     \ 'julia': ['languageserver'],
     \ 'typescript': ['deno', 'cspell', 'eslint', 'tslint', 'tsserver', 'typecheck'],
@@ -181,10 +182,10 @@ let g:ale_fixers = {
     \ "c": ["astyle"],
     \ "cpp": ["astyle"],
     \ "cuda": ["astyle"],
+    \ "rust": ["rustfmt"],
     \ "h": ["astyle"],
     \ "hpp": ["astyle"],
     \ "python": ["isort", "yapf"],
-    \ "rust": ["rustfmt"],
     \ "sh" : ["shfmt"],
     \ "java" : ["astyle"],
     \ "json" : ["jq"],
@@ -200,8 +201,8 @@ let g:ale_fix_on_save = 1
 
 " C/C++ style options is done via .astylerc in $HOME
 
-" TODO: sort out rustfmt options to make it nice
-let g:formatdef_rustfmt= '""'
+" Fix stupid rust formatting
+let g:ale_rust_rustfmt_options = "--config brace_style=AlwaysNextLin,blank_lines_upper_bound=2,color=Always,control_brace_style=AlwaysNextLine,empty_item_single_line=false,fn_args_layout=Compressed,imports_granularity=Module,normalize_comments=true,group_imports=StdExternalCrate,trailing_comma=Never"
 
 " #################
 " ## Custom shit ##
