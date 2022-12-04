@@ -21,7 +21,6 @@ plugins=(
     # zsh-syntax-highlighting
     fd
     k
-    zsh-interactive-cd
 )
 
 export FZF_DEFAULT_OPTS="--cycle"
