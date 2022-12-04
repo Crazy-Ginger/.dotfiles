@@ -19,7 +19,12 @@ plugins=(
     docker-compose
     dotenv
     # zsh-syntax-highlighting
+    fd
+    k
+    zsh-interactive-cd
 )
+
+export FZF_DEFAULT_OPTS="--cycle"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,8 +93,11 @@ export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 # add CUDA paths
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/x86_64-linux/lib"
 
-
 export PICO_SDK_PATH="/usr/share/pico-sdk"
+
+
+# Move Go directory to /opt
+export GOPATH="$HOME/Source/go"
 
 ###############
 ##Zsh History##
@@ -110,8 +118,6 @@ SAVEHIST=5000
 # set neovim as the default editor
 export EDITOR=nvim
 export VISUAL=nvim
-
-eval $(thefuck --alias)
 
 # stuff to do with autocomplete possibly (not sure)
 #autoload -Uz compinit && compinit
@@ -166,11 +172,7 @@ RPS1="\$(git_custom_status)"
 # Set Ctrl + left arrow to forward word on certain systems
 if ! [[ $(cat /proc/version | grep -q arch) ]]; then
     bindkey '^[[1;5C' forward-word
-
-    # if paraview workaround is installed add to path
-    [[ -d "/opt/paraview-opt" ]] && export PATH=$PATH:/opt/paraview-opt/bin
 fi
-
 
 # Import colourscheme from wal if desktop environment
 if command -v wal &> /dev/null; then
@@ -186,12 +188,10 @@ if command -v morse &> /dev/null; then
     alias blender="/opt/blender-2.79b-linux-glibc219-x86_64/blender"
 fi
 
-
-# Setup display for wsl to run through XServer
-# if cat /proc/version | grep -q WSL; then
-    # export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
-# fi
-#
+# Add paraview workaround to PATH if installed
+if [[ -d "/opt/paraview-opt" ]]; then
+        export PATH=$PATH:/opt/paraview-opt/bin
+fi
 
 
 # Setup Spack if installed
@@ -199,16 +199,25 @@ if command -v spack &> /dev/null; then
     source ~/spack/share/spack/setup-env.sh
 fi
 
+# Add cargo to PATH if installed
 if command -v cargo &> /dev/null; then
     export PATH=$PATH:~/.cargo/bin
 fi
 
+# Add cuda to PATH if installed
 if [[ -d "/usr/local/cuda" ]]; then
     export PATH=$PATH:/usr/local/cuda/bin
 fi
+
+# Setup pyenv if installed
 if [[ -d "$HOME/.pyenv" ]]; then
     export PYENV_ROOT="$HOME/.pyenv"
     eval "$(pyenv init -)"
+fi
+
+# Add go bin to PATH is go location is set
+if [[ -d "$HOME/Source/go" ]]; then
+    export PATH="$PATH:/$HOME/Source/go/bin"
 fi
 
 # Turn ros2 on
@@ -219,10 +228,6 @@ ros2_on(){
     export ROS_DISTRO=galactic
     source /opt/ros2/galactic/setup.zsh
 }
-if [[ -d "$HOME/.pyenv" ]]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    eval "$(pyenv init -)"
-fi
 
 webots_on(){
     export WEBOTS_HOME="/usr/local/webots"
@@ -230,6 +235,7 @@ webots_on(){
     PYTHONPATH="$WEBOTS_HOME/lib/controller/python:$PYTHONPATH"
     PYTHONIOENCODING=UTF-8
 }
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
