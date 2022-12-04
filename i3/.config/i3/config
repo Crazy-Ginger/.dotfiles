@@ -256,7 +256,7 @@ bindsym Control+Mod1+Delete exec --no-startup-id $HOME/bin/screen-locker
 
 exec --no-startup-id picom -b
 
-exec --no-startup-id wal -i /mnt/Shared/Pictures/Backgrounds/Arty --saturate 1.0 --iterative -a 70 -b "000000"
+exec --no-startup-id wal -i /mnt/Shared/Pictures/Backgrounds/Arty --saturate 1.0 -a 70 -b "000000"
 
 # reload the configuration file
 # %%hotkey: i3- reload config file%%
@@ -298,10 +298,10 @@ bar
 
 # Chooses a random wallpaper and changes the theme colours
 # %%hotkey: i3- random wallpaper%%
-bindsym $mod+b exec --no-startup-id wal -i /mnt/Shared/Pictures/Backgrounds/Arty --saturate 1.0 --iterative -a 70 -b "000000"
-# TODO:
+bindsym $mod+b exec --no-startup-id wal  -i /mnt/Shared/Pictures/Backgrounds/Arty --saturate 1.0 -b "131313" --cols16
+
 # Choose a wall paper lightmode
-bindsym $mod+Shift+b exec --no-startup-id wal -i /mnt/Shared/Pictures/Backgrounds/Arty -b "ffffff"  --saturate 1.0 -l
+bindsym $mod+Shift+b exec  wal -i /mnt/Shared/Pictures/Backgrounds/Arty -b "dfdfdf"  --saturate 1.0 -l --cols16
 
 # Gaps
 gaps outer 3
