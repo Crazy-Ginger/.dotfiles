@@ -13,25 +13,34 @@ set secure
 " Requested by polyglot
 set nocompatible
 
+
 "vim-plug to manage plugins for nvim
 call plug#begin()
-    Plug 'nvim-treesitter/nvim-treesitter'  " Adds more complex syntax highlighting to nvim (unstable?) (run :TSUpdate to fix some stuff)
-    Plug 'dense-analysis/ale'               " A collection of linters in one plugin
-	Plug 'roxma/nvim-yarp'                  " a remote plugin framework
-    " Plug 'sheerun/vim-polyglot'           " language highlighting
+	Plug 'roxma/nvim-yarp'                  " Plugin manager
+
+    Plug 'nvim-treesitter/nvim-treesitter'  " Adds more complex syntax highlighting via treesitter (TS) (run :TSUpdate to fix some stuff)
+    Plug 'p00f/nvim-ts-rainbow'             " Adds rainbow support TS
+    Plug 'bollian/tree-sitter-openscad'     " Adds openscad grammar to TS
+
+    Plug 'dense-analysis/ale'               " A collection of linters in one plugin (requires a lot of setup)
+
     Plug 'scrooloose/nerdcommenter'         " Easy commenting
+
     Plug 'tpope/vim-surround'               " use cs<><> to replace brackets, quotation marks and more
+
     Plug 'ryanoasis/vim-devicons'           " allows for nerd fonts (icon fonts)
-    Plug 'luochen1990/rainbow'              " rainbow parenthesis to make code more readable
     Plug 'dylanaraps/wal.vim'               " Uses pywal to get colour scheme
 
     Plug 'preservim/nerdtree'               " file system explorer
     Plug 'Xuyuanp/nerdtree-git-plugin'      " Added git flags to nerdtree
     Plug 'ryanoasis/vim-devicons'           " Adds file Icons to nerdtree
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  " Add highlighting to some file types in nerdtree
+
     Plug 'tpope/vim-sensible'               " Some basic starters for vim
-    Plug 'sirtaj/vim-openscad'              " OpenScad support
+
+    " Plug 'sirtaj/vim-openscad'              " OpenScad support
     Plug 'isobit/vim-caddyfile'             " Caddyfile support
+
     Plug 'pedrohdz/vim-yaml-folds'          " yml folding
     Plug 'NoahTheDuke/vim-just'             " Justfile colours
     Plug 'christoomey/vim-tmux-navigator'   " Adds ability to jump between tmux panes using vim split commands
@@ -43,33 +52,13 @@ call plug#begin()
 
     Plug 'neovim/nvim-lspconfig'            " Neovim config for LSP
 
-    " Autocomplete
-    Plug 'ncm2/ncm2'                        " Completion manager
-	Plug 'ncm2/ncm2-bufword'                " Adds words in current buffer to autocomplete
-	Plug 'ncm2/ncm2-path'                   " Path autocompletion for relative and global autocompletion
-    Plug 'ncm2/ncm2-tmux'                   " Allows for autocompletion between mutliple tmux frames
-    Plug 'filipekiss/ncm2-look.vim'         " Adds dictionary completion using built in word lists
-    " Plug 'svermeulen/ncm2-yoink'           " Yank history (throws error over missing function)
+    Plug 'simrat39/rust-tools.nvim'         " Rust tooling? addes debugging, autocomplete and too much extra shit
 
-    Plug 'ncm2/ncm2-cssomni'                " css
-    Plug 'ncm2/ncm2-html-subscope'          " html subscopes
-    Plug 'ncm2/ncm2-tern'                   " javascript
-    Plug 'mhartington/nvim-typescript'      " typescript
-    Plug 'ncm2/ncm2-jedi'                   " python
-    Plug 'artur-shaik/vim-javacomplete2'    " java & jsp
-    Plug 'ncm2/ncm2-pyclang'                " c/c++
-    Plug 'ncm2/ncm2-vim'                    " vimscript
-    Plug 'Shougo/neco-vim'                  " Requirement for vimscript
-    Plug 'ncm2/ncm2-markdown-subscope'      " Markdown subscopes
-    Plug 'ncm2/ncm2-racer'                  " Rust
-    Plug 'eagletmt/neco-ghc'                " Haskel
-    Plug 'ncm2/ncm2-go'                     " Go
 	Plug 'aklt/plantuml-syntax'				" Syntax complete for plantuml
     "Plug 'Shougo/deoplete.nvim'            " A completion framework (not sure how complete the sources are)(trying ncm2 for now)
 
     " Building
     Plug 'lervag/vimtex'                    "LaTex
-    Plug 'ncm2/ncm2-vim'                    "vimscript
     Plug 'ObserverOfTime/ncm2-jc2'          "Java
     Plug 'gaalcaras/ncm-R'                  "R
 
@@ -80,50 +69,41 @@ call plug#end()
 " to shut up vimtex
 let g:tex_flavor = "latex"
 
-" enable rainbow parenthesis
-let g:rainbow_active = 1
 
 " ### NERDCommenter ###
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
-" ##NCM2##
+" ##################
+" ## Autocomplete ##
+" ##################
 
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
+" Enable ALE autocomplete
+let g:ale_completion_enabled=1
+let g:ale_completion_autoimport=1
 
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-
-" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=c
-
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
-
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" for pyclang (c++ completor)
-" path to directory where libclang.so can be found (used a symlink to get
-" around issues using both debian and arch but requires sudo)
-let g:ncm2_pyclang#library_path = '/usr/lib/libclang.so'
-let g:ncm2_pyclang#database_path = [
-            \ 'compile_commands.json',
-            \ 'build/compile_commands.json',
-            \ 'bin/compile_commands.json'
-            \ ]
-
+let g:ale_hover_cursor=1
+let g:ale_hover_to_preview=1
 " Enables latex to unicode to be evaluated in real time
 let g:latex_to_unicode_auto = 1
+
+" ## Rust-Tools ##
+lua << EOF
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
+
+EOF
 
 " Auto CSV formatting
 let g:csv_autocmd_arrange	   = 1
@@ -142,7 +122,7 @@ let g:ale_linters = {
     \ 'cpp' : ['cc', 'flawfinder', 'cclang', 'ccls', 'cppcheck'],
     \ 'h': ['gcc', 'cc', 'flawfinder', 'ccls'],
     \ 'hpp': ['gcc', 'cc', 'flawfinder', 'cclang', 'ccls'],
-    \ 'rust' : ['cargo', 'rustc', 'analyzer'],
+    \ 'rust' : ['analyzer'],
     \ 'python': ['flake8', "pylint"],
     \ 'haskell': [],
     \ 'json': ['jq'],
@@ -160,7 +140,7 @@ let g:ale_python_flake8_options = "--ignore=E501,E226,E251,VNE001"
 
 " Enable local c/c++
 let g:ale_c_cc_options="-Wall"
-let g:ale_cpp_cc_options="-Wall"
+let g:ale_cpp_cc_options="-std=c++17 -Wall"
 
 " Julia LanguageServer
 let g:ale_julia_executable = "~/.julia/packages/LanguageServer/NWirc/src/LanguageServer.jl"
@@ -211,34 +191,13 @@ let g:ale_rust_rustfmt_options = "--config brace_style=AlwaysNextLin,blank_lines
 " Enable line numbering
 set number
 
-
 " Allow dictionary completion on certain file types
-au FileType markdown,text let b:ncm2_look_enabled = 1
+" au FileType markdown,text let b:ncm2_look_enabled = 1
 
 " setting the size of tab spaces to not be stupid long
 set linebreak
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
-" automatic folding enabler for used languages
-" sets the foldmethod to syntax over other alternatives
-au FileType cpp,c,hpp,h,cuda,javascript,zsh,java,json,openscad,rust,html,proto set foldmethod=syntax
-au FileType python,xml,cmake,sh,vim set foldmethod=indent
-
-" ensures that opening a file will automatically detect folds and close the all
-set foldlevelstart=3
-set foldnestmax=50
-" reformats all folds
-au BufRead * normal <CTRL-l>
-" closes all folds
-" au BufRead * normal zM
-
-" not sure(?)
-let javaScript_fold=1       "javascript
-let vimsyn_folding='af'     "vim script
-let ruby_fold=1             "Ruby
-let r_syntax_folding=1      "R
-let perl_fold=1             "perl
-let xml_syntax_folding=1    "xml
 
 
 " allows accidental holding shift whilst writing commands to still run commands
@@ -247,35 +206,6 @@ command W w
 
 command Wq wq
 command WQ wq
-
-" nvim-treesitter config
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "maintained",
-
-  -- Install languages synchronously (only applied to `ensure_installed`)
-  sync_install = true,
-  ensure_installed = {
-      "cpp", "c", "python", "java", "javascript", "cmake", "cuda", "css", "html", "dockerfile", "foam", "json", "latex", "make", "llvm", "regex", "rust", "typescript", "vim", "yaml", "markdown"
-    },
-
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-
-    -- list of language that will be disabled
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = true,
-  },
-}
-EOF
-
-syntax on
 
 " spell checking and toggling it
 set spelllang=en
@@ -299,8 +229,74 @@ nnoremap <silent> <C-H> <c-w>
 
 " set iskeyword-=_
 
+" Toggle NerdTree explorer with ctrl + T
 nnoremap <C-t> :NERDTreeToggle<CR>
 
+" ################
+" ## TreeSitter ##
+" ################
+
+" TODO: move into seperate lua file
+
+lua << EOF
+
+require'nvim-treesitter.configs'.setup {
+  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
+
+  -- Install languages synchronously (only applied to `ensure_installed`)
+  sync_install = true,
+  ensure_installed = {
+      "cpp", "c", "python", "java", "javascript", "cmake", "cuda", "css", "html", "dockerfile", "foam", "json", "latex", "make", "llvm", "regex", "rust", "typescript", "vim", "yaml", "markdown"
+    },
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- list of language that will be disabled
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+
+  }
+}
+
+EOF
+
+" ## Folding ##
+
+" uses treesitter to generate folds based on grammars
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
+" Doesn't allow for folding in openscad
+
+" ensures that opening a file will automatically detect folds and close inner most
+set foldlevelstart=3
+set foldnestmax=50
+" reformats all folds
+au BufRead * normal <CTRL-l>
+" closes all folds
+" au BufRead * normal zM
+
+" not sure(?)
+" let javaScript_fold=1       "javascript
+" let vimsyn_folding='af'     "vim script
+" let ruby_fold=1             "Ruby
+" let r_syntax_folding=1      "R
+" let perl_fold=1             "perl
+" let xml_syntax_folding=1    "xml
+
+" syntax on
 
 " ###################
 " ## GUI & Colour ###
@@ -313,14 +309,12 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 set statusline=%F\ >%Y
 " readonly flags and the like
 set statusline+=\ %h%w%m%r
-"
+
 set statusline+=\ %=%([%l,%c%V]\ %=\ %P%)
-" should let nvim use | cursor for insert mode
-" doesn't throw errors but not working on arch
+" let nvim use | cursor for insert mode
 set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 
-" set the background to be dark so that nvim nows for certain and uses light
-" colours
+" set the background to be dark so that nvim nows for certain and uses light colours
 set background=dark
 
 set guifont=Hack-Regular:h13:cDEFAULT
