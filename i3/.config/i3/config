@@ -284,14 +284,14 @@ exec_always --no-startup-id nextcloud --background
 #
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Hack Regular 16
+font pango:Hack Nerd Font 13
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # look into using polybar to replace this full battery at 70%
 bar
 {
-    font pango:Hack Regular 14,
+    # font pango:Hack Nerd Font 14,
     #font pango:DejaVu Sans Mono 14
     status_command i3status -c ~/.i3status.conf
 }
