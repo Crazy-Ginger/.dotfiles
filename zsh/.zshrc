@@ -187,11 +187,14 @@ if command -v morse &> /dev/null; then
     alias blender="/opt/blender-2.79b-linux-glibc219-x86_64/blender"
 fi
 
-# Add paraview workaround to PATH if installed
-if [[ -d "/opt/paraview-opt" ]]; then
-        export PATH=$PATH:/opt/paraview-opt/bin
+if [[ -d "/opt/OpenFOAM" ]]; then
+    autoload bashcompinit
+    bashcompinit
+    export FOAM_INST_DIR=/opt/OpenFOAM
+    export BASH=/bin/bash
+    alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-10/etc/bashrc"
+    alias paraFoam='parafoam -builtin'
 fi
-
 
 # Setup Spack if installed
 if command -v spack &> /dev/null; then
