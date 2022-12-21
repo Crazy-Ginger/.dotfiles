@@ -187,12 +187,18 @@ if command -v morse &> /dev/null; then
     alias blender="/opt/blender-2.79b-linux-glibc219-x86_64/blender"
 fi
 
+# Add paraview's python package if present
+if [[ -d "/opt/paraview" ]]; then
+    export PYTHONPATH="/opt/paraview/lib/python3.10/site-packages/:${PYTHONPATH}"
+fi
+
+# Enable OpenFOAM zsh fixes
 if [[ -d "/opt/OpenFOAM" ]]; then
-    autoload bashcompinit
-    bashcompinit
+    # autoload bashcompinit
+    # bashcompinit
     export FOAM_INST_DIR=/opt/OpenFOAM
     export BASH=/bin/bash
-    alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-10/etc/bashrc"
+    alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-v2206/etc/bashrc"
     alias paraFoam='parafoam -builtin'
 fi
 
@@ -237,7 +243,6 @@ webots_on(){
     PYTHONPATH="$WEBOTS_HOME/lib/controller/python:$PYTHONPATH"
     PYTHONIOENCODING=UTF-8
 }
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
