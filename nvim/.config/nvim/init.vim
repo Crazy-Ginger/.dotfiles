@@ -10,14 +10,8 @@ set secure
 " ## Plugins ##
 " #############
 
-" Requested by polyglot
-set nocompatible
-
-
 "vim-plug to manage plugins for nvim
 call plug#begin()
-	Plug 'roxma/nvim-yarp'                  " Plugin manager
-
     Plug 'nvim-treesitter/nvim-treesitter'  " Adds more complex syntax highlighting via treesitter (TS) (run :TSUpdate to fix some stuff)
     Plug 'p00f/nvim-ts-rainbow'             " Adds rainbow support TS
     Plug 'bollian/tree-sitter-openscad'     " Adds openscad grammar to TS
@@ -45,7 +39,7 @@ call plug#begin()
     Plug 'NoahTheDuke/vim-just'             " Justfile colours
     Plug 'christoomey/vim-tmux-navigator'   " Adds ability to jump between tmux panes using vim split commands
     Plug 'JuliaEditorSupport/julia-vim'     " Adds unicode transformation for julia files
-    Plug 'numirias/semshi'                  " Semantic highligher (try setting up for easy reading)
+    Plug 'numirias/semshi'                  " Semantic highligher (try setting up for easy reading), (provides 'better' highlighting than TS)
     Plug 'chrisbra/csv.vim'                 " CSV tabler
     " Plug 'universal-ctags/ctags'          " Ctags program which enables finding definitions
     Plug 'ludovicchabant/vim-gutentags'     " Ctags generator
@@ -54,8 +48,9 @@ call plug#begin()
 
     Plug 'simrat39/rust-tools.nvim'         " Rust tooling? addes debugging, autocomplete and too much extra shit
 
+    Plug 'jackguo380/vim-lsp-cxx-highlight' " C++ highlighting with vimscript
+
 	Plug 'aklt/plantuml-syntax'				" Syntax complete for plantuml
-    "Plug 'Shougo/deoplete.nvim'            " A completion framework (not sure how complete the sources are)(trying ncm2 for now)
 
     " Building
     Plug 'lervag/vimtex'                    "LaTex
@@ -232,6 +227,22 @@ nnoremap <silent> <C-H> <c-w>
 " Toggle NerdTree explorer with ctrl + T
 nnoremap <C-t> :NERDTreeToggle<CR>
 
+
+
+
+" ## Cursed ##
+" Mixing vim-lsp-cxx-highlight (using ccls) and TS to get the best c++ highlighting
+lua <<EOF
+require'lspconfig'.ccls.setup{
+  init_options = {
+    highlight = {
+      lsRanges = true;
+    }
+  }
+}
+EOF
+
+
 " ################
 " ## TreeSitter ##
 " ################
@@ -247,7 +258,7 @@ require'nvim-treesitter.configs'.setup {
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = true,
   ensure_installed = {
-      "cpp", "c", "python", "java", "javascript", "cmake", "cuda", "css", "html", "dockerfile", "foam", "json", "latex", "make", "llvm", "regex", "rust", "typescript", "vim", "yaml", "markdown"
+   "cpp", "c", "python", "java", "javascript", "cmake", "cuda", "css", "html", "dockerfile", "foam", "json", "latex", "make", "llvm", "regex", "rust", "typescript", "vim", "yaml", "markdown"
     },
 
   highlight = {
@@ -260,6 +271,7 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
+
     additional_vim_regex_highlighting = false,
   },
   rainbow = {
