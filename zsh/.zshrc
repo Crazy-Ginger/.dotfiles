@@ -225,7 +225,7 @@ fi
 
 # Add go bin to PATH is go location is set
 if [[ -d "$HOME/Source/go" ]]; then
-    export PATH="$PATH:/$HOME/Source/go/bin"
+    export PATH="$PATH:$HOME/Source/go/bin"
 fi
 
 # Turn ros2 on
