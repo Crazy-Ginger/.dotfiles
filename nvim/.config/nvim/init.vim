@@ -331,5 +331,7 @@ set background=dark
 
 set guifont=Hack-Regular:h13:cDEFAULT
 
+set termguicolors
+
 " enable pywal colour scheme
 colorscheme wal
