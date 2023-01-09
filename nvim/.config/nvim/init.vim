@@ -59,6 +59,10 @@ call plug#begin()
 
     " To Setup/Fix
     "Plug 'vim-airline/vim-airline'         "A nice status line at the bottom of the window
+
+    " Themes
+    Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+    Plug 'navarasu/onedark.nvim'
 call plug#end()
 
 " to shut up vimtex
@@ -333,5 +337,8 @@ set guifont=Hack-Regular:h13:cDEFAULT
 
 set termguicolors
 
-" enable pywal colour scheme
-colorscheme wal
+" enable colour scheme
+" colorscheme wal
+" colorscheme catppuccin-mocha
+let g:onedark_config = { 'style': 'darker',}
+colorscheme onedark
