@@ -74,18 +74,6 @@ let g:tex_flavor = "latex"
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
-" ##################
-" ## Autocomplete ##
-" ##################
-
-" Enable ALE autocomplete
-let g:ale_completion_enabled=1
-let g:ale_completion_autoimport=1
-
-let g:ale_hover_cursor=1
-let g:ale_hover_to_preview=1
-" Enables latex to unicode to be evaluated in real time
-let g:latex_to_unicode_auto = 1
 
 " ## Rust-Tools ##
 lua << EOF
