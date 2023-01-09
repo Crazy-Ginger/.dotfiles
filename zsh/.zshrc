@@ -5,6 +5,8 @@ if command -v tmux >/dev/null 2>&1; then
 fi
 DISABLE_UNTRACK_FILE_DIRTY="true"
 
+zmodload zsh/zprof
+
 ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
 export TERMINAL=alacritty
@@ -109,10 +111,14 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
+setopt EXTENDED_HISTORY
 
 # limit history to 5,000 lines
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=10000
+SAVEHIST=10000
+
+# Doesn't add command to history if it returns a failure code (e.g. mistypes)
+zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
 # set neovim as the default editor
 export EDITOR=nvim
