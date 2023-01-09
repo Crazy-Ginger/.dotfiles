@@ -304,15 +304,20 @@ au BufRead * normal <CTRL-l>
 " closes all folds
 " au BufRead * normal zM
 
-" not sure(?)
-" let javaScript_fold=1       "javascript
-" let vimsyn_folding='af'     "vim script
-" let ruby_fold=1             "Ruby
-" let r_syntax_folding=1      "R
-" let perl_fold=1             "perl
-" let xml_syntax_folding=1    "xml
 
-" syntax on
+" Prevents a massive slow down of vim launch on wsl
+let g:clipboard = {
+  \ 'name': 'pbcopy',
+  \ 'copy': {
+  \    '+': 'pbcopy',
+  \    '*': 'pbcopy',
+  \  },
+  \ 'paste': {
+  \    '+': 'pbpaste',
+  \    '*': 'pbpaste',
+  \ },
+  \ 'cache_enabled': 0,
+  \ }
 
 " ###################
 " ## GUI & Colour ###
