@@ -5,11 +5,12 @@ if command -v tmux >/dev/null 2>&1; then
 fi
 DISABLE_UNTRACK_FILE_DIRTY="true"
 
+# enables profiling to diagnose slowness, should probably be disabled for performance?
 zmodload zsh/zprof
 
-ZSH_DISABLE_COMPFIX=true
+# ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
-export TERMINAL=alacritty
+# export TERMINAL=alacritty
 plugins=(
     git
     tmux
@@ -27,6 +28,7 @@ plugins=(
 
 export FZF_DEFAULT_OPTS="--cycle"
 
+# loads .oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,underline'
@@ -255,14 +257,14 @@ webots_on(){
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/becca/Junk/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('${HOME}/Junk/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/becca/Junk/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/becca/Junk/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "${HOME}/Junk/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "${HOME}/Junk/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/becca/Junk/miniconda3/bin:$PATH"
+        export PATH="${HOME}/Junk/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
