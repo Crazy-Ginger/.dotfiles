@@ -31,8 +31,9 @@ source $ZSH/oh-my-zsh.sh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,underline'
 
-# trying out powerlevel10k for the speed
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# TODO: check what p10k actually does
+# Holding off trying out powerlevel10k (for the speed)
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 ###########
 ##Aliases##
