@@ -4,4 +4,4 @@ configuration {
 	combi-modi: "window,drun,ssh";
 }
 
-@theme "/home/becca/.cache/wal/colors-rofi-dark-custom.rasi"
+@theme "${HOME}/.cache/wal/colors-rofi-dark-custom.rasi"

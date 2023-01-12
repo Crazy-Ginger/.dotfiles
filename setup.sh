@@ -45,7 +45,7 @@ function nvim_setup {
 
 # Find libclang and symlinks to home dir
 function libclang_find {
-    find /usr/ -mount -iname '*libclang.so*' -exec ln -s {} /home/becca/.libclang.so
+    find /usr/ -mount -iname '*libclang.so*' -exec ln -s {} $HOME/.libclang.so
 }
 
 # Set up astyle
