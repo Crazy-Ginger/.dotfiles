@@ -47,6 +47,7 @@ alias pip="pip3"
 alias ip="ip -c"
 alias pping="prettyping"
 alias svim="sudoedit"
+alias less="less --mouse"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
 # alias dockerstopper="docker stop $(docker ps -a -q)"
@@ -128,6 +129,7 @@ zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 # set neovim as the default editor
 export EDITOR=nvim
 export VISUAL=nvim
+export PAGER="less --mouse"
 
 # stuff to do with autocomplete possibly (not sure)
 #autoload -Uz compinit && compinit
