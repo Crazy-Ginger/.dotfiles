@@ -294,18 +294,22 @@ au BufRead * normal <CTRL-l>
 
 
 " Prevents a massive slow down of vim launch on wsl
-let g:clipboard = {
-  \ 'name': 'pbcopy',
-  \ 'copy': {
-  \    '+': 'pbcopy',
-  \    '*': 'pbcopy',
-  \  },
-  \ 'paste': {
-  \    '+': 'pbpaste',
-  \    '*': 'pbpaste',
-  \ },
-  \ 'cache_enabled': 0,
-  \ }
+let g:os = substitute(system('uname -r'), '\n', '', '')
+
+if g:os =~ "WSL"
+    let g:clipboard = {
+      \ 'name': 'pbcopy',
+      \ 'copy': {
+      \    '+': 'pbcopy',
+      \    '*': 'pbcopy',
+      \  },
+      \ 'paste': {
+      \    '+': 'pbpaste',
+      \    '*': 'pbpaste',
+      \ },
+      \ 'cache_enabled': 0,
+      \ }
+endif
 
 " ###################
 " ## GUI & Colour ###
