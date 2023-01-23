@@ -217,7 +217,8 @@ nnoremap <silent> <C-H> <c-w>
 " set iskeyword-=_
 
 " Toggle NerdTree explorer with ctrl + T
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-t> :silent! NERDTreeToggle<CR>
+
 
 
 
