@@ -18,8 +18,19 @@ call plug#begin()
 
     Plug 'dense-analysis/ale'               " A collection of linters in one plugin (requires a lot of setup)
 
-    Plug 'scrooloose/nerdcommenter'         " Easy commenting
+    Plug 'neovim/nvim-lspconfig'            " Configs of neovims LSP client
+    Plug 'hrsh7th/nvim-cmp'                 " NeoVim completion engine written in Lua
+    Plug 'hrsh7th/cmp-nvim-lsp'             "
+    Plug 'hrsh7th/cmp-buffer'               "
+    Plug 'hrsh7th/cmp-path'                 "
+    Plug 'hrsh7th/cmp-cmdline'              "
+    Plug 'ranjithshegde/ccls.nvim'          " Wrapper for ccls
 
+    Plug 'SirVer/ultisnips'                 " Snippet engine (required for autocomplete)
+    Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+
+
+    Plug 'scrooloose/nerdcommenter'         " Easy commenting
     Plug 'tpope/vim-surround'               " use cs<><> to replace brackets, quotation marks and more
 
     Plug 'ryanoasis/vim-devicons'           " allows for nerd fonts (icon fonts)
@@ -53,12 +64,12 @@ call plug#begin()
 	Plug 'aklt/plantuml-syntax'				" Syntax complete for plantuml
 
     " Building
-    Plug 'lervag/vimtex'                    "LaTex
-    Plug 'ObserverOfTime/ncm2-jc2'          "Java
-    Plug 'gaalcaras/ncm-R'                  "R
+    Plug 'lervag/vimtex'                    " LaTex
+    Plug 'ObserverOfTime/ncm2-jc2'          " Java
+    Plug 'gaalcaras/ncm-R'                  " R
 
     " To Setup/Fix
-    "Plug 'vim-airline/vim-airline'         "A nice status line at the bottom of the window
+    "Plug 'vim-airline/vim-airline'         " A nice status line at the bottom of the window
 
     " Themes
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
@@ -95,6 +106,133 @@ EOF
 " Auto CSV formatting
 let g:csv_autocmd_arrange	   = 1
 let g:csv_autocmd_arrange_size = 1024*1024
+
+
+" ##################
+" ## Autocomplete ##
+" ##################
+
+set shortmess+=c
+set completeopt=menuone,noselect
+
+lua << EOF
+-- Compe setup
+local cmp = require'cmp'
+
+
+cmp.setup({
+    snippet = {
+        -- REQUIRED - you must specify a snippet engine
+        expand = function(args)
+        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        end,
+    },
+    window = {
+        -- completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<Tab>'] = cmp.mapping.confirm({ select = false }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'ultisnips' },
+        }, {
+        { name = 'buffer' },
+        { name = 'path' },
+    })
+})
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+        }, {
+        { name = 'buffer' },
+    })
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    })
+})
+
+-- Set up lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- Rust LSP
+require('rust-tools').setup({
+    server = {
+        -- from https://github.com/simrat39/rust-tools.nvim
+        capabilities = capabilities,
+        -- on_attach = lsp_attach,
+        on_attach = function(_, bufnr)
+        -- Hover actions
+        vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+        -- Code action groups
+        vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+        end,
+    },
+    filetype = {"rs"}
+})
+
+-- C/C++ LSP
+require('ccls').setup({
+    lsp = {
+        server = {
+            name = "ccls",  -- String name
+
+            root_dir = vim.fs.dirname(vim.fs.find({ "compile_commands.json", ".git" }, { upward = true })[1]),
+
+        init_options = {
+            index = {
+                threads = 0;
+            };
+
+            clang = {
+                excludeArgs = { "-frounding-math" };
+            };
+        },
+
+        -- |> Fix diagnostics.
+        flags = lsp_flags,
+        -- |> Attach LSP keybindings & other crap.
+        on_attach = aum_general_on_attach,
+        -- |> Add nvim-cmp or snippet completion capabilities.
+        capabilities = completion_capabilities,
+        -- |> Activate custom handlers.
+        handlers = aum_handler_config,
+        },
+
+    },
+    filetypes = {"c", "cpp"},
+})
+
+require('lspconfig')['pyright'].setup({
+    on_attach = on_attach,
+    flags = lsp_flags,
+    filetype = {"py"}
+})
+
+EOF
+
 
 " #############
 " ## Linting ##
@@ -218,9 +356,6 @@ nnoremap <silent> <C-H> <c-w>
 
 " Toggle NerdTree explorer with ctrl + T
 nnoremap <C-t> :silent! NERDTreeToggle<CR>
-
-
-
 
 
 " ## Cursed ##
