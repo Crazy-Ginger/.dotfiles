@@ -222,13 +222,13 @@ require('ccls').setup({
         },
 
     },
-    filetypes = {"c", "cpp"},
+    filetypes = {"c", "cpp", "h", "hpp", "cu", "cxx"},
 })
 
 require('lspconfig')['pyright'].setup({
     on_attach = on_attach,
     flags = lsp_flags,
-    filetype = {"py"}
+    filetype = {"py"},
 })
 
 EOF
