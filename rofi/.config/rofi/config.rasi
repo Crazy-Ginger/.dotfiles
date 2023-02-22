@@ -1,7 +1,22 @@
+@theme "~/.cache/wal/colors-rofi-dark-custom.rasi"
+
 configuration {
-	modi: "window,drun,ssh,combi";
-    font: "hack 14";
-	combi-modi: "window,drun,ssh";
+    font: "Hack Nerd Font 16";
+    show-icons: true;
+    display-drun: " ";
+        drun-display-format: "{name}";
+    timeout {
+        action: "kb-cancel";
+        delay: 0;
+    }
 }
 
-@theme "${HOME}/.cache/wal/colors-rofi-dark-custom.rasi"
+window {
+    transparency: "real";
+    margin:                      5px;
+    padding:                     5px;
+    border:                      10px solid;
+    border-radius:               10px;
+    background-color:            black / 20%;
+    cursor:                      "default";
+    }

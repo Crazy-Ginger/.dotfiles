@@ -51,8 +51,7 @@ bindsym $mod+space exec alacritty
 bindsym $mod+q kill
 
 # %%hotkey: i3-  open Rofi (start menu) %%
-bindsym $mod+d exec rofi -show drun
-# -show drun -show-icons -modi drun
+bindsym $mod+d exec "rofi -show drun -config $HOME/.config/rofi/config.rasi"
 
 ## Focus Changers
 
