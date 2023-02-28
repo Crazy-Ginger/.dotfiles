@@ -1,5 +1,4 @@
 " Allow project-specific nvimrc
-
 " exrc allows loading local executing local rc files.
 set exrc
 " secure disallows the use of :autocmd, shell and write commands in local .vimrc files.
@@ -20,6 +19,7 @@ call plug#begin()
 
     Plug 'neovim/nvim-lspconfig'            " Configs of neovims LSP client
     Plug 'hrsh7th/nvim-cmp'                 " NeoVim completion engine written in Lua
+    Plug 'onsails/lspkind.nvim'             " Adds pictograms to autcompletes
     Plug 'hrsh7th/cmp-nvim-lsp'             "
     Plug 'hrsh7th/cmp-buffer'               "
     Plug 'hrsh7th/cmp-path'                 "
@@ -65,10 +65,9 @@ call plug#begin()
 
     " Building
     Plug 'lervag/vimtex'                    " LaTex
-    Plug 'ObserverOfTime/ncm2-jc2'          " Java
     Plug 'gaalcaras/ncm-R'                  " R
 
-    " To Setup/Fix
+    " TODO:
     "Plug 'vim-airline/vim-airline'         " A nice status line at the bottom of the window
 
     " Themes
@@ -91,16 +90,15 @@ lua << EOF
 local rt = require("rust-tools")
 
 rt.setup({
-  server = {
-    on_attach = function(_, bufnr)
-      -- Hover actions
-      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-      -- Code action groups
-      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    server = {
+        on_attach = function(_, bufnr)
+        -- Hover actions
+        vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+        -- Code action groups
+        vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
     end,
-  },
+    },
 })
-
 EOF
 
 " Auto CSV formatting
@@ -115,123 +113,8 @@ let g:csv_autocmd_arrange_size = 1024*1024
 set shortmess+=c
 set completeopt=menuone,noselect
 
-lua << EOF
--- Compe setup
-local cmp = require'cmp'
-
-
-cmp.setup({
-    snippet = {
-        -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-        end,
-    },
-    window = {
-        -- completion = cmp.config.window.bordered(),
-        -- documentation = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<Tab>'] = cmp.mapping.confirm({ select = false }),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items
-    }),
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'ultisnips' },
-        }, {
-        { name = 'buffer' },
-        { name = 'path' },
-    })
-})
-
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-        }, {
-        { name = 'buffer' },
-    })
-})
-
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
-        { name = 'cmdline' }
-    })
-})
-
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Rust LSP
-require('rust-tools').setup({
-    server = {
-        -- from https://github.com/simrat39/rust-tools.nvim
-        capabilities = capabilities,
-        -- on_attach = lsp_attach,
-        on_attach = function(_, bufnr)
-        -- Hover actions
-        vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-        -- Code action groups
-        vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-        end,
-    },
-    filetype = {"rs"}
-})
-
--- C/C++ LSP
-require('ccls').setup({
-    lsp = {
-        server = {
-            name = "ccls",  -- String name
-
-            root_dir = vim.fs.dirname(vim.fs.find({ "compile_commands.json", ".git" }, { upward = true })[1]),
-
-        init_options = {
-            index = {
-                threads = 0;
-            };
-
-            clang = {
-                excludeArgs = { "-frounding-math" };
-            };
-        },
-
-        -- |> Fix diagnostics.
-        flags = lsp_flags,
-        -- |> Attach LSP keybindings & other crap.
-        on_attach = aum_general_on_attach,
-        -- |> Add nvim-cmp or snippet completion capabilities.
-        capabilities = completion_capabilities,
-        -- |> Activate custom handlers.
-        handlers = aum_handler_config,
-        },
-
-    },
-    filetypes = {"c", "cpp", "h", "hpp", "cu", "cxx"},
-})
-
-require('lspconfig')['pyright'].setup({
-    on_attach = on_attach,
-    flags = lsp_flags,
-    filetype = {"py"},
-})
-
-EOF
+" Moved Autocomplete code to seperate lua file for convinience
+lua require("autocomplete")
 
 
 " #############
@@ -319,10 +202,11 @@ set number
 " Allow dictionary completion on certain file types
 " au FileType markdown,text let b:ncm2_look_enabled = 1
 
+set keymodel=startsel
+
 " setting the size of tab spaces to not be stupid long
 set linebreak
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-
 
 
 " allows accidental holding shift whilst writing commands to still run commands
@@ -336,7 +220,6 @@ command WQ wq
 set spelllang=en
 nnoremap <silent> <F11> :set spell!<cr>
 inoremap <silent> <F11> <C-O>:set spell!<cr>
-
 
 " disable arrow keys
 noremap <Left> :echo "No arrows for you"<CR>
@@ -352,11 +235,14 @@ nnoremap <silent> <C-Down> <c-w>j
 
 nnoremap <silent> <C-H> <c-w>
 
+" Made navigation hard
 " set iskeyword-=_
 
 " Toggle NerdTree explorer with ctrl + T
 nnoremap <C-t> :silent! NERDTreeToggle<CR>
 
+" Allows embedded script highlighting (fixes embedded folding)
+let g:vimsyn_embed = 'lPr'
 
 " ## Cursed ##
 " Mixing vim-lsp-cxx-highlight (using ccls) and TS to get the best c++ highlighting
@@ -414,7 +300,8 @@ EOF
 
 " ## Folding ##
 
-" uses treesitter to generate folds based on grammars
+" uses treesitter to generate folds based on grammars (doesn't work well for
+" languages embedded in vimscript
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
@@ -446,6 +333,8 @@ if g:os =~ "WSL"
       \ 'cache_enabled': 0,
       \ }
 endif
+
+set clipboard=unnamedplus,unnamed
 
 " ###################
 " ## GUI & Colour ###
