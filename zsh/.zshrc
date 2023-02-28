@@ -21,6 +21,7 @@ plugins=(
     docker
     docker-compose
     dotenv
+    systemd
     # zsh-syntax-highlighting
     fd
     k
