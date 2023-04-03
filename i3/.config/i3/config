@@ -17,27 +17,23 @@ set $mod Mod4
 ## Audio
 # Use pactl to adjust volume in PulseAudio
 set $refresh_i3status killall -SIGUSR1 i3status
-# %%hotkey: Volume ++2% %%
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume $(pactl get-default-sink) +5%"
-# %%hotkey: Volume --2% %%
-bindsym XF86AudioLowerVolume exec--no-startup-id "pactl set-sink-volume $(pactl get-default-sink) -5%"
+# %%hotkey: Volume ++5% %%
+bindsym XF86AudioRaiseVolume exec --no-startup-id "$HOME/bin/volume_brightness volume_up 5"
+# %%hotkey: Volume --5% %%
+bindsym XF86AudioLowerVolume exec --no-startup-id "$HOME/bin/volume_brightness volume_down 5"
 # %%hotkey: Toggle mute %%
-bindsym XF86AudioMute exec --no-startup-id "amixer -q sset Master toggle"
+bindsym XF86AudioMute exec --no-startup-id "$HOME/bin/volume_brightness volume_mute"
 
 ## Lighting
 # Uses xbacklight to change screen Brightness
 # %%hotkey: Brightness ++10% %%
-bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10"
+bindsym XF86MonBrightnessUp exec --no-startup-id "$HOME/bin/volume_brightness brightness_up"
 # %%hotkey: Brightness --10% %%
-bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
-# %%hotkey: Brightness ++5% %%
-bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 5"
-# %%hotkey: Brightness --5% %%
-bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 5"
+bindsym XF86MonBrightnessDown exec --no-startup-id "$HOME/bin/volume_brightness brightness_down"
 # %%hotkey: Brightness ++1% %%
-bindsym Mod1+XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 1"
+bindsym Mod1+XF86MonBrightnessUp exec --no-startup-id "$HOME/bin/volume_brightness brightness_up 1"
 # %%hotkey: Brightness --1% %%
-bindsym Mod1+XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 1"
+bindsym Mod1+XF86MonBrightnessDown exec --no-startup-id "$HOME/bin/volume_brightness brightness_down 1"
 
 # %%hotkey: i3- Move floating tile %%
 floating_modifier $mod
@@ -250,9 +246,9 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # start dunst (notifcation handler)
-exec_always --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
+exec_always --no-startup-id dunst
 
-exec_always --no-startup-id nextcloud --background
+exec_always --no-startup-id "nextcloud --background"
 
 
 ##############
