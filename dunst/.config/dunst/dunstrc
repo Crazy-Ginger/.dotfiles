@@ -100,11 +100,11 @@
     ### Mouse ###
 
     # Left click
-    mouse_left_click = close_current
+    mouse_left_click = do_action
     # Middle click
-    mouse_middle_click = do_action
+    mouse_middle_click = context
     # Right click
-    mouse_right_click = do_action
+    mouse_right_click = close_current
 
 [shortcuts]
 
