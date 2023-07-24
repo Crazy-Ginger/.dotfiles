@@ -64,8 +64,7 @@ fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
+case "$TERM" in xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
@@ -130,3 +129,6 @@ source "$HOME/.cargo/env"
     # export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 # fi
 . "$HOME/.cargo/env"
+
+
+source .bashrc.taste
