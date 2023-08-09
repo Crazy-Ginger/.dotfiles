@@ -320,20 +320,21 @@ au BufRead * normal <CTRL-l>
 " Prevents a massive slow down of vim launch on wsl
 let g:os = substitute(system('uname -r'), '\n', '', '')
 
-if g:os =~ "WSL"
-    let g:clipboard = {
-      \ 'name': 'pbcopy',
-      \ 'copy': {
-      \    '+': 'pbcopy',
-      \    '*': 'pbcopy',
-      \  },
-      \ 'paste': {
-      \    '+': 'pbpaste',
-      \    '*': 'pbpaste',
-      \ },
-      \ 'cache_enabled': 0,
-      \ }
-endif
+" removed as it was causing issues on work WSL TODO: needs investigation
+" if g:os =~ "WSL"
+    " let g:clipboard = {
+      " \ 'name': 'pbcopy',
+      " \ 'copy': {
+      " \    '+': 'pbcopy',
+      " \    '*': 'pbcopy',
+      " \  },
+      " \ 'paste': {
+      " \    '+': 'pbpaste',
+      " \    '*': 'pbpaste',
+      " \ },
+      " \ 'cache_enabled': 0,
+      " \ }
+" endif
 
 set clipboard=unnamedplus,unnamed
 
