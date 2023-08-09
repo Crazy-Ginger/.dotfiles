@@ -37,6 +37,7 @@ function omz_plugins {
 function nvim_setup {
     mkdir -p $HOME/.config/nvim/autoload
     cd $HOME/.dotfiles && stow nvim && cd $HOME
+    curl https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --output ${HOME}/.config/nvim/autoload/plug.vim
     vim +PlugInstall +qall
     astyle_setup
     yapf_setup
