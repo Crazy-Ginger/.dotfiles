@@ -3,10 +3,10 @@ if command -v tmux >/dev/null 2>&1; then
     # if not inside a tmux session, and if no session is started, start a new session
     [ -z "${TMUX}" ] && (tmux) >/dev/null 2>&1
 fi
-DISABLE_UNTRACK_FILE_DIRTY="true"
+# DISABLE_UNTRACK_FILE_DIRTY="true"
 
 # enables profiling to diagnose slowness, should probably be disabled for performance?
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 # ZSH_DISABLE_COMPFIX=true
 export ZSH="$HOME/.oh-my-zsh"
@@ -22,7 +22,7 @@ plugins=(
     docker-compose
     dotenv
     systemd
-    # zsh-syntax-highlighting
+    zsh-syntax-highlighting
     fd
     k
 )
@@ -274,3 +274,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# export AUTOENV_ENABLE_LEAVE="wasd"
+# source ~/.autoenv/activate.sh
