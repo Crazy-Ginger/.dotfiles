@@ -12,9 +12,9 @@ set secure
 "vim-plug to manage plugins for nvim
 call plug#begin()
     Plug 'nvim-treesitter/nvim-treesitter'  " Adds more complex syntax highlighting via treesitter (TS) (run :TSUpdate to fix some stuff)
-    Plug 'p00f/nvim-ts-rainbow'             " Adds rainbow support TS
     Plug 'bollian/tree-sitter-openscad'     " Adds openscad grammar to TS
     Plug 'lukas-reineke/indent-blankline.nvim'  " Adds indentaton guide lines
+    Plug 'HiPhish/rainbow-delimiters.nvim'      " Adds rainbow paranthses using treesitter but is a standalone plugin # TODO: requires setup
 
     Plug 'dense-analysis/ale'               " A collection of linters in one plugin (requires a lot of setup)
 
@@ -362,15 +362,8 @@ set guifont=Hack-Regular:h13:cDEFAULT
 " indent-line setup
 
 lua << EOF
-vim.opt.list = true
-vim.opt.listchars:append "space:⋅"
-vim.opt.listchars:append "eol:↴"
 
-require("indent_blankline").setup {
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true,
-}
+require("ibl").setup {}
 EOF
 
 set termguicolors
