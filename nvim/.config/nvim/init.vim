@@ -4,6 +4,7 @@ set exrc
 " secure disallows the use of :autocmd, shell and write commands in local .vimrc files.
 set secure
 
+filetype plugin indent on
 
 " #############
 " ## Plugins ##
@@ -76,8 +77,11 @@ call plug#begin()
     Plug 'navarasu/onedark.nvim'
 call plug#end()
 
-" to shut up vimtex
+" ### Vimtex ###
 let g:tex_flavor = "latex"
+
+" set viewer
+let g:vimtex_view_general_viewer = 'okular'
 
 
 " ### NERDCommenter ###
@@ -140,7 +144,9 @@ let g:ale_linters = {
     \ 'typescript': ['deno', 'cspell', 'eslint', 'tslint', 'tsserver', 'typecheck'],
     \ 'javascript': ['deno', 'cspell', 'jshint', 'esling', 'tsserver'],
     \ }
-
+let g:ale_linters_ignore = {
+    \ 'tex': ['cspell'],
+\}
 " enable linting after a save event
 let g:ale_lint_on_save = 1
 
