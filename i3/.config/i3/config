@@ -39,15 +39,16 @@ bindsym Mod1+XF86MonBrightnessDown exec --no-startup-id "$HOME/bin/volume_bright
 floating_modifier $mod
 
 # %%hotkey: Open terminal %%
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec --no-startup-id alacritty
 # %%hotkey: Open terminal %%
-bindsym $mod+space exec alacritty
+bindsym $mod+space exec --no-startup-id alacritty
+
 
 # %%hotkey: i3- kill window %%
 bindsym $mod+q kill
 
 # %%hotkey: i3-  open Rofi (start menu) %%
-bindsym $mod+d exec "rofi -show drun -config $HOME/.config/rofi/config.rasi"
+bindsym $mod+d exec --no-startup-id "rofi -show drun -config $HOME/.config/rofi/config.rasi"
 
 ## Focus Changers
 
@@ -210,14 +211,14 @@ bindsym $mod+r mode "resize"
 # %%hotkey: i3- display this menu%%
 bindsym $mod+m exec --no-startup-id "dmenu_hotkeys run -m rofi -a i3 -d True"
 # %%hotkey: i3- display this menu%%
-bindsym $mod+Shift+?  exec dmenu_hotkeys run -m rofi -a i3 -d True
+bindsym $mod+Shift+?  exec --no-startup-id dmenu_hotkeys run -m rofi -a i3 -d True
 
 
 ##Screenshots##
 # %%hotkey: i3- flameshot capture to keyboard%%
-bindsym Print --release exec "flameshot gui -c"
+bindsym Print --release exec --no-startup-id "flameshot gui -c"
 # %%hotkey: i3- flameshot GUI%%
-bindsym $mod+Print --release exec "flameshot gui"
+bindsym $mod+Print --release exec --no-startup-id "flameshot gui"
 
 
 ###########
@@ -245,11 +246,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# start dunst (notifcation handler)
-exec_always --no-startup-id dunst
-
-exec_always --no-startup-id "nextcloud --background"
-
 
 ##############
 ##Appearance##
@@ -274,7 +270,7 @@ bindsym $mod+b exec --no-startup-id wal  -i /mnt/Shared/Pictures/Backgrounds/Art
 
 # Choose a wall paper lightmode
 # %%hotkey: i3- random wallpaper (light mode)%%
-bindsym $mod+Shift+b exec  wal -i /mnt/Shared/Pictures/Backgrounds/Arty -b "dfdfdf"  --saturate 1.0 -l --cols16
+bindsym $mod+Shift+b exec --no-startup-id  wal -i /mnt/Shared/Pictures/Backgrounds/Arty -b "dfdfdf"  --saturate 1.0 -l --cols16
 
 # Gaps
 gaps outer 3
