@@ -50,7 +50,6 @@ alias pping="prettyping"
 alias svim="sudoedit"
 alias chrome="/usr/bin/google-chrome-stable  %U"
 alias ls-type='find -type f -name "*.*" | rev | cut -d "." -f 1 | rev | sort | uniq -c | sort -nr'
-# alias dockerstopper="docker stop $(docker ps -a -q)"
 
 if cat /proc/version | grep -q WSL; then
     alias expl="explorer.exe ."
@@ -63,45 +62,21 @@ fi
 #########
 
 # add user bin files to path
-export PATH=$PATH:~/bin
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:/usr/sbin
-export PATH=$PATH:/usr/include
+export PATH="$PATH:~/bin:.local/bin:/usr/sbin"
+# export PATH=$PATH:/usr/include
 
-# add /usr/local/ to cpp compiler
+
+# XDG file paths setup (using defaults)
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+
+# add openCV paths for compilation
 export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
-# add CUDA paths
-export LIBRARY_PATH="/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/x86_64-linux/lib:$LIBRARY_PATH"
-
-
 export C_INCLUDE_PATH="/usr/local/include:$C_INCLUDE_PATH"
-# add CUDA paths
-export C_INCLUDE_PATH="/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include:$C_INCLUDE_PATH"
-# add /usr/include/c++
-# add PICO_SDK
-# export C_INCLUDE_PATH="$C_INCLUDE_PATH:$HOME/Source/Embedded/libraries/pico-sdk"
-# export C_INCLUDE_PATH="$_INCLUDE_PATH:$HOME/Source/Embedded/libraries/pico-sdk/src/common/pico_stdlib/include"
-
-
-# add CUDA paths
-if [ -z $CPLUS_INCLUDE_PATH ]; then
-    export CPLUS_INCLUDE_PATH="/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include"
-else
-    export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/opt/cuda/targets/x86_64-linux/include:/usr/local/cuda/targets/x86_64-linux/include"
-fi
-# export CPLUS_INCLUDE_PATH="/usr/include/vtk:$CPLUS_INCLUDE_PATH"
-# add arduino paths (currently breaks std library for some reason)
-# export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/share/arduino/hardware/archlinux-arduino/avr/cores/arduino/"
-# add PICO_SDK
-# export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/Source/Embedded/libraries/pico-sdk/src/common/pico_stdlib/include/pico"
-# export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/Source/Embedded/libraries/pico-sdk/src/common/pico_stdlib/include"
-
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
-# add CUDA paths
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/targets/x86_64-linux/lib:/usr/local/cuda/targets/x86_64-linux/lib"
-
-export PICO_SDK_PATH="/usr/share/pico-sdk"
-
 
 # Move Go directory to /opt
 export GOPATH="$HOME/Source/go"
@@ -259,21 +234,3 @@ webots_on(){
     PYTHONPATH="$WEBOTS_HOME/lib/controller/python:$PYTHONPATH"
     PYTHONIOENCODING=UTF-8
 }
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('${HOME}/Junk/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "${HOME}/Junk/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "${HOME}/Junk/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="${HOME}/Junk/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# export AUTOENV_ENABLE_LEAVE="wasd"
-# source ~/.autoenv/activate.sh
