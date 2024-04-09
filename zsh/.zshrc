@@ -62,7 +62,7 @@ fi
 #########
 
 # add user bin files to path
-export PATH="$PATH:~/bin:.local/bin:/usr/sbin"
+export PATH="$PATH:$HOME/bin:.local/bin:/usr/sbin"
 # export PATH=$PATH:/usr/include
 
 
@@ -110,7 +110,7 @@ export BAT_PAGER="less --mouse"
 export MANPAGER="less --mouse"
 
 # stuff to do with autocomplete possibly (not sure)
-#autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zstyle ':completion::complete:*' gain-privileges 1
 setopt nocompletealiases
