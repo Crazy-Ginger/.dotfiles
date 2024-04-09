@@ -68,10 +68,10 @@
 
     ### Icons ###
 
-    enable_recursive_icon_lookup = true
-    # icon_path = /usr/share/icons/breeze-dark
+    # enable_recursive_icon_lookup = true
+    icon_path = /usr/share/icons/breeze
     # Disable icons
-    icon_position = off
+    # icon_position = off
 
     ### History ###
 
